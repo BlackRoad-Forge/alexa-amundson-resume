@@ -1,25 +1,41 @@
-name: 🚀 Auto Deploy
+name: Auto Deploy
 
 on:
   push:
     branches: [main, master]
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'Dockerfile'
   workflow_dispatch:
 
 env:
   NODE_VERSION: '20'
 
 jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm test
+
   detect-service:
     name: Detect Service Type
     runs-on: ubuntu-latest
+    needs: test
     outputs:
       service_type: ${{ steps.detect.outputs.service_type }}
       deploy_target: ${{ steps.detect.outputs.deploy_target }}
-    
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
+      - uses: actions/checkout@v4
+
       - name: Detect Service Type
         id: detect
         run: |
@@ -45,27 +61,21 @@ jobs:
     needs: detect-service
     if: needs.detect-service.outputs.deploy_target == 'cloudflare'
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-      
-      - name: Install Dependencies
-        run: npm ci
-      
-      - name: Build
-        run: npm run build
+
+      - run: npm ci
+      - run: npm run build
         env:
           NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
-      
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+
+      - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -76,14 +86,13 @@ jobs:
     needs: detect-service
     if: needs.detect-service.outputs.deploy_target == 'railway'
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
+      - uses: actions/checkout@v4
+
       - name: Install Railway CLI
         run: npm i -g @railway/cli
-      
+
       - name: Deploy to Railway
         run: railway up --service ${{ github.event.repository.name }}
         env:
@@ -94,22 +103,15 @@ jobs:
     needs: [deploy-cloudflare, deploy-railway]
     if: always() && (needs.deploy-cloudflare.result == 'success' || needs.deploy-railway.result == 'success')
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Wait for Deployment
         run: sleep 30
-      
+
       - name: Check Health Endpoint
         run: |
           URL="${{ secrets.DEPLOY_URL }}/api/health"
-          curl -f $URL || exit 1
-      
-      - name: Notify Success
-        if: success()
-        run: echo "✅ Deployment successful and healthy!"
-      
-      - name: Notify Failure
-        if: failure()
-        run: |
-          echo "❌ Deployment health check failed!"
-          exit 1
+          echo "Checking $URL..."
+          RESPONSE=$(curl -sf "$URL" 2>&1) || { echo "Health check failed"; exit 1; }
+          echo "$RESPONSE"
+          echo "$RESPONSE" | grep -q '"status":"ok"' || { echo "Unexpected health response"; exit 1; }

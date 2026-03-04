@@ -33,3 +33,22 @@ PRIVATE_NOTES.md
 *.tmp
 *.bak
 *~
+
+# Node
+node_modules/
+.env
+*.log
+
+# Build artifacts
+dist/
+.next/
+coverage/
+
+# Test artifacts
+test-results/
+playwright-report/
+
+# Data
+data/
+*.sqlite
+*.db

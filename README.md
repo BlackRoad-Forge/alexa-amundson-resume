@@ -1,229 +1,133 @@
-# Alexa Louise Amundson — Professional Resume Portfolio
+# BlackRoad OS — Stripe Integration Service
 
-**The Executive Who Codes AND Closes**
+Production Stripe integration with billing, webhooks, e2e tests, and Raspberry Pi deployment.
 
----
+## Architecture
 
-## 📧 Contact Information
+```
+src/
+├── server.js              # Express server entry point
+├── config/
+│   ├── index.js           # Environment config
+│   └── logger.js          # Structured logging (pino)
+├── api/
+│   └── routes.js          # API routes (health, billing, webhooks)
+└── stripe/
+    ├── client.js          # Stripe client singleton
+    ├── billing.js         # Customer, checkout, payments, subscriptions
+    └── webhooks.js        # Webhook verification + event handlers
 
-- **Email:** amundsonalexa@gmail.com | blackroad.systems@gmail.com
-- **Phone:** (507) 828-0842
-- **LinkedIn:** [linkedin.com/in/alexaamundson](https://linkedin.com/in/alexaamundson)
-- **GitHub:** [@blackboxprogramming](https://github.com/blackboxprogramming)
-- **Portfolio:** [lucidia.earth](https://lucidia.earth) | [blackroadinc.us](https://blackroadinc.us)
-- **Live Platform:** [app.blackroad.io](https://app.blackroad.io)
+tests/
+├── unit/
+│   └── webhooks.test.js   # Webhook handler unit tests
+└── e2e/
+    ├── health.spec.js     # Health endpoint e2e
+    ├── billing-api.spec.js # Billing API e2e
+    └── stripe-webhook.spec.js # Webhook e2e
 
----
+deploy/pi/
+├── deploy.sh              # Deploy to Pi nodes via SSH
+└── setup-nginx.sh         # NGINX load balancer for Pi cluster
+```
 
-## 📁 Repository Contents
+## Quick Start
 
-This repository contains my complete professional resume portfolio, including technical documentation, performance reviews, and thought leadership white papers.
+```bash
+# Install dependencies
+npm install
 
-### Resume Formats
+# Copy env template and fill in your Stripe keys
+cp .env.example .env
 
-| File | Word Count | Pages | Purpose |
-|------|------------|-------|---------|
-| **[alexa-amundson-one-pager.md](alexa-amundson-one-pager.md)** | 750 | 1 | Quick intro, elevator pitch, email attachment |
-| **[alexa-amundson-resume.md](alexa-amundson-resume.md)** | 3,500 | 5 | Standard resume format |
-| **[alexa-amundson-resume-enhanced.md](alexa-amundson-resume-enhanced.md)** | 6,000 | 8 | Enhanced with detailed metrics |
-| **[alexa-amundson-resume-ultimate.md](alexa-amundson-resume-ultimate.md)** | 9,700 | 15 | Comprehensive technical + commercial |
-| **[alexa-amundson-resume-executive.md](alexa-amundson-resume-executive.md)** | 17,500 | 35 | Executive deep dive with financials |
-| **[alexa-amundson-resume-master.md](alexa-amundson-resume-master.md)** | 25,000 | 100+ | **Complete business case** |
+# Run server
+npm start
 
-### Supporting Documents
+# Run in dev mode (auto-reload)
+npm run dev
+```
 
-| File | Word Count | Purpose |
-|------|------------|---------|
-| **[alexa-amundson-testimonials.md](alexa-amundson-testimonials.md)** | 6,500 | Performance reviews, manager testimonials, peer references |
-| **[alexa-amundson-white-papers.md](alexa-amundson-white-papers.md)** | 12,000 | Technical deep dives, research papers, case studies |
+## API Endpoints
 
-### Total Portfolio
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/health` | Health check |
+| POST | `/api/webhooks/stripe` | Stripe webhook receiver |
+| POST | `/api/customers` | Create Stripe customer |
+| POST | `/api/checkout` | Create checkout session |
+| POST | `/api/payments` | Create payment intent |
+| GET | `/api/customers/:id/invoices` | List customer invoices |
+| GET | `/api/subscriptions/:id` | Get subscription |
+| DELETE | `/api/subscriptions/:id` | Cancel subscription |
 
-- **Total Word Count:** 77,450+ words
-- **Total Pages:** 150+ pages (printed)
-- **Reading Time:** 5 hours (complete portfolio)
+## Stripe Webhooks
 
----
+Handled events:
+- `checkout.session.completed` — Fulfill orders
+- `invoice.paid` / `invoice.payment_failed` — Track payments
+- `customer.subscription.created/updated/deleted` — Manage subscriptions
+- `payment_intent.succeeded/payment_failed` — Payment lifecycle
 
-## 🎯 Quick Start
+To test locally:
+```bash
+# Forward Stripe events to local server
+npm run stripe:listen
+```
 
-**For Recruiters/Hiring Managers:**
-- Start with: [One-Page Summary](alexa-amundson-one-pager.md)
-- Then read: [Enhanced Resume](alexa-amundson-resume-enhanced.md)
-- Deep dive: [Executive Resume](alexa-amundson-resume-executive.md)
+## Testing
 
-**For Investors:**
-- Start with: [Master Resume - Investor Pitch Section](alexa-amundson-resume-master.md#investor-pitch-deck-content)
-- Then read: [Financial Models](alexa-amundson-resume-master.md#financial-models--business-projections)
-- Deep dive: [Complete Master Resume](alexa-amundson-resume-master.md)
+```bash
+# Unit tests
+npm test
 
-**For Technical Leaders:**
-- Start with: [White Papers](alexa-amundson-white-papers.md)
-- Then read: [Technical Architecture](alexa-amundson-resume-executive.md#technical-architecture-deep-dive)
-- Deep dive: [Master Resume - Technical Sections](alexa-amundson-resume-master.md)
+# E2E tests (starts server automatically)
+npm run test:e2e
 
-**For Customers/Partners:**
-- Start with: [One-Pager](alexa-amundson-one-pager.md)
-- Then read: [Customer Success Stories](alexa-amundson-resume-executive.md#customer-success-stories)
-- Deep dive: [Sales Playbook](alexa-amundson-resume-master.md#sales-playbook--gtm-strategy)
+# All tests
+npm run test:all
+```
 
----
+## Deploy to Raspberry Pi
 
-## 🏆 Key Highlights
+1. Set `PI_HOST_1`, `PI_HOST_2`, `PI_HOST_3` in `.env`
+2. Ensure SSH key access to each Pi
+3. Run:
 
-### The Rare Tri-Hybrid: Technical + Commercial + Compliance
+```bash
+npm run deploy:pi
+```
 
-**Most engineers can't sell. Most salespeople can't build. Almost nobody has both plus regulatory expertise.**
+This will:
+- rsync code to each Pi
+- Install Node.js if missing
+- Install production dependencies
+- Create/restart systemd service (`blackroad-stripe`)
+- Run health checks
 
-**I do all three at enterprise scale:**
+For load balancing across Pis:
+```bash
+bash deploy/pi/setup-nginx.sh
+```
 
-- 🏗️ **Built** 466,408 lines of production code achieving 99.9% uptime (BlackRoad OS)
-- 💰 **Closed** $26.8M in enterprise sales (92% quota in 11 months at Securian Financial)
-- ✅ **Passed** SOX audits with zero findings (automated compliance engine)
-- 🎤 **Led** keynote presentations to 450+ attendees (4.8/5.0 rating)
-- 🏆 **Earned** Thought-Leadership Award (Ameriprise Financial)
+## Docker
 
-### Quantified Impact (Last 18 Months)
+```bash
+docker build -t blackroad-stripe .
+docker run -p 3000:3000 --env-file .env blackroad-stripe
+```
 
-| Category | Metric | Value |
-|----------|--------|-------|
-| **Revenue Generated** | Enterprise sales closed | **$26.8M** |
-| **Cost Reduction** | Cloud + CRM automation | **$438K/year** |
-| **Platform Built** | Production codebase | **466,408 LOC** |
-| **System Reliability** | Production uptime | **99.9%** |
-| **Sales Performance** | Close rate | **15%** (2.5x team avg) |
-| **Team Impact** | Productivity gains | **$399K/year** |
+## CI/CD
 
-### ROI if You Hire Me
+- **test.yml** — Runs unit + e2e tests on every push/PR
+- **auto-deploy.yml** — Deploys to Railway/Cloudflare on main push
+- **deploy-pi.yml** — Deploys to Pi nodes (manual trigger or on main push)
+- **self-healing.yml** — Health monitoring every 30 min, auto-rollback
+- **security-scan.yml** — CodeQL + dependency audit
 
-**Conservative Year 1 projection:** 11x return ($3.85M value on $350K total comp)
+## Resume Docs
 
----
-
-## 📊 What's Inside
-
-### 1. Technical Portfolio
-- **BlackRoad OS:** 23 microservices, 2,119 API endpoints, 145 autonomous agents
-- **Architecture:** Full system diagrams, performance metrics, cost optimization
-- **Code Examples:** Production-quality implementations
-- **White Papers:** PS-SHA∞ verification, Edge AI economics, API-first architecture
-
-### 2. Commercial Track Record
-- **$26.8M sales** closed in 11 months (Securian Financial)
-- **$40M+ pipeline** built across 24,000-advisor network
-- **15% close rate** (2.5x team average)
-- **Sales playbook:** Complete 30-90 day sales process
-
-### 3. Compliance Expertise
-- **FINRA Series 7/63/65** (securities licenses)
-- **SOX compliance** automation (zero audit findings)
-- **PS-SHA∞** cryptographic verification system
-- **GDPR/HIPAA** experience
-
-### 4. Leadership & Strategy
-- **Hiring plans:** 3-year org chart (12 → 30 → 75 people)
-- **Financial models:** $8.35M → $47.9M ARR projection
-- **Partnership strategy:** Technology alliances, system integrators
-- **Leadership philosophy:** 6 core principles, team rituals
-
-### 5. Thought Leadership
-- **Conference keynote speaker** (450+ attendees, 4.8/5.0 rating)
-- **Thought-Leadership Award** (Ameriprise Financial)
-- **Technical white papers** (publication-quality research)
-- **Customer testimonials** (FinTech, Healthcare, Manufacturing)
+Career portfolio documents are in [`docs/`](docs/).
 
 ---
 
-## 🚀 Current Role
-
-**Founder & CEO, BlackRoad OS** (May 2025 - Present)
-
-Building production-grade cognitive AI operating system with:
-- 79 API domains
-- 2,119 endpoints
-- 145 autonomous agents
-- 99.9% uptime
-- $2M ARR potential
-
-**Design Partners:** 10 companies (FinTech, Healthcare, Manufacturing)
-
----
-
-## 💼 Ideal Next Role
-
-**Seeking:** VP of AI Product • CTO • Head of Technical Sales • Co-Founder
-
-**Industries:** AI/ML • Enterprise SaaS • FinTech • Developer Tools
-
-**Compensation:** $200K-$300K base + meaningful equity + performance bonus
-
-**Location:** Remote-first (quarterly travel acceptable)
-
-**90-Day Guarantee:** I will deliver measurable value exceeding my total compensation within 90 days, or you can let me go with zero hard feelings.
-
----
-
-## 📝 How to Use This Repository
-
-### For Job Applications
-1. Send **one-pager** as email attachment
-2. Link to this GitHub repo in cover letter
-3. Provide **enhanced resume** or **executive resume** based on role
-4. Reference specific sections for role requirements
-
-### For Investors
-1. Share **master resume - investor pitch section**
-2. Highlight **financial models** and **competitive analysis**
-3. Provide **technical credibility** (white papers, GitHub repos)
-
-### For Customers
-1. Share **one-pager** and **case studies**
-2. Offer live demo of app.blackroad.io
-3. Provide **technical implementation guide**
-
-### For Media/Press
-1. Use **one-pager** for quick facts
-2. Reference **testimonials** for quotes
-3. Link to **white papers** for technical credibility
-
----
-
-## 📄 License
-
-This resume portfolio is **confidential and proprietary**.
-
-- ✅ **Permitted:** Share with hiring managers, investors, references
-- ❌ **Not Permitted:** Public distribution, modification, commercial use
-
-© 2025 Alexa Louise Amundson. All rights reserved.
-
----
-
-## 🔗 Quick Links
-
-- **LinkedIn:** [linkedin.com/in/alexaamundson](https://linkedin.com/in/alexaamundson)
-- **GitHub:** [@blackboxprogramming](https://github.com/blackboxprogramming)
-- **Portfolio:** [lucidia.earth](https://lucidia.earth)
-- **Live Platform:** [app.blackroad.io](https://app.blackroad.io)
-
----
-
-## 📞 Contact
-
-**Ready to talk?**
-
-📧 amundsonalexa@gmail.com
-📱 (507) 828-0842
-🗓️ [Book a call](https://calendly.com/alexaamundson) *(coming soon)*
-
----
-
-*"Most people can do one thing well. I do three things at enterprise scale: build, sell, and comply."*
-
-**— Alexa Amundson**
-
----
-
-**Last Updated:** December 22, 2025
-**Version:** 1.0
-**Repository:** github.com/alexaamundson/resume *(private)*
+**Contact:** amundsonalexa@gmail.com | (507) 828-0842
+**GitHub:** [@blackboxprogramming](https://github.com/blackboxprogramming)
