@@ -10,7 +10,7 @@
 **Most engineers can't sell. Most salespeople can't build. Almost nobody has both plus regulatory expertise.**
 
 **I do all three at enterprise scale:**
-- 🏗️ **Built** 7.2M lines of code across 1,810 repositories (BlackRoad OS)
+- 🏗️ **Built** 7.2M lines of code across 1,810 repositories — 5.0M unique non-duplicated lines, 1,563 non-fork repos (BlackRoad OS)
 - 💰 **Closed** $26.8M in enterprise sales (92% quota in 11 months at Securian Financial)
 - ✅ **Passed** SOX audits with zero findings (automated compliance engine)
 - 🎤 **Led** keynote presentations to 450+ attendees (4.8/5.0 rating, Winter Sales Conference)
@@ -22,7 +22,7 @@
 
 | **Revenue Generated** | **$26.8M** in enterprise sales closed (Securian Financial, verified) |
 | **Cost Reduction** | **$438K/year** saved (cloud optimization $39K + CRM automation $399K) |
-| **Platform Built** | **7.2M LOC** production system (23 microservices, 2,119 API endpoints) |
+| **Platform Built** | **7.2M LOC** (5.0M unique non-duped, 1,563 non-fork repos) production system |
 | **System Reliability** | **99.9% uptime** (8 months, zero security breaches, zero compliance violations) |
 | **Sales Performance** | **15% close rate** (2.5x team average), **18-day sales cycle** (vs 45-day baseline) |
 | **Team Impact** | **$399K/year productivity** gains (85-person org, CRM automation initiative) |

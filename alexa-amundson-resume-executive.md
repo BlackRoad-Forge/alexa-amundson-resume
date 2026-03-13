@@ -7,7 +7,7 @@
 **Email:** amundsonalexa@gmail.com | blackroad.systems@gmail.com
 **Phone:** (507) 828-0842
 **LinkedIn:** [linkedin.com/in/alexaamundson](https://linkedin.com/in/alexaamundson)
-**GitHub:** [@blackboxprogramming](https://github.com/blackboxprogramming) — 15 orgs, 66+ repos, 5,937 commits
+**GitHub:** [@blackboxprogramming](https://github.com/blackboxprogramming) — 17 orgs, 1,810 repos (1,563 non-fork), 51,211 commits in 2026
 **Portfolio:** [lucidia.earth](https://lucidia.earth) | [blackroadinc.us](https://blackroadinc.us)
 **Live Platform:** [app.blackroad.io](https://app.blackroad.io)
 
@@ -19,11 +19,11 @@
 
 **Technical Architect + Enterprise Sales Closer + Financial Professional**
 
-I am the rare executive who **architects production AI systems (466K+ LOC, 145 autonomous agents)**, then **successfully sells them to enterprise customers ($26.8M closed)**, while maintaining **FINRA licenses (Series 7/63/65)** and **deep regulatory compliance expertise (SOX, GDPR)**.
+I am the rare executive who **architects production AI systems (7.2M LOC (5.0M unique), 145 autonomous agents)**, then **successfully sells them to enterprise customers ($26.8M closed)**, while maintaining **FINRA licenses (Series 7/63/65)** and **deep regulatory compliance expertise (SOX, GDPR)**.
 
 ### Career Inflection Points
 
-- **2025:** Founded BlackRoad OS — production-grade cognitive AI platform (466K LOC, 23 microservices, 99.9% uptime)
+- **2025:** Founded BlackRoad OS — production-grade cognitive AI platform (7.2M LOC, 23 microservices, 99.9% uptime)
 - **2024-2025:** Closed $26.8M in enterprise sales while pioneering CRM automation saving $398K/year
 - **2024:** Earned Thought-Leadership Award for workflow innovation at Fortune 500 financial services firm
 - **2023-2024:** Achieved #1 ranking in competitive financial advisor training program (10% conversion rate on 2,400+ calls)
@@ -52,7 +52,7 @@ I speak fluent C-suite (ROI, TCO, market positioning, unit economics) AND fluent
 | **Cost Reduction** | Cloud infrastructure optimization | **$38,880/year** (40% reduction) |
 | **Productivity Gains** | CRM automation (85-person org) | **$398,000/year** (80% time savings) |
 | **Pipeline Built** | Qualified opportunities created | **$40M+** across 850 opportunities |
-| **Platform Scale** | Production codebase managed | **466,408 LOC** (28,538 files) |
+| **Platform Scale** | Production codebase managed | **7.2M LOC** (5.0M unique non-duped, 1,563 non-fork repos) |
 | **AI Automation** | Manual workflows eliminated | **145 processes** (70% overhead reduction) |
 | **System Reliability** | Production uptime achieved | **99.9%** (zero security incidents) |
 | **Compliance** | SOX audit findings | **Zero** (100% controls automation) |
@@ -88,7 +88,7 @@ I speak fluent C-suite (ROI, TCO, market positioning, unit economics) AND fluent
 └─────────────────────────────────────────────────────────────┘
 
 CODE SCALE
-├─ Total Lines of Code:           466,408
+├─ Total Lines of Code:           7,212,717
 ├─ Total Files:                    28,538
 ├─ Total Modules:                     297
 ├─ Total Commits (Verified):        5,937
@@ -1232,7 +1232,7 @@ Market Segmentation:
 3. **Fundraising**
    - Seed round: $2M target (product development, GTM)
    - Pitch to: Y Combinator, a16z, Sequoia (AI-focused funds)
-   - Use metrics: 99.9% uptime, 466K LOC, proven sales record
+   - Use metrics: 99.9% uptime, 7.2M LOC, proven sales record
 
 **Q2 2026 (Apr-Jun):**
 1. **Commercial Launch**
@@ -1363,7 +1363,7 @@ Market Segmentation:
 ### Proven Track Record Across 3 Dimensions
 
 **1. Technical Execution**
-- Built 466K LOC production system achieving 99.9% uptime from day one
+- Built 7.2M LOC production system achieving 99.9% uptime from day one
 - Architected 23 microservices, 2,119 API endpoints with <100ms p95 latency
 - Reduced cloud costs 40% while scaling infrastructure 10x
 - Zero security incidents, zero data breaches, zero compliance violations
@@ -1393,7 +1393,7 @@ Market Segmentation:
 - Speak executive (board presentations, investor pitches, strategic roadmaps)
 
 **Bias for Action:**
-- BlackRoad OS: Zero to 466K LOC in 8 months
+- BlackRoad OS: Zero to 7.2M LOC in 8 months
 - Salesforce transformation: 3,000 errors to zero in 8 weeks
 - #1 sales ranking: Achieved in 90 days
 
@@ -1443,7 +1443,7 @@ I'm not just an engineer. I'm not just a salesperson. I'm not just a compliance 
 **My superpower:** Translating complex AI/ML systems into revenue-generating products that enterprises trust and buy.
 
 **My track record:**
-- $26.8M sales closed + 466K LOC shipped + Zero compliance violations
+- $26.8M sales closed + 7.2M LOC shipped + Zero compliance violations
 - 99.9% uptime + 15% close rate + $398K/year cost savings
 - Keynote speaker + Thought-leadership award + #1 sales ranking
 

@@ -444,12 +444,14 @@ const ROLES = [
       ]},
     ],
     skills: ['everything'],
-    kpis: ['commits_ytd', 'total_loc', 'repos_total', 'prs_merged_total', 'fleet_total', 'ollama_models', 'cf_pages', 'cf_workers', 'cf_domains', 'docker_containers', 'systemd_services', 'nginx_sites'],
+    kpis: ['commits_ytd', 'total_loc', 'unique_loc', 'non_fork_repos', 'repos_total', 'prs_merged_total', 'fleet_total', 'ollama_models', 'cf_pages', 'cf_workers', 'cf_domains', 'docker_containers', 'systemd_services', 'nginx_sites'],
   },
 ];
 
 const KPI_LABELS = {
   total_loc: 'Lines of Code',
+  unique_loc: 'Unique LOC (Non-Duped)',
+  non_fork_repos: 'Non-Fork Repos',
   commits_today: 'Commits Today',
   commits_ytd: 'Commits (2026)',
   prs_merged_total: 'PRs Merged',
