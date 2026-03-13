@@ -10,7 +10,7 @@
 **Most engineers can't sell. Most salespeople can't build. Almost nobody has both plus regulatory expertise.**
 
 **I do all three at enterprise scale:**
-- 🏗️ **Built** 466,408 lines of production code achieving 99.9% uptime (BlackRoad OS)
+- 🏗️ **Built** 7.2M lines of code across 1,810 repositories (BlackRoad OS)
 - 💰 **Closed** $26.8M in enterprise sales (92% quota in 11 months at Securian Financial)
 - ✅ **Passed** SOX audits with zero findings (automated compliance engine)
 - 🎤 **Led** keynote presentations to 450+ attendees (4.8/5.0 rating, Winter Sales Conference)
@@ -22,7 +22,7 @@
 
 | **Revenue Generated** | **$26.8M** in enterprise sales closed (Securian Financial, verified) |
 | **Cost Reduction** | **$438K/year** saved (cloud optimization $39K + CRM automation $399K) |
-| **Platform Built** | **466,408 LOC** production system (23 microservices, 2,119 API endpoints) |
+| **Platform Built** | **7.2M LOC** production system (23 microservices, 2,119 API endpoints) |
 | **System Reliability** | **99.9% uptime** (8 months, zero security breaches, zero compliance violations) |
 | **Sales Performance** | **15% close rate** (2.5x team average), **18-day sales cycle** (vs 45-day baseline) |
 | **Team Impact** | **$399K/year productivity** gains (85-person org, CRM automation initiative) |
@@ -33,7 +33,7 @@
 
 ## CURRENT ROLE: FOUNDER & CEO, BLACKROAD OS (MAY 2025–PRESENT)
 
-**Building production-grade cognitive AI operating system** with 79 API domains, 2,119 endpoints, 145 autonomous agents.
+**Building production-grade cognitive AI operating system** with 1,810 repos, 101 Cloudflare Pages, 223 CLI tools, 52 TOPS AI compute.
 
 **Technical Achievements:**
 - Architected 23 microservices with <100ms API latency (p95)
@@ -87,7 +87,7 @@
 - Can architect your AI platform, present it to your board, sell it to enterprise customers, and ensure it passes SOX audit
 - Ship production code daily while hitting revenue targets quarterly
 - Bridge engineering, sales, finance, and executive teams seamlessly
-- Proven track record: $26.8M sales + 466K LOC + zero compliance violations
+- Proven track record: $26.8M sales + 7.2M LOC + 51K commits in 2026 + zero compliance violations
 
 **Compensation:** $200K-$300K base + meaningful equity (prefer higher equity, lower base) + performance bonus
 
@@ -102,7 +102,7 @@
 📧 **Email:** amundsonalexa@gmail.com | blackroad.systems@gmail.com
 📞 **Phone:** (507) 828-0842 (Call/Text/Signal)
 🔗 **LinkedIn:** [linkedin.com/in/alexaamundson](https://linkedin.com/in/alexaamundson)
-💻 **GitHub:** [@blackboxprogramming](https://github.com/blackboxprogramming) — 15 orgs, 66+ repos, 5,937 verified commits
+💻 **GitHub:** [@blackboxprogramming](https://github.com/blackboxprogramming) — 17 orgs, 1,810 repos, 51,211 commits in 2026
 🚀 **Live Platform:** [app.blackroad.io](https://app.blackroad.io) (demo available)
 🌐 **Portfolio:** [lucidia.earth](https://lucidia.earth) | [blackroadinc.us](https://blackroadinc.us)
 

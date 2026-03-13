@@ -12,13 +12,13 @@ const ROLES = [
         'Route 48+ custom domains through 4 Cloudflare tunnels to backend services',
       ]},
       { title: 'CI/CD & Automation', bullets: [
-        'Built 212+ CLI tools for infrastructure management and deployment',
+        'Built 223 CLI tools for infrastructure management and deployment',
         'Maintain Mac cron jobs + fleet timers for continuous automation',
         'Operate GitHub Actions CI/CD and self-hosted Gitea (207 repos)',
         'Automated GitHub-to-Gitea relay syncing every 30 minutes',
       ]},
       { title: 'Cloud Infrastructure', bullets: [
-        'Deployed 99 Pages projects, 22 D1 databases, 46 KV namespaces, 11 R2 buckets',
+        'Deployed 101 Pages projects, 25 D1 databases, 47 KV namespaces, 11 R2 buckets',
         'Manage Cloudflare Workers for edge compute and API routing',
       ]},
       { title: 'Monitoring & Reliability', bullets: [
@@ -80,9 +80,9 @@ const ROLES = [
     summary: 'Platform engineer who built a complete developer platform: 212 CLI tools, 1,810 repos, self-hosted Gitea, Cloudflare-native deployments, and daily automated observability.',
     sections: [
       { title: 'Developer Platform', bullets: [
-        'Built 212+ CLI tools (121 MB) for developer workflow automation',
+        'Built 223 CLI tools (121 MB) for developer workflow automation',
         'Self-hosted Gitea with 207 repos across 7 organizations on fleet',
-        '99 Cloudflare Pages projects with git-based CI/CD pipelines',
+        '101 Cloudflare Pages projects with git-based CI/CD pipelines',
         'Custom code search engine indexing 354 repos with FTS5',
       ]},
       { title: 'Infrastructure Platform', bullets: [
@@ -100,11 +100,11 @@ const ROLES = [
     kpis: ['bin_tools', 'repos_total', 'cf_pages', 'systemd_services', 'docker_containers', 'total_loc'],
   },
   { slug: 'fullstack', num: '05', title: 'Full-Stack Engineer', accent: '#4488FF',
-    summary: 'Full-stack engineer with 7.2M+ lines of code across 1,600+ repositories in 20 languages. Builds end-to-end applications deployed across 99 Cloudflare Pages and 7 backend nodes.',
+    summary: 'Full-stack engineer with 7.2M+ lines of code across 1,600+ repositories in 20 languages. Builds end-to-end applications deployed across 101 Cloudflare Pages and 7 backend nodes.',
     sections: [
       { title: 'Frontend', bullets: [
         '75 design templates (HTML/JSX) with brand-locked design system',
-        '99 Cloudflare Pages projects deployed across 48+ custom domains',
+        '101 Cloudflare Pages projects deployed across 48+ custom domains',
         'React/Next.js applications with real-time WebSocket integration',
       ]},
       { title: 'Backend', bullets: [
@@ -113,7 +113,7 @@ const ROLES = [
         '48 Nginx reverse proxy sites routing to backend services',
       ]},
       { title: 'Databases', bullets: [
-        '11 PostgreSQL + 230 SQLite + 22 D1 + 46 KV databases',
+        '11 PostgreSQL + 230 SQLite + 25 D1 + 47 KV databases',
         'FTS5 full-text search indexing 354 repos',
       ]},
     ],
@@ -121,12 +121,12 @@ const ROLES = [
     kpis: ['total_loc', 'repos_total', 'cf_pages', 'postgres_dbs', 'sqlite_dbs', 'nginx_sites', 'docker_containers'],
   },
   { slug: 'cloud', num: '06', title: 'Cloud Engineer', accent: '#00D4FF',
-    summary: 'Cloud engineer managing hybrid edge-cloud infrastructure: 99 Pages, 22 D1, 46 KV, 11 R2, 2 droplets, and 5 edge nodes connected via WireGuard mesh.',
+    summary: 'Cloud engineer managing hybrid edge-cloud infrastructure: 101 Pages, 25 D1, 47 KV, 11 R2, 2 droplets, and 5 edge nodes connected via WireGuard mesh.',
     sections: [
       { title: 'Cloudflare Platform', bullets: [
-        '99 Pages projects with git-based CI/CD',
-        '22 D1 serverless databases for application state',
-        '46 KV namespaces for edge config and caching',
+        '101 Pages projects with git-based CI/CD',
+        '25 D1 serverless databases for application state',
+        '47 KV namespaces for edge config and caching',
         '11 R2 object storage buckets for assets and models',
         '48+ custom domains through 4 Cloudflare tunnels',
       ]},
@@ -177,7 +177,7 @@ const ROLES = [
         '11 PostgreSQL databases for relational data',
         '230 SQLite databases (1.4 GB) for app state',
         '22 Cloudflare D1 for serverless apps',
-        '46 KV namespaces for edge caching',
+        '47 KV namespaces for edge caching',
         'FTS5 full-text search across 156K entries',
       ]},
     ],
@@ -236,7 +236,7 @@ const ROLES = [
     summary: 'Automation engineer: 212 CLI tools, 52 automated tasks, 9 KPI data collectors, self-healing fleet, and automated resume generation from live metrics.',
     sections: [
       { title: 'CLI Tools & Scripts', bullets: [
-        '212+ CLI tools (121 MB) in ~/bin for every operational task',
+        '223 CLI tools (121 MB) in ~/bin for every operational task',
         '91 shell scripts for fleet management and deployment',
         'Custom brand compliance auditing and mass update tools',
         'Automated GitHub-to-Gitea relay syncing every 30 minutes',
@@ -263,7 +263,7 @@ const ROLES = [
         '11 PostgreSQL databases for relational application data',
         '230 SQLite databases (1.4 GB) for agent memory and metrics',
         '22 Cloudflare D1 serverless databases',
-        '46 KV namespaces for edge configuration',
+        '47 KV namespaces for edge configuration',
         'Qdrant vector database for semantic search',
       ]},
       { title: 'Search & Indexing', bullets: [
@@ -344,7 +344,7 @@ const ROLES = [
     kpis: ['total_loc', 'repos_total', 'postgres_dbs', 'sqlite_dbs', 'cf_d1_databases', 'systems_registered'],
   },
   { slug: 'architect', num: '16', title: 'Solutions Architect', accent: '#8844FF',
-    summary: 'Solutions architect: designed full hybrid edge-cloud architecture spanning 7 nodes, 178 Cloudflare resources, 48+ domains, and distributed AI inference.',
+    summary: 'Solutions architect: designed full hybrid edge-cloud architecture spanning 7 nodes, 184 Cloudflare resources, 48+ domains, and distributed AI inference.',
     sections: [
       { title: 'Architecture Design', bullets: [
         'Hybrid edge-cloud: 5 Pi nodes + 2 cloud VMs + Cloudflare serverless',
@@ -353,7 +353,7 @@ const ROLES = [
         '283 databases across 5 engines for different workload patterns',
       ]},
       { title: 'Cloudflare Stack', bullets: [
-        '99 Pages + 22 D1 + 46 KV + 11 R2 = 178 resources',
+        '101 Pages + 25 D1 + 47 KV + 11 R2 = 178 resources',
         '4 tunnels routing 48+ domains to fleet services',
         'Workers for edge compute and API routing',
       ]},
@@ -362,10 +362,10 @@ const ROLES = [
     kpis: ['cf_pages', 'cf_d1_databases', 'cf_kv_namespaces', 'cf_r2_buckets', 'fleet_total', 'repos_total'],
   },
   { slug: 'lead', num: '17', title: 'Technical Lead', accent: '#4488FF',
-    summary: 'Technical lead: 326 commits/day sustained velocity, 4,019 PRs merged, 1,810 repos across 17 organizations, 20 languages, 7.2M+ lines of code.',
+    summary: 'Technical lead: 51,211 commits in 2026 (3,582 in a single day peak), 4,019 PRs merged, 1,810 repos across 17 organizations, 20 languages, 7.2M+ lines of code.',
     sections: [
       { title: 'Code Velocity', bullets: [
-        '326+ commits/day sustained across all repositories',
+        '51,000+ commits YTD sustained across all repositories',
         '4,019 PRs merged all-time',
         '1,603 GitHub repos across 17 organizations',
         '207 Gitea repos across 7 self-hosted organizations',
@@ -373,12 +373,12 @@ const ROLES = [
       { title: 'Technical Breadth', bullets: [
         '20 programming languages: Python, JavaScript, TypeScript, Shell, Go, C, and more',
         '7.2M+ lines of code with daily LOC tracking',
-        '212+ CLI tools built for operational efficiency',
+        '223 CLI tools built for operational efficiency',
         'Custom programming language (RoadC) with interpreter',
       ]},
     ],
     skills: ['Python', 'JavaScript', 'TypeScript', 'Bash', 'Go', 'C', 'React', 'FastAPI', 'system design', 'mentorship'],
-    kpis: ['commits_today', 'prs_merged_total', 'repos_total', 'total_loc', 'github_language_count', 'bin_tools'],
+    kpis: ['commits_ytd', 'commits_today', 'prs_merged_total', 'repos_total', 'total_loc', 'github_language_count', 'bin_tools'],
   },
   { slug: 'python', num: '18', title: 'Python Developer', accent: '#00D4FF',
     summary: 'Python developer: 470 Python repos, FastAPI APIs, AI model integration, data pipelines, SSH automation, and KPI collection systems.',
@@ -403,7 +403,7 @@ const ROLES = [
     summary: 'Product engineer: 99 live sites, 75 design templates, brand-locked design system, AI image generation, and full SaaS surface coverage.',
     sections: [
       { title: 'Product Development', bullets: [
-        '99 Cloudflare Pages projects deployed across 48+ domains',
+        '101 Cloudflare Pages projects deployed across 48+ domains',
         '75 design templates with brand-locked system (gradients, typography, spacing)',
         '15 page types: landing, pricing, blog, docs, dashboard, auth, portfolio, status',
         'AI image generation hub with 4 backend agents',
@@ -422,8 +422,8 @@ const ROLES = [
     sections: [
       { title: 'Built From Zero', bullets: [
         '7.2M+ lines of code across 1,603 GitHub + 207 Gitea repos',
-        '20 programming languages, 326+ commits/day sustained velocity',
-        '212+ CLI tools built for operational efficiency',
+        '20 programming languages, 51,000+ commits YTD sustained velocity',
+        '223 CLI tools built for operational efficiency',
         '4,019 PRs merged all-time',
       ]},
       { title: 'Infrastructure', bullets: [
@@ -438,19 +438,20 @@ const ROLES = [
         'AI image generation with 4 backend agents',
       ]},
       { title: 'Cloud & Data', bullets: [
-        '99 Pages, 22 D1, 46 KV, 11 R2, 48+ domains',
+        '101 Pages, 25 D1, 47 KV, 11 R2, 48+ domains',
         '283 databases across 5 engines',
         '52 automated tasks, 60+ KPIs tracked daily',
       ]},
     ],
     skills: ['everything'],
-    kpis: ['total_loc', 'repos_total', 'commits_today', 'prs_merged_total', 'fleet_total', 'ollama_models', 'cf_pages', 'docker_containers', 'systemd_services', 'nginx_sites'],
+    kpis: ['commits_ytd', 'total_loc', 'repos_total', 'prs_merged_total', 'fleet_total', 'ollama_models', 'cf_pages', 'cf_workers', 'cf_domains', 'docker_containers', 'systemd_services', 'nginx_sites'],
   },
 ];
 
 const KPI_LABELS = {
   total_loc: 'Lines of Code',
   commits_today: 'Commits Today',
+  commits_ytd: 'Commits (2026)',
   prs_merged_total: 'PRs Merged',
   prs_open: 'PRs Open',
   repos_total: 'Total Repos',
@@ -458,6 +459,8 @@ const KPI_LABELS = {
   repos_gitea: 'Gitea Repos',
   github_org_count: 'GitHub Orgs',
   github_language_count: 'Languages',
+  cf_workers: 'CF Workers',
+  cf_domains: 'Custom Domains',
   fleet_total: 'Fleet Nodes',
   fleet_online: 'Nodes Online',
   avg_temp_c: 'Avg Temp',
@@ -673,11 +676,12 @@ function indexPage(kpis) {
   <p>Every number machine-verified from live automated KPI collection across BlackRoad OS infrastructure. Updated daily.</p>
 </section>
 <div class="kpi-strip">
+  <div class="kpi-item"><div class="kpi-val">${(s.commits_ytd||0).toLocaleString()}</div><div class="kpi-label">Commits (2026)</div></div>
   <div class="kpi-item"><div class="kpi-val">${(s.total_loc||0).toLocaleString()}</div><div class="kpi-label">Lines of Code</div></div>
   <div class="kpi-item"><div class="kpi-val">${(s.repos_total||0).toLocaleString()}</div><div class="kpi-label">Repositories</div></div>
-  <div class="kpi-item"><div class="kpi-val">${s.fleet_total||0}</div><div class="kpi-label">Fleet Nodes</div></div>
   <div class="kpi-item"><div class="kpi-val">${s.ollama_models||0}</div><div class="kpi-label">AI Models</div></div>
   <div class="kpi-item"><div class="kpi-val">${s.cf_pages||0}</div><div class="kpi-label">Cloud Deployments</div></div>
+  <div class="kpi-item"><div class="kpi-val">${s.bin_tools||0}</div><div class="kpi-label">CLI Tools</div></div>
 </div>
 <section class="section"><div class="section-title">Select a Role</div></section>
 <div class="roles-grid">
