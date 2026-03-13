@@ -42,13 +42,13 @@ All numbers collected by [blackroad-os-kpis](https://github.com/blackboxprogramm
 ```
 CODE
   Lines of code           7,212,576
-  Commits/day                   331
+  Commits/day                   332
   PRs merged (all time)       4,019
-  GitHub repos                  306  (0 active, 17 orgs)
+  GitHub repos                1,603  (306 active, 17 orgs)
   Gitea repos                   207  (7 orgs)
-  Total repos                   513
+  Total repos                 1,810
   Languages                      20
-  GitHub size                   0 GB
+  GitHub size              8085.9 GB
 
 INFRASTRUCTURE
   Fleet nodes                     4
@@ -73,7 +73,7 @@ CLOUD (Cloudflare)
 DATA
   Total databases               263
   PostgreSQL                     11
-  SQLite                        230  (1389 MB)
+  SQLite                        230  (1391 MB)
 
 AUTOMATION
   CLI tools                     215  (121 MB)

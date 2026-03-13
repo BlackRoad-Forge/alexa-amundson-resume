@@ -4,15 +4,32 @@ Source: blackroad-os-kpis automated collection + full GitHub API scan across all
 
 ## Code
 - 7,212,576 lines of code
-- 331 commits/day, 4,019 PRs merged all-time
-- **306 GitHub repositories** across 17 owners (0 active, 0 archived)
+- 332 commits/day, 4,019 PRs merged all-time
+- **1,603 GitHub repositories** across 17 owners (306 active, 1,297 archived)
 - **207 Gitea repositories** across 7 organizations (self-hosted)
-- **513 total repositories**
-- 20 languages: 
-- 0 GB total GitHub repo size
-- 0 stars, 17 organizations
+- **1,810 total repositories**
+- 20 languages: Python (470), HTML (314), Shell (160), JavaScript (114), TypeScript (85), Dockerfile (24), C++ (5), CSS (3), Go (2), C (2), MDX (1), Apex (1), Ruby (1), Go Template (1), HCL (1)
+- 8085.9 GB total GitHub repo size
+- 11 stars, 17 organizations
 
-## GitHub Organizations (0 owners)
+## GitHub Organizations (17 owners)
+- BlackRoad-OS: 1,268 repos
+- blackboxprogramming: 158 repos
+- BlackRoad-OS-Inc: 22 repos
+- BlackRoad-AI: 16 repos
+- BlackRoad-Security: 16 repos
+- BlackRoad-Foundation: 14 repos
+- BlackRoad-Hardware: 14 repos
+- BlackRoad-Media: 13 repos
+- BlackRoad-Interactive: 12 repos
+- BlackRoad-Archive: 11 repos
+- BlackRoad-Labs: 10 repos
+- BlackRoad-Cloud: 10 repos
+- BlackRoad-Gov: 9 repos
+- Blackbox-Enterprises: 8 repos
+- BlackRoad-Ventures: 8 repos
+- BlackRoad-Education: 7 repos
+- BlackRoad-Studio: 7 repos
 
 ## Infrastructure
 - 5 Raspberry Pi nodes (Pi 5 x 4, Pi 400 x 1), 2 DigitalOcean droplets
@@ -44,6 +61,6 @@ Source: blackroad-os-kpis automated collection + full GitHub API scan across all
 - 215 CLI tools (121 MB)
 - 91 shell scripts
 - 17 Mac crons + 35 fleet timers = 52 automated tasks
-- 230 SQLite databases (1389 MB)
+- 230 SQLite databases (1391 MB)
 - 111 registered systems
 - 60+ KPIs tracked daily across 9 collectors
