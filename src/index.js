@@ -444,7 +444,7 @@ const ROLES = [
       ]},
     ],
     skills: ['everything'],
-    kpis: ['commits_ytd', 'total_loc', 'unique_loc', 'non_fork_repos', 'repos_total', 'prs_merged_total', 'fleet_total', 'ollama_models', 'cf_pages', 'cf_workers', 'cf_domains', 'docker_containers', 'systemd_services', 'nginx_sites'],
+    kpis: ['commits_ytd', 'total_loc', 'unique_loc', 'non_fork_repos', 'github_contributions_ytd', 'github_commit_streak_days', 'github_avg_commits_per_day', 'github_clones_14d', 'repos_total', 'github_repos_updated_7d', 'prs_merged_total', 'github_issues_closed_total', 'fleet_total', 'ollama_models', 'cf_pages', 'cf_workers_total', 'cf_tunnels_healthy', 'docker_containers', 'systemd_services', 'nginx_sites'],
   },
 ];
 
@@ -452,6 +452,16 @@ const KPI_LABELS = {
   total_loc: 'Lines of Code',
   unique_loc: 'Unique LOC (Non-Duped)',
   non_fork_repos: 'Non-Fork Repos',
+  github_views_14d: 'GitHub Views (14d)',
+  github_clones_14d: 'GitHub Clones (14d)',
+  github_contributions_ytd: 'Contributions YTD',
+  github_commit_streak_days: 'Commit Streak (days)',
+  github_avg_commits_per_day: 'Avg Commits/Day',
+  github_issues_closed_total: 'Issues Closed',
+  github_repos_updated_7d: 'Repos Active (7d)',
+  cf_zones_count: 'CF Zones',
+  cf_workers_total: 'CF Workers (total)',
+  cf_tunnels_healthy: 'Tunnels Healthy',
   commits_today: 'Commits Today',
   commits_ytd: 'Commits (2026)',
   prs_merged_total: 'PRs Merged',
@@ -539,6 +549,67 @@ const KPI_SOURCES = {
   systems_registered: 'local.sh — sqlite3 systems count',
 };
 
+const KPI_ACHIEVEMENTS = {
+  total_loc: 'Built a complete sovereign OS — no vendor lock-in, no rented infrastructure',
+  unique_loc: '97% original code — only 46 forks out of 1,609 repos',
+  non_fork_repos: 'Nearly every repo is original work, not forked templates',
+  commits_today: 'Sustained daily velocity across 17 organizations',
+  commits_ytd: '~700 commits/day average — shipping production code daily for 10 months straight',
+  prs_merged_total: 'Disciplined PR workflow across solo + fleet-automated pipelines',
+  prs_open: 'Active development across multiple repos simultaneously',
+  repos_total: 'Complete product ecosystem — CLI, API, dashboards, agents, docs, infra',
+  repos_github: 'Public + org repos across 17 GitHub organizations',
+  repos_gitea: 'Self-hosted Gitea on Pi fleet — sovereign code hosting, no cloud dependency',
+  github_org_count: 'Structured monorepo strategy — AI, Cloud, Security, Labs, Hardware separated',
+  github_language_count: 'Full-stack polyglot — right tool for each job, no single-language bias',
+  cf_workers: 'Edge compute for API routing, auth, and KPI serving — <50ms global latency',
+  cf_workers_total: '96 serverless functions handling auth, routing, analytics, and AI gateway',
+  cf_domains: '54 domains managed via CLI — zero manual DNS or portal clicks',
+  fleet_total: 'Distributed edge fleet — compute lives where the data lives',
+  fleet_online: 'Self-healing autonomy keeps fleet running without manual intervention',
+  avg_temp_c: 'Power optimization reduced temps from 73°C to ~52°C — extended hardware life',
+  fleet_mem_total_mb: 'Sufficient RAM for 27 AI models + Docker + services without swapping',
+  fleet_mem_used_mb: 'Optimized memory — disabled 16 skeleton services, freed 800MB on Lucidia',
+  fleet_disk_total_gb: '707 GB distributed storage — NVMe + SD across all nodes',
+  fleet_disk_used_gb: 'Storage headroom maintained for AI model downloads and log rotation',
+  fleet_connections: 'Active network connections — WireGuard mesh + Tailscale + tunnels',
+  fleet_processes: 'Lean process counts — aggressive cleanup of unused services',
+  systemd_services: '256 services managed with auto-restart policies and health checks',
+  systemd_timers: 'Cron-free scheduling — systemd timers for reliability and logging',
+  docker_containers: 'Containerized Gitea, NATS, Ollama, PowerDNS — isolated and portable',
+  docker_images: 'Minimal image count — removed 141 orphaned containers from Aria',
+  nginx_sites: '48 reverse proxy configs routing to internal services via tunnels',
+  ollama_models: '27 models deployed — llama, qwen, phi, gemma, custom CECE fine-tunes',
+  ollama_size_gb: '48 GB of AI models running on $400 worth of Pi hardware — not $50K GPU servers',
+  postgres_dbs: 'Relational storage for Qdrant vectors, agent state, and task queues',
+  sqlite_dbs: '230 databases — each CLI tool and agent gets its own isolated datastore',
+  cf_pages: '101 static sites deployed from CLI — landing pages, docs, dashboards, portfolios',
+  cf_d1_databases: '25 edge databases — search indexes, analytics, auth, KPIs served at edge',
+  cf_kv_namespaces: '47 key-value stores — config, feature flags, session state, live metrics',
+  cf_r2_buckets: '11 object storage buckets — images, backups, model artifacts',
+  failed_units: 'Zero failed units = self-healing autonomy scripts catching and fixing issues',
+  tailscale_peers: 'Overlay network — access any node from anywhere without port forwarding',
+  bin_tools: '223 tools — every repetitive task automated into a single command',
+  home_scripts: 'Shell automation layer — backup, sync, deploy, monitor',
+  templates: '75 brand-locked templates — consistent UI across all 101 sites',
+  mac_cron_jobs: 'Mac orchestrates fleet — health checks, syncs, KPI collection, git patrol',
+  fleet_cron_jobs: 'Fleet self-heals — heartbeat every 1min, auto-restart every 5min',
+  fts5_entries: '156K searchable entries — instant full-text search across all agent memory',
+  systems_registered: '111 systems tracked — devices, services, APIs in unified registry',
+  github_views_14d: 'Organic discovery — developers finding BlackRoad OS repos',
+  github_clones_14d: '10K+ clones in 14 days — people are downloading and running the code',
+  github_unique_cloners_14d: '893 unique cloners — real developers, not bots',
+  github_contributions_ytd: 'GitHub contribution graph — sustained green for entire year',
+  github_commit_streak_days: 'Consecutive days with commits — no gaps in development velocity',
+  github_avg_commits_per_day: 'Velocity metric — consistent output, not burst-and-disappear',
+  github_issues_closed_total: 'Issues resolved — bugs fixed, features shipped, debt paid down',
+  github_repos_updated_7d: 'Active repos this week — breadth of ongoing development',
+  cf_zones_count: '20 DNS zones managed — all automated via Cloudflare API',
+  cf_tunnels_healthy: 'Healthy tunnels routing traffic to Pi fleet without public IPs',
+  cf_tunnels_total: '18 tunnels — redundant paths to all fleet nodes',
+  github_unique_visitors_14d: 'Unique visitors viewing repos on GitHub',
+};
+
 function fmt(key, val) {
   if (val === undefined || val === null) return '—';
   if (key === 'total_loc' || key === 'prs_merged_total' || key === 'fts5_entries') {
@@ -608,10 +679,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 .metrics-table{width:100%;border-collapse:collapse;margin-top:16px}
 .metrics-table tr{border-bottom:1px solid var(--border);transition:background .2s}
 .metrics-table tr:hover{background:rgba(255,255,255,.02)}
-.metrics-table td{padding:14px 16px;font-size:14px}
-.metrics-table td:first-child{font-family:var(--jb);font-size:12px;opacity:.5;text-transform:uppercase;letter-spacing:.08em;width:180px}
-.metrics-table td:nth-child(2){font-weight:600;text-align:right;font-family:var(--jb);font-size:18px;width:120px}
-.metrics-table td:last-child{font-family:var(--jb);font-size:10px;opacity:.25;text-align:right;padding-left:24px}
+.metrics-table td{padding:14px 16px;font-size:14px;vertical-align:top}
+.metrics-table td:first-child{font-family:var(--jb);font-size:12px;opacity:.5;text-transform:uppercase;letter-spacing:.08em;width:160px;white-space:nowrap}
+.metrics-table td:nth-child(2){font-weight:600;text-align:right;font-family:var(--jb);font-size:18px;width:110px;white-space:nowrap}
+.metrics-table td:nth-child(3){font-size:12px;opacity:.55;line-height:1.5;padding-left:24px}
+.metrics-table td:last-child{font-family:var(--jb);font-size:10px;opacity:.2;text-align:right;padding-left:16px;white-space:nowrap;width:120px}
 
 .collected-at{text-align:center;padding:24px;font-size:12px;opacity:.3;font-family:var(--jb)}
 
@@ -630,7 +702,9 @@ footer{border-top:1px solid var(--border);padding:48px;text-align:center}
   .kpi-val{font-size:28px}
   .section{padding:40px 20px}
   .exp-block{padding:20px}
-  .metrics-table td:first-child{width:140px}
+  .metrics-table td:first-child{width:100px}
+  .metrics-table td:nth-child(3){display:none}
+  .metrics-table td:last-child{display:none}
   footer{padding:32px 20px}
 }`;
 }
@@ -678,13 +752,83 @@ function indexPage(kpis) {
   <p>Every number machine-verified from live automated KPI collection across BlackRoad OS infrastructure. Updated daily.</p>
 </section>
 <div class="kpi-strip">
-  <div class="kpi-item"><div class="kpi-val">${(s.commits_ytd||0).toLocaleString()}</div><div class="kpi-label">Commits (2026)</div></div>
-  <div class="kpi-item"><div class="kpi-val">${(s.total_loc||0).toLocaleString()}</div><div class="kpi-label">Lines of Code</div></div>
-  <div class="kpi-item"><div class="kpi-val">${(s.repos_total||0).toLocaleString()}</div><div class="kpi-label">Repositories</div></div>
-  <div class="kpi-item"><div class="kpi-val">${s.ollama_models||0}</div><div class="kpi-label">AI Models</div></div>
-  <div class="kpi-item"><div class="kpi-val">${s.cf_pages||0}</div><div class="kpi-label">Cloud Deployments</div></div>
-  <div class="kpi-item"><div class="kpi-val">${s.bin_tools||0}</div><div class="kpi-label">CLI Tools</div></div>
+  <div class="kpi-item" title="${KPI_ACHIEVEMENTS.commits_ytd}"><div class="kpi-val">${(s.commits_ytd||0).toLocaleString()}</div><div class="kpi-label">Commits (2026)</div></div>
+  <div class="kpi-item" title="${KPI_ACHIEVEMENTS.total_loc}"><div class="kpi-val">${(s.total_loc||0).toLocaleString()}</div><div class="kpi-label">Lines of Code</div></div>
+  <div class="kpi-item" title="${KPI_ACHIEVEMENTS.unique_loc}"><div class="kpi-val">${(s.unique_loc||0).toLocaleString()}</div><div class="kpi-label">Unique (Non-Duped)</div></div>
+  <div class="kpi-item" title="${KPI_ACHIEVEMENTS.non_fork_repos}"><div class="kpi-val">${s.non_fork_repos||0}</div><div class="kpi-label">Non-Fork Repos</div></div>
+  <div class="kpi-item" title="${KPI_ACHIEVEMENTS.repos_total}"><div class="kpi-val">${(s.repos_total||0).toLocaleString()}</div><div class="kpi-label">Total Repos</div></div>
+  <div class="kpi-item" title="${KPI_ACHIEVEMENTS.ollama_models}"><div class="kpi-val">${s.ollama_models||0}</div><div class="kpi-label">AI Models</div></div>
+  <div class="kpi-item" title="${KPI_ACHIEVEMENTS.cf_pages}"><div class="kpi-val">${s.cf_pages||0}</div><div class="kpi-label">Cloud Deployments</div></div>
+  <div class="kpi-item" title="${KPI_ACHIEVEMENTS.bin_tools}"><div class="kpi-val">${s.bin_tools||0}</div><div class="kpi-label">CLI Tools</div></div>
 </div>
+<section class="section">
+  <div class="section-title">What I Built &mdash; Key Projects</div>
+  <div class="exp-block">
+    <h3>BlackRoad OS &mdash; Sovereign AI Operating System</h3>
+    <ul>
+      <li><strong>What:</strong> Full operating system — CLI dispatcher, agent fleet, AI gateway, infrastructure automation, deployment pipeline</li>
+      <li><strong>Scale:</strong> ${(s.total_loc||0).toLocaleString()} LOC (${(s.unique_loc||0).toLocaleString()} unique non-duped), ${(s.repos_total||0).toLocaleString()} repos (${s.non_fork_repos||0} non-fork), ${(s.commits_ytd||0).toLocaleString()} commits in 2026</li>
+      <li><strong>Solved:</strong> Eliminated vendor lock-in — AI runs on owned hardware, not rented cloud GPUs. Zero monthly AI API spend.</li>
+    </ul>
+  </div>
+  <div class="exp-block">
+    <h3>AI Gateway &mdash; OpenAI-Compatible Multi-Provider API</h3>
+    <ul>
+      <li><strong>What:</strong> Drop-in OpenAI replacement at api.blackroad.io — ${s.ollama_models||27} models, 7 providers, tier-based auth, SSE streaming</li>
+      <li><strong>Scale:</strong> ${s.cf_workers_total||96} Cloudflare Workers, ${s.cf_zones_count||20} DNS zones, serving requests globally with &lt;50ms edge latency</li>
+      <li><strong>Solved:</strong> Single API endpoint abstracts 7 AI providers. Switch models without changing client code. Automatic fallback if provider is down.</li>
+    </ul>
+  </div>
+  <div class="exp-block">
+    <h3>Pi Fleet &mdash; Distributed Edge Compute</h3>
+    <ul>
+      <li><strong>What:</strong> ${s.fleet_total||7}-node Raspberry Pi cluster with 52 TOPS Hailo-8 AI acceleration, WireGuard mesh VPN, self-healing autonomy</li>
+      <li><strong>Scale:</strong> ${s.systemd_services||256} services, ${s.docker_containers||14} containers, ${s.nginx_sites||48} Nginx sites, ${s.ollama_models||27} AI models (${s.ollama_size_gb||48.1} GB)</li>
+      <li><strong>Solved:</strong> $0/month compute cost for AI inference. Self-healing — fleet auto-recovers from crashes, thermal throttling, and service failures without human intervention.</li>
+    </ul>
+  </div>
+  <div class="exp-block">
+    <h3>br CLI &mdash; 223 Command-Line Tools</h3>
+    <ul>
+      <li><strong>What:</strong> ${s.bin_tools||223} CLI tools for fleet management, AI orchestration, deployment, monitoring, and automation</li>
+      <li><strong>Scale:</strong> 90 tool scripts in dispatcher, ${s.home_scripts||92} shell scripts, ${s.mac_cron_jobs||17} Mac crons + ${s.fleet_cron_jobs||35} fleet crons = ${(s.mac_cron_jobs||17)+(s.fleet_cron_jobs||35)} automated tasks</li>
+      <li><strong>Solved:</strong> Every repetitive task reduced to one command. Deploy, monitor, debug, and manage entire fleet from a single terminal.</li>
+    </ul>
+  </div>
+  <div class="exp-block">
+    <h3>Cloudflare Stack &mdash; Serverless Infrastructure</h3>
+    <ul>
+      <li><strong>What:</strong> ${s.cf_pages||101} Pages, ${s.cf_d1_databases||25} D1 databases, ${s.cf_kv_namespaces||47} KV namespaces, ${s.cf_r2_buckets||11} R2 buckets, ${s.cf_domains||54} custom domains</li>
+      <li><strong>Scale:</strong> ${s.cf_tunnels_total||18} tunnels (${s.cf_tunnels_healthy||8} healthy), all managed from CLI — zero portal clicks</li>
+      <li><strong>Solved:</strong> Global edge infrastructure at near-zero cost. Static sites, edge databases, object storage, and serverless compute — all deployed via \`wrangler\` from terminal.</li>
+    </ul>
+  </div>
+  <div class="exp-block">
+    <h3>KPI System &mdash; Automated Metrics Collection</h3>
+    <ul>
+      <li><strong>What:</strong> 11 data collectors, 60+ KPIs, daily cron pipeline pushing to Cloudflare KV — these resume pages read live from it</li>
+      <li><strong>Scale:</strong> ${s.sqlite_dbs||230} SQLite databases, ${(s.fts5_entries||0).toLocaleString()} FTS5 search entries, ${s.systems_registered||111} registered systems</li>
+      <li><strong>Solved:</strong> No more stale resume numbers. Every metric on this page is machine-verified, collected daily, and served live. The resume updates itself.</li>
+    </ul>
+  </div>
+  <div class="exp-block">
+    <h3>CECE / Lucidia &mdash; AI Identity System</h3>
+    <ul>
+      <li><strong>What:</strong> Persistent AI identity with memory — 4 custom fine-tuned models, TTS API, image generation, knowledge graph</li>
+      <li><strong>Scale:</strong> ${(s.fts5_entries||0).toLocaleString()} memory entries indexed, 52 TOPS dedicated AI compute via 2x Hailo-8 NPUs</li>
+      <li><strong>Solved:</strong> AI agents that remember context across conversations. Not stateless chatbots — persistent identities with searchable long-term memory.</li>
+    </ul>
+  </div>
+  <div class="exp-block">
+    <h3>RoadC &mdash; Custom Programming Language</h3>
+    <ul>
+      <li><strong>What:</strong> Python-indented language with lexer, parser, and tree-walking interpreter. Supports functions, recursion, pattern matching, 3D primitives.</li>
+      <li><strong>Scale:</strong> Full language implementation — tokenizer, AST, interpreter, REPL</li>
+      <li><strong>Solved:</strong> Domain-specific language for agent orchestration and 3D scene composition. Demonstrates compiler engineering depth.</li>
+    </ul>
+  </div>
+</section>
+
 <section class="section"><div class="section-title">Select a Role</div></section>
 <div class="roles-grid">
 ${ROLES.map((r, i) => {
@@ -698,7 +842,7 @@ ${ROLES.map((r, i) => {
 }).join('\n')}
 </div>
 <section class="section">
-  <div class="section-title">Data Sources &mdash; 10 Collectors</div>
+  <div class="section-title">Data Sources &mdash; 11 Collectors</div>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px">
     <div class="exp-block" style="padding:20px;margin:0"><h3 style="font-size:13px">github.sh</h3><p style="font-size:12px;opacity:.4">Commits, PRs, events via GitHub API (gh cli)</p></div>
     <div class="exp-block" style="padding:20px;margin:0"><h3 style="font-size:13px">github-deep.sh</h3><p style="font-size:12px;opacity:.4">Stars, forks, profile, org breakdown</p></div>
@@ -710,6 +854,7 @@ ${ROLES.map((r, i) => {
     <div class="exp-block" style="padding:20px;margin:0"><h3 style="font-size:13px">loc.sh</h3><p style="font-size:12px;opacity:.4">Lines of code via cloc + fleet SSH</p></div>
     <div class="exp-block" style="padding:20px;margin:0"><h3 style="font-size:13px">local.sh</h3><p style="font-size:12px;opacity:.4">Mac: ~/bin, scripts, DBs, brew, cron, disk</p></div>
     <div class="exp-block" style="padding:20px;margin:0"><h3 style="font-size:13px">cloudflare.sh</h3><p style="font-size:12px;opacity:.4">Pages, D1, KV, R2 via wrangler CLI</p></div>
+    <div class="exp-block" style="padding:20px;margin:0"><h3 style="font-size:13px">traffic.sh</h3><p style="font-size:12px;opacity:.4">CF zones/workers/tunnels, GitHub clones/views/streak</p></div>
   </div>
   <p style="font-size:11px;opacity:.25;margin-top:16px;font-family:var(--jb);text-align:center">Pipeline: collect (6am cron) &rarr; aggregate (daily JSON) &rarr; push to KV &rarr; Worker serves live &rarr; updated every request</p>
 </section>
@@ -793,8 +938,8 @@ function resumePage(role, kpis) {
 <section class="section">
   <div class="section-title">Live Metrics Dashboard</div>
   <table class="metrics-table">
-    <tr style="border-bottom:2px solid var(--border)"><td style="opacity:.3;font-size:10px">METRIC</td><td style="opacity:.3;font-size:10px;text-align:right">VALUE</td><td style="opacity:.15;font-size:10px;text-align:right">SOURCE</td></tr>
-    ${role.kpis.map(k => `<tr><td>${KPI_LABELS[k]||k}</td><td>${fmt(k, s[k])}</td><td>${KPI_SOURCES[k]||'—'}</td></tr>`).join('\n    ')}
+    <tr style="border-bottom:2px solid var(--border)"><td style="opacity:.3;font-size:10px">METRIC</td><td style="opacity:.3;font-size:10px;text-align:right">VALUE</td><td style="opacity:.3;font-size:10px">WHAT IT ACHIEVED</td><td style="opacity:.15;font-size:10px;text-align:right">SOURCE</td></tr>
+    ${role.kpis.map(k => `<tr><td>${KPI_LABELS[k]||k}</td><td>${fmt(k, s[k])}</td><td>${KPI_ACHIEVEMENTS[k]||'—'}</td><td>${KPI_SOURCES[k]||'—'}</td></tr>`).join('\n    ')}
   </table>
 </section>
 

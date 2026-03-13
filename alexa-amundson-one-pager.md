@@ -35,12 +35,15 @@
 
 **Building production-grade cognitive AI operating system** with 1,810 repos, 101 Cloudflare Pages, 223 CLI tools, 52 TOPS AI compute.
 
-**Technical Achievements:**
-- Architected 23 microservices with <100ms API latency (p95)
-- Deployed 145 autonomous agents (76 AI agents + 69 enterprise bots) automating 70% of operations
-- Built SOX compliance engine with PS-SHA∞ cryptographic verification (zero audit findings)
-- Achieved 40% cloud cost reduction ($39K/year) through multi-cloud optimization
-- Maintained 99.9% uptime from day one (zero security incidents, zero data breaches)
+**Key Projects — What / Scale / What It Solved:**
+
+- **BlackRoad OS** — Full sovereign AI operating system | 7.2M LOC (5.0M unique), 1,810 repos, 51K+ commits | *Eliminated vendor lock-in — AI runs on owned hardware, $0/month inference cost*
+- **AI Gateway** — OpenAI-compatible multi-provider API (api.blackroad.io) | 29 models, 7 providers, SSE streaming | *Single endpoint abstracts all AI providers, automatic fallback if one is down*
+- **Pi Fleet** — 7-node distributed edge compute, 52 TOPS Hailo-8 | 256 services, 27 AI models, self-healing | *$0/month compute — fleet auto-recovers from crashes without human intervention*
+- **br CLI** — 223 command-line tools | 90 dispatched tools + 92 scripts + 52 automated crons | *Every repetitive task reduced to one command — deploy, monitor, debug entire fleet from terminal*
+- **Cloudflare Stack** — 101 Pages, 25 D1, 47 KV, 11 R2, 54 domains | 96 Workers, 18 tunnels | *Global edge infra at near-zero cost, all managed from CLI*
+- **KPI System** — 11 collectors, 60+ metrics, daily automated pipeline | Live on resume pages | *Resume updates itself — every metric machine-verified, no stale numbers*
+- **RoadC Language** — Custom programming language (lexer + parser + interpreter) | Full REPL | *Demonstrates compiler engineering depth — not just gluing APIs together*
 
 **Commercial Readiness:**
 - $2M ARR potential (50 customers × $3,333/mo average)

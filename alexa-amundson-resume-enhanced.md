@@ -48,7 +48,16 @@
 ### BLACKROAD OS, INC. — Founder & Chief Architect
 **Remote • May 2025 – Present**
 
-*Building a production-grade enterprise operating system with cognitive AI at its core. Managing full product lifecycle from architecture to deployment across 1,810 repositories and 17 GitHub organizations.*
+*Building a production-grade sovereign AI operating system — 7.2M LOC (5.0M unique non-duped), 1,810 repositories (1,563 non-fork, 97% original), 51,211 commits in 2026 across 17 GitHub organizations. Every metric machine-verified by automated KPI pipeline.*
+
+#### Key Projects — What / Scale / What It Solved
+
+- **AI Gateway (api.blackroad.io)** → OpenAI-compatible API, 29 models, 7 providers, SSE streaming → *Single endpoint abstracts all providers with automatic failover*
+- **Pi Fleet** → 7-node cluster, 52 TOPS Hailo-8, 256 systemd services, self-healing autonomy → *$0/month AI inference, fleet auto-recovers without human intervention*
+- **br CLI** → 223 tools for fleet/AI/deploy/monitor → *Every repetitive task = one command*
+- **Cloudflare Stack** → 101 Pages, 25 D1, 47 KV, 96 Workers, 18 tunnels → *Global edge infra at near-zero cost, all CLI-managed*
+- **KPI System** → 11 collectors, 60+ metrics, daily pipeline → *Resume pages auto-update — every number is live*
+- **RoadC Language** → Custom lang with lexer/parser/interpreter → *Compiler engineering, not just API glue*
 
 #### AI/ML & Cognitive Orchestration (45 Modules)
 - **Lucidia AI Engine:** Architected multi-modal AI stack orchestrating **76 autonomous agents** and **69 enterprise bots** for GitHub automation, workflow optimization, and domain-specific reasoning
