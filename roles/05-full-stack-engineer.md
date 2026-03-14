@@ -8,65 +8,44 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Full-stack engineer with 7.2 million lines of code across 1,603 repositories in 20 languages. Builds end-to-end applications from React/Next.js frontends to Python/Node.js APIs, deployed across 99 Cloudflare Pages and 7 backend nodes serving 48+ domains.
+Designed, built, and shipped end-to-end: 7.2M lines of code, 20 languages, 99 deployed sites, FastAPI backends, 283 databases, and a brand system powering 75 templates — because "full-stack" means owning the entire vertical.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & Lead Engineer | 2025–Present
+### BlackRoad OS | Founder & Full-Stack Engineer | 2025–Present
 
-**Frontend**
-- 75 design templates (HTML/JSX) with brand-locked design system
-- 99 Cloudflare Pages projects deployed across 48+ custom domains
-- Built dashboard, landing, auth, settings, status, blog, and portfolio page templates
-- React/Next.js applications with real-time WebSocket integration
+**The Frontend: 99 Live Sites, One Design System**
+- 75 design templates with brand-locked system — gradient spectrum, golden ratio spacing, Space Grotesk + JetBrains Mono typography
+- 99 Cloudflare Pages projects deployed across 48+ custom domains — every site is live, every domain has SSL
+- 15 page types covering the full SaaS surface: landing, pricing, blog, docs, dashboard, auth, portfolio, settings, status, changelog
 
-**Backend**
-- FastAPI services (CECE API, TTS API, Lucidia API) on edge fleet
-- Node.js/Express services for API routing and webhooks
-- 48 Nginx reverse proxy sites routing to backend services
-- 14 Docker containers running production workloads
+**The Backend: APIs That Power Everything**
+- CECE API (FastAPI) for custom LLM interaction and TTS. Lucidia API for application platform. Fleet health APIs for monitoring
+- AI image generation API with 4 backend agents — single endpoint, automatic model routing between DALL-E, Flux, SDXL
+- 48 Nginx reverse proxy sites routing traffic to the right backend across the fleet — zero-trust via Cloudflare tunnels
 
-**Databases**
-- 11 PostgreSQL databases for relational data
-- 230 SQLite databases (1.4 GB) for application state and agent memory
-- 22 Cloudflare D1 databases for serverless applications
-- 46 KV namespaces for edge caching and configuration
-- FTS5 full-text search indexing 354 repos
-
-**APIs & Services**
-- AI image generation API with 4 backend agents (DALL-E, Flux, SDXL)
-- Code search engine API indexing 354 repos
-- Fleet health and KPI collection APIs
-- GitHub-to-Gitea relay for cross-platform sync
-
-**DevOps**
-- 212 CLI tools for deployment and management
-- GitHub Actions CI/CD + self-hosted Gitea (207 repos)
-- Docker Swarm orchestration across Pi fleet
-- 52 automated tasks (cron + systemd timers)
+**The Data Layer: 283 Databases, 5 Engines**
+- 11 PostgreSQL for relational data, 230 SQLite (1.4 GB) for app state, 23 D1 for serverless, 47 KV for edge config, Qdrant for vectors
+- FTS5 full-text search across 156K entries — sub-millisecond lookups across the entire knowledge base
 
 ---
 
 ## Technical Skills
 
-**Frontend:** React, Next.js, HTML/CSS, JSX, Cloudflare Pages
-**Backend:** Python/FastAPI, Node.js, Express, Bash
-**Databases:** PostgreSQL, SQLite/FTS5, Cloudflare D1, KV, R2, Qdrant
-**Infrastructure:** Docker, Nginx, Linux, WireGuard, Cloudflare Tunnels
-**Languages:** JavaScript (114), Python (470), HTML (314), TypeScript (85), Shell (160), Go (2), C (2)
+React, Next.js, FastAPI, Node.js, PostgreSQL, SQLite, Cloudflare D1/KV/R2, Docker, Nginx
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Lines of code | 7,212,320 |
-| Repositories | 1,810 |
-| Languages | 20 |
-| Pages deployed | 99 |
-| Databases | 283 total |
-| API services | 6+ |
-| Domains | 48+ |
+| Metric | Value | Source |
+|--------|-------|--------|
+| Lines of Code | *live* | loc.sh — cloc + fleet SSH |
+| Total Repos | *live* | github-all-orgs.sh — gh api repos (17 owners) |
+| CF Pages | *live* | cloudflare.sh — wrangler pages list |
+| PostgreSQL DBs | *live* | services.sh — psql -l via SSH |
+| SQLite DBs | *live* | local.sh — find ~/.blackroad -name *.db |
+| Nginx Sites | *live* | services.sh — /etc/nginx/sites-enabled via SSH |
+| Docker Containers | *live* | services.sh — docker ps via SSH |

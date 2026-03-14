@@ -3,13 +3,13 @@
 Source: blackroad-os-kpis automated collection + full GitHub API scan across all 17 owners.
 
 ## Code
-- 7,212,717 lines of code
-- 331 commits/day, 4,019 PRs merged all-time
+- 7,223,919 lines of code
+- 507 commits/day, 4,019 PRs merged all-time
 - **1,603 GitHub repositories** across 17 owners (306 active, 1,297 archived)
 - **207 Gitea repositories** across 7 organizations (self-hosted)
 - **1,810 total repositories**
 - 20 languages: Python (470), HTML (314), Shell (160), JavaScript (115), TypeScript (85), Dockerfile (23), C++ (5), CSS (3), Go (2), C (2), MDX (1), Apex (1), Ruby (1), Go Template (1), HCL (1)
-- 8.0 GB total GitHub repo size
+- 8.1 GB total GitHub repo size
 - 11 stars, 17 organizations
 
 ## GitHub Organizations (17 owners)
@@ -44,23 +44,23 @@ Source: blackroad-os-kpis automated collection + full GitHub API scan across all
 
 ## Cloud (Cloudflare)
 - 99 Pages projects
-- 23 D1 databases
-- 47 KV namespaces
+- 24 D1 databases
+- 48 KV namespaces
 - 11 R2 buckets
 - 48+ custom domains via 4 tunnels
 
 ## Services
 - 14 Docker containers
 - 11 PostgreSQL databases
-- 48 Nginx sites
-- 252 systemd services
+- 56 Nginx sites
+- 253 systemd services
 - 35 timers
 - 9 Tailscale peers
 
 ## Automation
-- 221 CLI tools (121 MB)
-- 92 shell scripts
+- 228 CLI tools (121 MB)
+- 93 shell scripts
 - 17 Mac crons + 35 fleet timers = 52 automated tasks
-- 230 SQLite databases (1390 MB)
+- 230 SQLite databases (1463 MB)
 - 111 registered systems
 - 60+ KPIs tracked daily across 9 collectors

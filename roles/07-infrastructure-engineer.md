@@ -8,59 +8,43 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Infrastructure engineer building and operating a 7-node distributed compute fleet with 707 GB storage, 20 GB RAM, 52 TOPS AI acceleration, and WireGuard mesh networking. Manages 256 systemd services, 14 Docker containers, and 48+ production domains with automated monitoring and self-healing.
+Built a production fleet from single-board computers. 5 Raspberry Pis, 2 cloud VMs, 52 TOPS of AI acceleration, 707 GB distributed storage — proving that serious infrastructure doesn't require serious budgets.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & Infrastructure Lead | 2025–Present
+### BlackRoad OS | Founder & Infrastructure Engineer | 2025–Present
 
-**Physical Infrastructure**
-- Built and maintain 5 Raspberry Pi edge nodes (4× Pi 5 with NVMe, 1× Pi 400)
-- Installed and configured 2× Hailo-8 AI accelerators (52 TOPS combined)
-- Managed hardware: NVMe drives, Pironman5 enclosures, OLED displays (I2C), UART adapters
-- Resolved undervoltage issues via config.txt tuning, power supply assessment, overclock removal
+**The Thesis: Commodity Hardware, Production Workloads**
+- A Raspberry Pi 5 costs $80. A Hailo-8 NPU costs $100. Together they deliver 26 TOPS of AI inference with 8 GB RAM
+- Built a 7-node fleet for under $700 total hardware cost — runs 256 systemd services, 14 Docker containers, 27 AI models, 48 Nginx sites
+- Same fleet handles production traffic across 48+ domains serving real users through Cloudflare tunnels
 
-**Network Infrastructure**
-- WireGuard mesh VPN (10.8.0.x) connecting all nodes through DigitalOcean hub
-- RoadNet WiFi mesh: 5 access points on channels 1/6/11, dedicated 10.10.x.0/24 subnets per node
-- 4 Cloudflare tunnels for zero-trust external access to 48+ domains
-- 48 Nginx reverse proxy configurations
-- DNS infrastructure: Pi-hole (Alice), PowerDNS (Lucidia), custom dnsmasq zones (Cecilia)
+**The Hard Part: Power, Heat, and Storage**
+- Pi 5 + Hailo-8 + NVMe draws more than a standard 5V/3A PSU can deliver — diagnosed undervoltage (0.75V), tuned config.txt, recovered +95mV
+- Reduced GPU memory 256MB to 16MB on headless nodes. Applied conservative CPU governors. Disabled 16 skeleton microservices — freed 800 MB RAM
+- Fleet averages 42°C now. Power monitoring runs every 5 minutes on all nodes, logging voltage, throttle state, and governor
 
-**Compute Management**
-- 256 systemd services and 35 timers across fleet
-- 14 Docker containers via Docker Swarm
-- 27 Ollama models (48.1 GB) across 3 inference nodes
-- 11 PostgreSQL databases, 230 SQLite databases
-
-**Automation**
-- 212 CLI tools for fleet management
-- 52 automated tasks (17 Mac cron + 35 fleet timers)
-- Self-healing autonomy on all nodes (heartbeat + heal cycles)
-- Fleet power optimization: CPU governors, swappiness, dirty_ratio, WiFi PM, GPU memory reduction
+**The Network: Every Node Reachable, Every Path Encrypted**
+- WireGuard mesh VPN (10.8.0.x) connects all nodes. RoadNet WiFi mesh (5 APs, 5 subnets) provides local coverage
+- 4 Cloudflare tunnels route 48+ domains to fleet services. Tailscale overlay (9 peers) for remote management
 
 ---
 
 ## Technical Skills
 
-**Hardware:** Raspberry Pi 5, Hailo-8 NPU, NVMe, I2C, GPIO, USB, PCIe
-**Networking:** WireGuard, Tailscale, Nginx, DNS (Pi-hole, PowerDNS, dnsmasq), Cloudflare Tunnels
-**OS:** Debian/Raspberry Pi OS, systemd, udev, kernel tuning (cmdline.txt, config.txt, sysctl)
-**Containers:** Docker, Docker Swarm
-**Monitoring:** Custom KPI system (60+ metrics), thermal monitoring, voltage tracking
+Raspberry Pi, Linux, WireGuard, Nginx, systemd, Docker Swarm, Hailo-8, NVMe
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Fleet nodes | 7 |
-| Total storage | 707 GB |
-| Total RAM | 20 GB |
-| AI compute | 52 TOPS |
-| Systemd services | 256 |
-| Network connections | 106 |
-| Domains served | 48+ |
+| Metric | Value | Source |
+|--------|-------|--------|
+| Fleet Nodes | *live* | fleet.sh — SSH probe to all nodes |
+| Nodes Online | *live* | fleet.sh — SSH probe to all nodes |
+| Fleet Storage (GB) | *live* | fleet.sh — df via SSH |
+| Fleet RAM (MB) | *live* | fleet.sh — /proc/meminfo via SSH |
+| Systemd Services | *live* | services.sh — systemctl list-units via SSH |
+| Nginx Sites | *live* | services.sh — /etc/nginx/sites-enabled via SSH |

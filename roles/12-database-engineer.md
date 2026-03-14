@@ -8,67 +8,40 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Database engineer managing 283 databases across 5 engines: 11 PostgreSQL, 230 SQLite (1.4 GB), 22 Cloudflare D1, 46 KV namespaces, and Qdrant vector DB. Designs schemas for AI agent memory, metrics collection, fleet state, and full-text search with FTS5.
+Different data needs different storage. Designed and operate 283 databases across 5 engines — PostgreSQL for transactions, SQLite for embedded state, D1 for serverless, KV for edge config, Qdrant for vectors. Each one chosen for a reason.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & Data Lead | 2025–Present
+### BlackRoad OS | Founder & Database Engineer | 2025–Present
 
-**PostgreSQL**
-- 11 production databases across 3 fleet nodes (Alice, Cecilia, Lucidia)
-- Application state for CECE API, Lucidia API, and fleet services
-- Automated backup and monitoring
+**The Decision: Why 5 Engines, Not 1**
+- PostgreSQL (11 DBs) for relational data that needs ACID guarantees — user state, application data, fleet metadata
+- SQLite (230 DBs, 1.4 GB) for embedded, zero-config storage — agent memory, metrics history, local state. No server process, instant access
+- Cloudflare D1 (23 DBs) for serverless apps at the edge — data lives next to the Workers that query it. Millisecond reads globally
+- KV (47 namespaces) for configuration and caching — edge-distributed, eventually consistent, perfect for feature flags and session data
 
-**SQLite / FTS5**
-- 230 SQLite databases (1.4 GB total) in ~/.blackroad/
-- Key databases: metrics.db (6 tables), systems.db (111 entries), analytics.db, agents.db
-- FTS5 full-text search index for code search across 354 repos
-- Agent memory databases for AI conversation state
-- Observability traces database with nanosecond-precision spans
-
-**Cloudflare D1**
-- 22 serverless databases (40 MB total) for edge applications
-- images-blackroad: AI image generation metadata
-- index-blackroad: code search index (2,524 files)
-- blackroad-auth, blackroad-saas, blackroad-logs, and 17 more
-
-**KV / Key-Value**
-- 46 Cloudflare KV namespaces for edge state and configuration
-- Agent inboxes, config, telemetry, templates, users, world state
-- Low-latency edge reads for Cloudflare Workers
-
-**Vector Database**
-- Qdrant on Alice for semantic search and embeddings
-- Knowledge retrieval for AI agent systems
-
-**Schema Design**
-- Metrics schema: metrics, counters, alerts, system_metrics, custom_metrics, metric_definitions
-- Inventory schema: inventory, movements, locations
-- Observability schema: traces, spans (parent-child), metrics, logs
-- Dashboard schema: services, nodes, activity logs
+**The Search: Finding Anything Instantly**
+- FTS5 full-text search across 156,675 memory entries — the entire knowledge base searchable in under a millisecond
+- Code search engine indexing 354 repos — find any function, any file, any pattern across the whole codebase
+- 111 registered systems tracked in a systems database — every device, service, and endpoint has a record
 
 ---
 
 ## Technical Skills
 
-**Databases:** PostgreSQL, SQLite, Cloudflare D1, KV stores, Qdrant
-**Search:** FTS5 full-text search, vector similarity search
-**Languages:** Python, SQL, JavaScript, Bash
-**Infrastructure:** Linux, Docker, Cloudflare Workers
-**Tools:** psql, sqlite3, Wrangler, custom CLI tools
+PostgreSQL, SQLite/FTS5, Cloudflare D1, KV stores, Qdrant, SQL, Python, database design
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Total databases | 283 |
-| PostgreSQL DBs | 11 |
-| SQLite DBs | 230 (1.4 GB) |
-| D1 databases | 22 (40 MB) |
-| KV namespaces | 46 |
-| Systems tracked | 111 |
-| Repos indexed | 354 |
+| Metric | Value | Source |
+|--------|-------|--------|
+| PostgreSQL DBs | *live* | services.sh — psql -l via SSH |
+| SQLite DBs | *live* | local.sh — find ~/.blackroad -name *.db |
+| Total DB Rows | *live* | local.sh — sqlite3 row count across 230 DBs |
+| D1 Databases | *live* | cloudflare.sh — wrangler d1 list --json |
+| KV Namespaces | *live* | cloudflare.sh — wrangler kv list |
+| FTS5 Entries | *live* | local.sh — sqlite3 FTS5 count |

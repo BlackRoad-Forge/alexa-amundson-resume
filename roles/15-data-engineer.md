@@ -8,66 +8,43 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Data engineer building pipelines that collect, aggregate, and report 60+ KPIs daily across 9 data sources. Manages 283 databases (PostgreSQL, SQLite, D1, KV), FTS5 search indexes, and distributed tracing infrastructure across a 7-node fleet.
+Needed to prove every metric on every resume. Built a 10-collector pipeline that pulls from GitHub API, SSH fleet probes, Cloudflare CLI, and local system — 80+ KPIs aggregated daily, pushed to KV, served live on 20 dashboards.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & Data Lead | 2025–Present
+### BlackRoad OS | Founder & Data Engineer | 2025–Present
 
-**Data Pipelines**
-- Built 9-collector KPI pipeline: GitHub API, Gitea API, SSH fleet probes, Cloudflare API, local system metrics
-- Daily aggregation of 60+ metrics into timestamped JSON snapshots
-- Day-over-day delta computation for trend tracking
-- Multi-format output: terminal report, Slack (block kit), markdown, raw JSON
+**The Problem: Unverifiable Claims Don't Get Hired**
+- Resumes say "managed 200+ services" but nobody can verify it. Needed machine-verified metrics with traceable sources
+- Built 10 automated collectors: GitHub, GitHub-deep, all-orgs, Gitea, fleet, services, autonomy, LOC, local, Cloudflare
+- Each collector runs independently, outputs JSON snapshots. Daily aggregation merges into a single file with 80+ keys. Every number has a source
 
-**Data Collection**
-- GitHub collector: commits, PRs, events, languages, stars, forks via `gh` CLI API
-- Fleet collector: Python probes piped over SSH to each node (CPU, RAM, disk, Docker, Ollama)
-- Services collector: deep inspection of Ollama, Docker, PostgreSQL, Nginx, systemd per node
-- Autonomy collector: self-healing events, cron jobs, timers, service restarts
-- Cloudflare collector: D1 databases, KV namespaces, R2 buckets, Pages projects
+**The Pipeline: Collect \u2192 Aggregate \u2192 Serve**
+- Fleet probes: Python scripts piped over SSH stdin to remote nodes — avoids shell quoting issues, runs on any node without installing anything
+- Cloudflare inventory: wrangler CLI queries Pages, D1, KV, R2 counts. GitHub API: paginated queries across 17 organizations, deduped
+- Daily JSON pushed to Cloudflare KV → Worker serves 20 live resume dashboards. Every number on this page updated automatically at 6 AM
 
-**Data Storage**
-- 11 PostgreSQL databases across fleet
-- 230 SQLite databases (1.4 GB) with 111 registered systems
-- 22 D1 databases (40 MB) for serverless applications
-- 46 KV namespaces for edge state
-- FTS5 index across 354 repos and 156,675 memory entries
-
-**Data Quality**
-- All KPI metrics machine-verified from live sources
-- Automated collection via cron (6 AM daily) + GitHub Actions
-- Snapshot retention: daily JSON files with full source data
-- Distributed tracing with nanosecond-precision spans
-
-**Reporting**
-- Terminal dashboard with color-coded metrics and progress bars
-- Slack webhook integration with block kit formatting
-- Markdown report for GitHub README auto-update
-- Historical comparison with delta indicators
+**The Scale: 283 Databases, One Pipeline**
+- 283 databases across PostgreSQL, SQLite, D1, KV, Qdrant — each one discovered, counted, and tracked by the collectors
+- FTS5 full-text search across 156K entries. 111 registered systems. Day-over-day deltas show trends, not just snapshots
 
 ---
 
 ## Technical Skills
 
-**Pipelines:** Bash, Python, SSH, cron, GitHub Actions
-**Databases:** PostgreSQL, SQLite/FTS5, Cloudflare D1, KV
-**APIs:** GitHub API, Cloudflare API, Gitea API, Ollama API
-**Formats:** JSON, Markdown, Slack Block Kit
-**Tools:** gh CLI, Wrangler, Python (json, urllib), Bash
+Python, PostgreSQL, SQLite/FTS5, Cloudflare D1, data pipelines, SSH probes, JSON, Bash
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Daily KPIs tracked | 60+ |
-| Data collectors | 9 |
-| Databases managed | 283 |
-| Data pipeline runs | Daily automated |
-| Repos indexed | 354 |
-| Memory entries | 156,675 |
-| Report formats | 4 |
+| Metric | Value | Source |
+|--------|-------|--------|
+| Lines of Code | *live* | loc.sh — cloc + fleet SSH |
+| Total Repos | *live* | github-all-orgs.sh — gh api repos (17 owners) |
+| PostgreSQL DBs | *live* | services.sh — psql -l via SSH |
+| SQLite DBs | *live* | local.sh — find ~/.blackroad -name *.db |
+| Total DB Rows | *live* | local.sh — sqlite3 row count across 230 DBs |
+| D1 Databases | *live* | cloudflare.sh — wrangler d1 list --json |

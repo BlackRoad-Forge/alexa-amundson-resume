@@ -1,6 +1,6 @@
 # Alexa Amundson
 
-**CTO / Technical Co-Founder**
+**Startup CTO**
 
 amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/blackboxprogramming)
 
@@ -8,87 +8,51 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Technical founder who built BlackRoad OS from zero to a production platform: 7.2M LOC, 1,810 repos, 7-node fleet, 99 cloud deployments, 27 AI models, 283 databases, and 48+ live domains. Operates the entire technical stack — infrastructure, backend, frontend, AI, DevOps, security, and observability — solo.
+Built BlackRoad OS from nothing — no team, no funding, no existing code. One person, 7.2M lines of code, 1,810 repos, 7-node fleet, 27 AI models, 283 databases, 48+ live domains. The entire company's technical stack, soup to nuts, solo.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & CTO | 2025–Present
+### BlackRoad OS | Founder & Startup CTO | 2025–Present
 
-**Built From Zero**
-- 7,212,320 lines of code across 1,603 GitHub + 207 Gitea repos
-- 20 programming languages: JavaScript, Python, TypeScript, HTML, Shell, Dockerfile, Go, C, MDX, CSS
-- 326 commits/day sustained velocity, 4,019 PRs merged
-- 212 CLI tools (121 MB) built for operational efficiency
+**From Zero to Production — Alone**
+- Started with an idea and a credit card. Now: 7.2M lines of code, 1,603 GitHub repos across 17 orgs, 207 Gitea repos across 7 more
+- 326 commits/day sustained velocity. 4,019 PRs merged. 20 programming languages. 212 CLI tools built for every operational workflow
+- No investors, no employees, no outsourcing — every line of code, every server config, every DNS record is my work
 
-**Infrastructure (designed & operated)**
-- 5 Raspberry Pi edge nodes + 2 DigitalOcean VMs + Cloudflare serverless
-- WireGuard mesh VPN + 4 Cloudflare tunnels + Tailscale (9 peers)
-- 256 systemd services, 14 Docker containers, 48 Nginx sites
-- 707 GB storage, 20 GB RAM, 52 TOPS AI compute (2× Hailo-8)
+**The Infrastructure Decision: Own Everything**
+- 5 Raspberry Pi edge nodes + 2 cloud VMs + Cloudflare serverless — total hardware cost under $700, cloud spend under $50/month
+- 256 systemd services, 14 Docker containers, 48 Nginx sites, 27 Ollama models (48.1 GB), 52 TOPS AI compute (2x Hailo-8)
+- WireGuard mesh + 4 Cloudflare tunnels + Tailscale overlay — three networking layers ensuring everything talks to everything, encrypted
 
-**AI/ML (deployed & tuned)**
-- 27 Ollama models (48.1 GB) across 3 inference nodes
-- 4 custom fine-tuned models
-- AI image generation with 4 backend agents
-- Streaming inference via SSE proxy
+**The Cloud Platform: 178 Managed Resources**
+- 99 Pages, 23 D1, 47 KV, 11 R2 — Cloudflare is the global layer. Fleet is the sovereign layer. Both managed through CLI automation
+- 283 databases across 5 engines. 48+ custom domains. 52 automated tasks. 60+ KPIs tracked daily across 10 collectors
 
-**Cloud (Cloudflare full-stack)**
-- 99 Pages projects, 22 D1 databases, 46 KV namespaces, 11 R2 buckets
-- 48+ custom domains with SSL/TLS
-- Serverless Workers for edge compute
-
-**Data (283 databases)**
-- 11 PostgreSQL, 230 SQLite (1.4 GB), 22 D1, 46 KV
-- FTS5 search across 354 repos
-- Distributed tracing with nanosecond precision
-
-**Automation & Ops**
-- 52 automated tasks (17 Mac cron + 35 fleet timers)
-- Self-healing autonomy on all nodes
-- Daily KPI collection: 60+ metrics across 9 data sources
-- Slack integration for operational reporting
-
-**Security**
-- Malware discovery and removal
-- Credential rotation fleet-wide
-- Zero-trust architecture via Cloudflare tunnels
-
-**Product**
-- 75 design templates with brand-locked system
-- 15 page types covering full SaaS surface
-- Custom programming language (RoadC) with interpreter
+**Why It Matters**
+- This isn't a portfolio project — it's a production system serving real traffic. Every metric on this page is collected from live infrastructure, right now
+- A CTO who built the whole stack understands every layer. I don't delegate debugging because I wrote the code that's breaking
 
 ---
 
-## The Numbers
+## Technical Skills
 
-| Category | Metric | Value |
-|----------|--------|-------|
-| **Code** | Lines of code | 7,212,320 |
-| | Commits/day | 326 |
-| | PRs merged | 4,019 |
-| | Repositories | 1,810 |
-| | Languages | 20 |
-| **Infra** | Fleet nodes | 7 |
-| | Systemd services | 256 |
-| | Docker containers | 14 |
-| | Nginx sites | 48 |
-| **AI** | Models deployed | 27 (48.1 GB) |
-| | AI acceleration | 52 TOPS |
-| | Custom models | 4 |
-| **Cloud** | CF Pages | 99 |
-| | D1 databases | 22 |
-| | KV namespaces | 46 |
-| | R2 buckets | 11 |
-| | Domains | 48+ |
-| **Data** | Total databases | 283 |
-| | PostgreSQL | 11 |
-| | SQLite | 230 (1.4 GB) |
-| **Ops** | CLI tools | 212 |
-| | Automated tasks | 52 |
-| | KPIs tracked | 60+ |
-| **Local** | Brew packages | 293 |
-| | Templates | 75 |
-| | Shell scripts | 91 |
+Python, JavaScript, TypeScript, Bash, Go, C, React, Next.js, FastAPI, Docker, Linux, Nginx, WireGuard, Cloudflare, PostgreSQL, SQLite, systemd, Hailo-8, Ollama, GitHub Actions
+
+---
+
+## Metrics
+
+| Metric | Value | Source |
+|--------|-------|--------|
+| Lines of Code | *live* | loc.sh — cloc + fleet SSH |
+| Total Repos | *live* | github-all-orgs.sh — gh api repos (17 owners) |
+| Commits Today | *live* | github.sh — gh api events |
+| PRs Merged | *live* | github.sh — gh api search/issues |
+| Fleet Nodes | *live* | fleet.sh — SSH probe to all nodes |
+| AI Models | *live* | services.sh — ollama list via SSH |
+| CF Pages | *live* | cloudflare.sh — wrangler pages list |
+| Docker Containers | *live* | services.sh — docker ps via SSH |
+| Systemd Services | *live* | services.sh — systemctl list-units via SSH |
+| Nginx Sites | *live* | services.sh — /etc/nginx/sites-enabled via SSH |

@@ -3,14 +3,14 @@
 
 const ROLES = [
   { slug: 'devops', num: '01', title: 'Senior DevOps Engineer', accent: '#FF6B2B',
-    summary: 'DevOps engineer operating a 7-node distributed infrastructure spanning edge devices and cloud, with 52 automated tasks, 256 managed systemd services, and 99 Cloudflare deployments.',
+    summary: 'Needed production infrastructure without a team or budget. Built a self-healing 7-node fleet from Raspberry Pis, automated 52 operational tasks, and deployed 99 cloud services — solo, from scratch.',
     sections: [
-      { title: 'Infrastructure Operations', bullets: [
-        'Operate 5 Raspberry Pi nodes + 2 DigitalOcean droplets with WireGuard mesh VPN',
-        'Manage 256 systemd services and 35 timers with self-healing autonomy scripts',
-        'Deploy and maintain Docker containers via Docker Swarm orchestration',
-        'Route 48+ custom domains through 4 Cloudflare tunnels to backend services',
+      { title: 'The Problem: Zero Infrastructure, Zero Team', bullets: [
+        'No existing infrastructure, no ops team, no vendor contracts — needed production-grade systems running 48+ domains on day one',
+        'Solved by designing a hybrid fleet: 5 Pi nodes + 2 cloud VMs + Cloudflare edge, all connected via WireGuard mesh VPN — total cost under $700 hardware',
+        'Result: 256 systemd services running across fleet, 48 Nginx reverse proxy sites, 14 Docker containers — all managed by one person',
       ]},
+<<<<<<< Updated upstream
       { title: 'CI/CD & Automation', bullets: [
         'Built 223 CLI tools for infrastructure management and deployment',
         'Maintain Mac cron jobs + fleet timers for continuous automation',
@@ -25,102 +25,134 @@ const ROLES = [
         'Built daily KPI system tracking 60+ metrics across 9 collectors',
         'Fleet power optimization with CPU governor tuning and voltage monitoring',
         'Self-healing cron autonomy on all nodes (heartbeat 1m, heal 5m)',
+=======
+      { title: 'The Bet: Self-Healing Over Manual Ops', bullets: [
+        'Fleet nodes crash, services fail, temperatures spike — manual monitoring doesn\'t scale for a solo operator running 256 services',
+        'Built autonomy scripts: heartbeat every 60 seconds, heal cycle every 5 minutes, automatic service restarts on failure',
+        'Detected a node cooking at 73.8\u00b0C from a runaway Ollama loop — auto-isolated the process, dropped temp to 57.9\u00b0C without downtime',
+      ]},
+      { title: 'The Multiplier: 212 CLI Tools', bullets: [
+        'Every repeated task became a tool. 212 CLI tools (121 MB) in ~/bin — deploy, probe, audit, sync, report',
+        'GitHub-to-Gitea relay syncs 207 repos every 30 minutes. Daily KPI collection tracks 60+ metrics across 10 data sources',
+        '99 Cloudflare Pages, 23 D1 databases, 47 KV namespaces, 11 R2 buckets — all deployed and maintained through CLI automation',
+>>>>>>> Stashed changes
       ]},
     ],
     skills: ['Linux/Debian', 'Docker Swarm', 'systemd', 'Nginx', 'WireGuard', 'Cloudflare', 'GitHub Actions', 'Bash', 'Python'],
     kpis: ['systemd_services', 'docker_containers', 'fleet_total', 'cf_pages', 'bin_tools', 'repos_total', 'nginx_sites'],
   },
   { slug: 'ai-ml', num: '02', title: 'AI/ML Engineer', accent: '#CC00AA',
-    summary: 'AI/ML engineer operating 27 deployed language models (48.1 GB) across a distributed edge fleet with 52 TOPS of dedicated AI acceleration.',
+    summary: 'Cloud AI APIs are expensive and you don\'t own the data. Deployed 27 language models on-premise across edge hardware with 52 TOPS of dedicated acceleration — full inference sovereignty at a fraction of the cost.',
     sections: [
-      { title: 'Model Deployment & Operations', bullets: [
-        'Deploy and manage 27 Ollama models (48.1 GB) across 3 edge nodes',
-        'Fine-tuned 4 custom CECE personality models for domain-specific generation',
-        'Operate 2x Hailo-8 NPUs (26 TOPS each = 52 TOPS total) for accelerated inference',
-        'Built Ollama Bridge SSE proxy for streaming model responses to web clients',
+      { title: 'The Problem: AI Without Vendor Lock-In', bullets: [
+        'Needed persistent, private AI inference without per-token API costs or data leaving the network',
+        'Deployed 27 Ollama models (48.1 GB) across 3 Pi 5 nodes — installed 2x Hailo-8 NPUs (52 TOPS total) for hardware acceleration',
+        'Fine-tuned 4 custom CECE personality models for domain-specific generation — models that don\'t exist anywhere else',
       ]},
-      { title: 'AI Infrastructure', bullets: [
-        'Designed multi-node inference routing across Pi 5 fleet',
-        'Built AI image generation hub with 4 backend agents (DALL-E, Flux, SDXL)',
-        'Reduced inference node temperature from 73.8C to 57.9C by isolating runaway loops',
+      { title: 'The Challenge: Thermals Kill Edge AI', bullets: [
+        'Inference on $80 hardware generates heat. A runaway generation loop pushed one node to 73.8\u00b0C — approaching thermal shutdown',
+        'Built power monitoring (cron every 5 min), CPU governor tuning, and voltage optimization — stabilized fleet at 42\u00b0C average',
+        'Reduced GPU memory allocation from 256MB to 16MB on headless nodes, capped frequencies, applied conservative governors — no inference quality loss',
       ]},
-      { title: 'Data & Knowledge Systems', bullets: [
-        'Manage 230 SQLite databases for agent memory, metrics, and state',
-        'Built FTS5 knowledge index across 156,675 memory entries',
-        'Custom RoadC programming language with tree-walking interpreter',
+      { title: 'The Stack: From Model to API to User', bullets: [
+        'Built Ollama Bridge SSE proxy for streaming model responses to web clients in real-time',
+        'AI image generation hub with 4 backend agents (DALL-E, Flux, SDXL, FAL) — single API, best-model routing',
+        'FTS5 knowledge index across 156,675 memory entries — models can search their own history across 230 SQLite databases',
       ]},
     ],
     skills: ['Ollama', 'Hailo-8 NPU', 'DALL-E', 'Flux', 'SDXL', 'FastAPI', 'Python', 'FTS5', 'Docker'],
     kpis: ['ollama_models', 'ollama_size_gb', 'total_loc', 'repos_total', 'sqlite_dbs', 'docker_containers'],
   },
   { slug: 'sre', num: '03', title: 'Site Reliability Engineer', accent: '#FF2255',
-    summary: 'SRE managing a 7-node distributed fleet with 256 systemd services, 52 automated tasks, and self-healing autonomy. Tracks 60+ reliability metrics daily.',
+    summary: 'Running 256 services across distributed hardware with no on-call team. Built observability from scratch, resolved 10+ production incidents solo, and automated reliability into the infrastructure itself.',
     sections: [
-      { title: 'Reliability & Uptime', bullets: [
-        'Operate 5 Pi edge nodes + 2 cloud VMs with WireGuard mesh connectivity',
-        'Self-healing cron automation: heartbeat every 1 minute, heal cycle every 5 minutes',
-        'Monitor and resolve failed systemd units with automated restart policies',
+      { title: 'The Reality: Solo On-Call for Everything', bullets: [
+        'One person responsible for 256 services, 48 domains, 7 nodes, 283 databases — every incident is yours',
+        'Built a 10-collector KPI system tracking 60+ metrics daily: fleet health, service status, temperatures, swap, processes, connections',
+        'Day-over-day delta tracking catches regressions before they become outages — automated Slack notifications on anomalies',
       ]},
-      { title: 'Incident Response', bullets: [
-        'Resolved thermal throttling (73.8C to 57.9C) caused by runaway Ollama loops',
-        'Fixed undervoltage via config.txt tuning (+95mV recovery)',
-        'Discovered and removed obfuscated cron dropper (security incident)',
-        'Migrated leaked credentials to secured env files (chmod 600)',
+      { title: 'The Incidents: Real Problems, Real Fixes', bullets: [
+        'Node at 73.8\u00b0C — identified runaway Ollama generation loop via power monitoring, killed and disabled the service, temp dropped to 57.9\u00b0C',
+        'Swap at 100% on Cecilia — found 4 concurrent rclone instances syncing same Google Drive, consolidated to 1, freed 2 GB swap',
+        'Obfuscated cron dropper discovered on Cecilia — exec\'ing from /tmp/op.py. Removed the malware, audited all nodes, rotated credentials fleet-wide',
+        'Leaked GitHub PAT found in systemd service file — removed from config, rotated token, migrated all secrets to chmod 600 env files',
       ]},
-      { title: 'Monitoring & Observability', bullets: [
-        'Built 9-collector KPI system tracking 60+ metrics daily',
-        'Distributed tracing database with nanosecond-precision spans',
-        'Power monitoring deployed to all nodes (cron every 5 minutes)',
+      { title: 'The System: Reliability as Code', bullets: [
+        'Self-healing autonomy: heartbeat every 60s detects down services, heal cycle every 5m auto-restarts them',
+        'Power monitoring on every node (cron */5, persistent logs) — voltage, throttle state, temperature, governor all tracked',
+        'Distributed tracing database with nanosecond-precision spans — can trace any request across any node',
       ]},
     ],
     skills: ['systemd', 'cron', 'Nginx', 'Docker Swarm', 'WireGuard', 'Tailscale', 'distributed tracing', 'Bash', 'Python'],
     kpis: ['systemd_services', 'failed_units', 'fleet_total', 'fleet_online', 'avg_temp_c', 'docker_containers', 'nginx_sites'],
   },
   { slug: 'platform', num: '04', title: 'Platform Engineer', accent: '#8844FF',
-    summary: 'Platform engineer who built a complete developer platform: 212 CLI tools, 1,810 repos, self-hosted Gitea, Cloudflare-native deployments, and daily automated observability.',
+    summary: 'No platform team, no internal tools budget. Built a complete developer platform from scratch: 212 CLI tools, self-hosted Git, code search, CI/CD pipelines, and automated observability — because waiting for someone else wasn\'t an option.',
     sections: [
+<<<<<<< Updated upstream
       { title: 'Developer Platform', bullets: [
         'Built 223 CLI tools (121 MB) for developer workflow automation',
         'Self-hosted Gitea with 207 repos across 7 organizations on fleet',
         '101 Cloudflare Pages projects with git-based CI/CD pipelines',
         'Custom code search engine indexing 354 repos with FTS5',
+=======
+      { title: 'The Gap: No Developer Platform Exists', bullets: [
+        '1,603 repos across 17 GitHub orgs + 207 Gitea repos — needed unified tooling to manage code, deploy, search, and monitor across all of it',
+        'Built 212 CLI tools (121 MB) — every common workflow is a single command: deploy, probe, audit, sync, collect, report',
+        'Self-hosted Gitea on the fleet with 207 repos across 7 orgs — full Git sovereignty with GitHub-to-Gitea relay syncing every 30 minutes',
+>>>>>>> Stashed changes
       ]},
-      { title: 'Infrastructure Platform', bullets: [
-        '7-node fleet with WireGuard mesh VPN and Tailscale overlay',
-        '256 systemd services, 14 Docker containers, 48 Nginx sites',
-        'RoadNet WiFi mesh (5 APs) for local device connectivity',
+      { title: 'The Platform: Search, Deploy, Observe', bullets: [
+        'Code search engine indexing 354 repos with FTS5 full-text search — find anything across the entire codebase in milliseconds',
+        '99 Cloudflare Pages projects with git-push deployment — every commit triggers build and deploy automatically',
+        '10-collector KPI system generates daily observability: fleet health, code velocity, cloud inventory, service status',
       ]},
-      { title: 'Observability Platform', bullets: [
-        '9-collector KPI system tracking 60+ metrics daily',
-        'Fleet-wide power monitoring with thermal management',
-        'Automated resume and reporting pipeline from live metrics',
+      { title: 'Why It Matters', bullets: [
+        'A solo developer operating at the output of a small team needs tools that multiply, not slow down',
+        '326 commits/day sustained velocity. 4,019 PRs merged. 20 languages. This throughput requires platform, not heroics',
       ]},
     ],
     skills: ['Cloudflare Pages/Workers', 'Gitea', 'GitHub Actions', 'Docker Swarm', 'CLI tooling', 'Bash', 'Python', 'FTS5'],
     kpis: ['bin_tools', 'repos_total', 'cf_pages', 'systemd_services', 'docker_containers', 'total_loc'],
   },
   { slug: 'fullstack', num: '05', title: 'Full-Stack Engineer', accent: '#4488FF',
+<<<<<<< Updated upstream
     summary: 'Full-stack engineer with 7.2M+ lines of code across 1,600+ repositories in 20 languages. Builds end-to-end applications deployed across 101 Cloudflare Pages and 7 backend nodes.',
     sections: [
       { title: 'Frontend', bullets: [
         '75 design templates (HTML/JSX) with brand-locked design system',
         '101 Cloudflare Pages projects deployed across 48+ custom domains',
         'React/Next.js applications with real-time WebSocket integration',
+=======
+    summary: 'Designed, built, and shipped end-to-end: 7.2M lines of code, 20 languages, 99 deployed sites, FastAPI backends, 283 databases, and a brand system powering 75 templates — because "full-stack" means owning the entire vertical.',
+    sections: [
+      { title: 'The Frontend: 99 Live Sites, One Design System', bullets: [
+        '75 design templates with brand-locked system — gradient spectrum, golden ratio spacing, Space Grotesk + JetBrains Mono typography',
+        '99 Cloudflare Pages projects deployed across 48+ custom domains — every site is live, every domain has SSL',
+        '15 page types covering the full SaaS surface: landing, pricing, blog, docs, dashboard, auth, portfolio, settings, status, changelog',
+>>>>>>> Stashed changes
       ]},
-      { title: 'Backend', bullets: [
-        'FastAPI services (CECE API, TTS API, Lucidia API) on edge fleet',
-        'Node.js/Express services for API routing and webhooks',
-        '48 Nginx reverse proxy sites routing to backend services',
+      { title: 'The Backend: APIs That Power Everything', bullets: [
+        'CECE API (FastAPI) for custom LLM interaction and TTS. Lucidia API for application platform. Fleet health APIs for monitoring',
+        'AI image generation API with 4 backend agents — single endpoint, automatic model routing between DALL-E, Flux, SDXL',
+        '48 Nginx reverse proxy sites routing traffic to the right backend across the fleet — zero-trust via Cloudflare tunnels',
       ]},
+<<<<<<< Updated upstream
       { title: 'Databases', bullets: [
         '11 PostgreSQL + 230 SQLite + 25 D1 + 47 KV databases',
         'FTS5 full-text search indexing 354 repos',
+=======
+      { title: 'The Data Layer: 283 Databases, 5 Engines', bullets: [
+        '11 PostgreSQL for relational data, 230 SQLite (1.4 GB) for app state, 23 D1 for serverless, 47 KV for edge config, Qdrant for vectors',
+        'FTS5 full-text search across 156K entries — sub-millisecond lookups across the entire knowledge base',
+>>>>>>> Stashed changes
       ]},
     ],
     skills: ['React', 'Next.js', 'FastAPI', 'Node.js', 'PostgreSQL', 'SQLite', 'Cloudflare D1/KV/R2', 'Docker', 'Nginx'],
     kpis: ['total_loc', 'repos_total', 'cf_pages', 'postgres_dbs', 'sqlite_dbs', 'nginx_sites', 'docker_containers'],
   },
   { slug: 'cloud', num: '06', title: 'Cloud Engineer', accent: '#00D4FF',
+<<<<<<< Updated upstream
     summary: 'Cloud engineer managing hybrid edge-cloud infrastructure: 101 Pages, 25 D1, 47 KV, 11 R2, 2 droplets, and 5 edge nodes connected via WireGuard mesh.',
     sections: [
       { title: 'Cloudflare Platform', bullets: [
@@ -129,239 +161,268 @@ const ROLES = [
         '47 KV namespaces for edge config and caching',
         '11 R2 object storage buckets for assets and models',
         '48+ custom domains through 4 Cloudflare tunnels',
+=======
+    summary: 'Needed global reach without global infrastructure costs. Architected a hybrid edge-cloud stack: Cloudflare serverless for global distribution, Pi fleet for sovereignty, WireGuard mesh for secure connectivity — 178 cloud resources managed solo.',
+    sections: [
+      { title: 'The Strategy: Edge + Cloud, Not Either/Or', bullets: [
+        'Pure cloud is expensive and you don\'t own the compute. Pure edge is limited and hard to reach. Combined both',
+        '99 Pages for global CDN, 23 D1 for serverless databases, 47 KV for edge config, 11 R2 for object storage — all on Cloudflare',
+        '5 Pi edge nodes for persistent compute, AI inference, and data sovereignty. WireGuard mesh connects everything. 4 tunnels route 48+ domains',
+>>>>>>> Stashed changes
       ]},
-      { title: 'Hybrid Cloud Architecture', bullets: [
-        '5 Pi edge nodes + 2 DigitalOcean droplets',
-        'WireGuard mesh VPN + Tailscale overlay (9 peers)',
-        'RoadNet WiFi mesh (5 APs) for local connectivity',
+      { title: 'The Architecture: Zero Open Ports', bullets: [
+        'No port forwarding, no exposed services. All external traffic flows through Cloudflare tunnels to fleet',
+        'WireGuard mesh (10.8.0.x) for encrypted inter-node communication. Tailscale overlay (9 peers) for management access',
+        'RoadNet WiFi mesh (5 APs) provides local device connectivity — devices on the mesh can reach the fleet directly',
+      ]},
+      { title: 'The Numbers', bullets: [
+        '178 total Cloudflare resources deployed and maintained. 48+ custom domains with automated SSL/TLS',
+        'Cloudflare Workers for edge compute and API routing — millisecond response times at the edge, heavy processing on fleet',
       ]},
     ],
     skills: ['Cloudflare Pages/Workers/D1/KV/R2/Tunnels', 'DigitalOcean', 'WireGuard', 'Tailscale', 'Docker', 'Nginx'],
     kpis: ['cf_pages', 'cf_d1_databases', 'cf_kv_namespaces', 'cf_r2_buckets', 'fleet_total', 'nginx_sites'],
   },
   { slug: 'infrastructure', num: '07', title: 'Infrastructure Engineer', accent: '#FF6B2B',
-    summary: '7-node fleet infrastructure: 5 Raspberry Pi nodes, 2 cloud VMs, 52 TOPS AI acceleration, WireGuard mesh, and 707 GB distributed storage.',
+    summary: 'Built a production fleet from single-board computers. 5 Raspberry Pis, 2 cloud VMs, 52 TOPS of AI acceleration, 707 GB distributed storage — proving that serious infrastructure doesn\'t require serious budgets.',
     sections: [
-      { title: 'Fleet Hardware', bullets: [
-        '5 Raspberry Pi nodes (4x Pi 5, 1x Pi 400) + 2 DigitalOcean droplets',
-        '2x Hailo-8 AI accelerators (52 TOPS total)',
-        '20 GB fleet RAM, 707 GB fleet storage',
-        'NVMe, USB peripherals, IR receivers, OLED displays',
+      { title: 'The Thesis: Commodity Hardware, Production Workloads', bullets: [
+        'A Raspberry Pi 5 costs $80. A Hailo-8 NPU costs $100. Together they deliver 26 TOPS of AI inference with 8 GB RAM',
+        'Built a 7-node fleet for under $700 total hardware cost — runs 256 systemd services, 14 Docker containers, 27 AI models, 48 Nginx sites',
+        'Same fleet handles production traffic across 48+ domains serving real users through Cloudflare tunnels',
       ]},
-      { title: 'Network Infrastructure', bullets: [
-        'WireGuard mesh VPN across all nodes (10.8.0.x)',
-        '4 Cloudflare tunnels routing 48+ domains',
-        'RoadNet WiFi mesh (5 APs, 5 subnets)',
-        '48 Nginx reverse proxy sites',
+      { title: 'The Hard Part: Power, Heat, and Storage', bullets: [
+        'Pi 5 + Hailo-8 + NVMe draws more than a standard 5V/3A PSU can deliver — diagnosed undervoltage (0.75V), tuned config.txt, recovered +95mV',
+        'Reduced GPU memory 256MB to 16MB on headless nodes. Applied conservative CPU governors. Disabled 16 skeleton microservices — freed 800 MB RAM',
+        'Fleet averages 42\u00b0C now. Power monitoring runs every 5 minutes on all nodes, logging voltage, throttle state, and governor',
       ]},
-      { title: 'System Management', bullets: [
-        '256 systemd services, 35 timers',
-        'Power optimization: CPU governors, voltage tuning, thermal management',
-        'Self-healing autonomy on all nodes',
+      { title: 'The Network: Every Node Reachable, Every Path Encrypted', bullets: [
+        'WireGuard mesh VPN (10.8.0.x) connects all nodes. RoadNet WiFi mesh (5 APs, 5 subnets) provides local coverage',
+        '4 Cloudflare tunnels route 48+ domains to fleet services. Tailscale overlay (9 peers) for remote management',
       ]},
     ],
     skills: ['Raspberry Pi', 'Linux', 'WireGuard', 'Nginx', 'systemd', 'Docker Swarm', 'Hailo-8', 'NVMe'],
     kpis: ['fleet_total', 'fleet_online', 'fleet_disk_total_gb', 'fleet_mem_total_mb', 'systemd_services', 'nginx_sites'],
   },
   { slug: 'backend', num: '08', title: 'Backend Engineer', accent: '#FF2255',
-    summary: 'Backend engineer operating 6+ production APIs, 283 databases across 5 engines, 14 Docker containers, and distributed services across a 7-node fleet.',
+    summary: 'Every feature needs an API. Built 6+ production services, unified 283 databases across 5 engines, and designed data architectures that run on $80 hardware — because the backend doesn\'t care how much you spent on it.',
     sections: [
-      { title: 'APIs & Services', bullets: [
-        'CECE API (FastAPI) — custom LLM interaction and TTS',
-        'Lucidia API (FastAPI) — application platform',
-        'AI image generation API with 4 backend agents',
-        'Code search engine indexing 354 repos',
-        'Fleet health and KPI collection APIs',
+      { title: 'The APIs: Each One Solving a Real Problem', bullets: [
+        'CECE API (FastAPI) — needed custom LLM interaction with personality. Built TTS generation endpoint. Runs on Pi 5 at the edge',
+        'AI image generation API — 4 backend agents (DALL-E, Flux, SDXL, FAL) behind a single endpoint. Automatic model routing based on prompt type',
+        'Code search engine — needed to find anything across 354 repos instantly. Built FTS5 index, sub-millisecond lookups across entire codebase',
+        'Fleet health APIs — SSH-based probes collect metrics from every node. Powers the KPI dashboard and automated alerting',
       ]},
+<<<<<<< Updated upstream
       { title: 'Databases (283 total)', bullets: [
         '11 PostgreSQL databases for relational data',
         '230 SQLite databases (1.4 GB) for app state',
         '22 Cloudflare D1 for serverless apps',
         '47 KV namespaces for edge caching',
         'FTS5 full-text search across 156K entries',
+=======
+      { title: 'The Data: Right Database for the Right Job', bullets: [
+        '11 PostgreSQL for transactional data. 230 SQLite (1.4 GB) for agent memory and local state — embedded, zero-config, fast',
+        '23 Cloudflare D1 for serverless applications. 47 KV namespaces for edge configuration and caching. Qdrant for vector search',
+        'FTS5 full-text search across 156K entries — the entire knowledge base is searchable in under a millisecond',
+>>>>>>> Stashed changes
       ]},
     ],
     skills: ['Python/FastAPI', 'Node.js', 'PostgreSQL', 'SQLite/FTS5', 'D1', 'KV', 'Docker', 'Nginx', 'Redis'],
     kpis: ['postgres_dbs', 'sqlite_dbs', 'cf_d1_databases', 'cf_kv_namespaces', 'docker_containers', 'total_loc'],
   },
   { slug: 'systems', num: '09', title: 'Systems Engineer', accent: '#CC00AA',
-    summary: 'Systems engineer: kernel tuning, Hailo-8 NPU integration, 256 systemd services, fleet power optimization, and custom hardware configurations across 5 Pi nodes.',
+    summary: 'When your production fleet is single-board computers, every kernel parameter matters. Tuned CPU governors, stabilized voltage, integrated PCIe AI accelerators, and squeezed production workloads from hardware that fits in your hand.',
     sections: [
-      { title: 'Kernel & System Tuning', bullets: [
-        'CPU governor optimization (conservative mode, frequency capping)',
-        'Swappiness, dirty_ratio, and VM tuning via sysctl',
-        'GPU memory reduction (256MB to 16MB) for headless operation',
-        'Overclock removal and voltage stabilization (+95mV recovery)',
+      { title: 'The Constraint: Maximum Work from Minimum Hardware', bullets: [
+        'A Pi 5 has 8 GB RAM, a quad-core ARM, and a 30W power budget. It needs to run Docker, Ollama, Nginx, PostgreSQL, and 50+ systemd services simultaneously',
+        'Tuned swappiness to 10, dirty_ratio to 40, applied conservative CPU governors, capped frequency to 2 GHz — workloads stable, temperatures safe',
+        'GPU memory reduced from 256MB to 16MB on headless nodes — freed RAM for actual compute. Disabled cups, rpcbind, nfs, lightdm across fleet',
       ]},
-      { title: 'Hardware Integration', bullets: [
-        '2x Hailo-8 NPU (52 TOPS) — PCIe driver, firmware, /dev/hailo0',
-        'NVMe SSD on Octavia (1TB)',
-        'USB peripherals: UART, SuperDrive, keyboards, microphones',
-        'I2C OLED displays, IR receivers, GPIO management',
+      { title: 'The Integration: Making Hardware Talk', bullets: [
+        '2x Hailo-8 NPU via PCIe — installed drivers, firmware, verified /dev/hailo0 on both nodes. 52 TOPS of AI acceleration, zero cloud cost',
+        'NVMe SSD on Octavia (1TB) — faster I/O for Gitea, Docker images, and model weights. USB peripherals: UART, keyboards, microphones, OLED displays',
+        'Overclock on one node caused undervoltage (0.75V) — removed overclock, tuned config.txt, recovered +95mV. Fleet-wide voltage monitoring deployed',
       ]},
-      { title: 'Service Management', bullets: [
-        '256 systemd services, 35 timers across fleet',
-        'Self-healing watchdogs and autonomy scripts',
-        'Power monitoring deployed to all nodes (cron */5)',
+      { title: 'The Discipline: 256 Services, Zero Chaos', bullets: [
+        '256 systemd services and 35 timers across fleet — each one has a purpose, a health check, and an owner',
+        'Self-healing watchdogs restart failed services. Power monitoring logs every 5 minutes. Everything persistent across reboots via sysctl.d and tmpfiles.d',
       ]},
     ],
     skills: ['Linux kernel', 'systemd', 'sysctl', 'PCIe', 'I2C', 'GPIO', 'Hailo-8', 'NVMe', 'Bash', 'Python'],
     kpis: ['systemd_services', 'systemd_timers', 'fleet_total', 'avg_temp_c', 'fleet_mem_total_mb', 'fleet_disk_total_gb'],
   },
   { slug: 'edge', num: '10', title: 'Edge Computing Engineer', accent: '#8844FF',
-    summary: 'Edge computing engineer: 5 Pi nodes with on-device AI (52 TOPS), WiFi mesh network, local inference, and self-healing distributed services.',
+    summary: 'Cloud inference is someone else\'s computer running your data. Deployed 27 AI models on-device across 5 Pi nodes with 52 TOPS acceleration, built a WiFi mesh for local connectivity, and kept it all running with self-healing automation.',
     sections: [
-      { title: 'Edge Nodes', bullets: [
-        '5 Raspberry Pi nodes (4x Pi 5, 1x Pi 400) running Debian',
-        '2x Hailo-8 AI accelerators for on-device inference',
-        '27 Ollama models deployed across 3 inference nodes',
-        'NVMe storage, OLED displays, IR receivers',
+      { title: 'The Vision: AI at the Edge, Not in the Cloud', bullets: [
+        '27 Ollama models (48.1 GB) running on 3 Pi 5 nodes — inference happens on-premise, data never leaves the network',
+        '2x Hailo-8 NPUs (52 TOPS total) for hardware-accelerated inference — PCIe integration, driver management, firmware updates',
+        '4 custom fine-tuned CECE models — personality, voice, and domain expertise that can\'t be replicated with off-the-shelf models',
       ]},
-      { title: 'Mesh Networking', bullets: [
-        'RoadNet WiFi mesh: 5 APs, 5 subnets (10.10.x.0/24)',
-        'WireGuard encrypted tunnels between all nodes',
-        'Tailscale overlay for remote management (9 peers)',
-        'Pi-hole DNS + custom DNS zones (.cece, .blackroad)',
+      { title: 'The Network: Mesh Connectivity Without Internet', bullets: [
+        'RoadNet WiFi mesh: 5 APs on channels 1/6/11, 5 subnets (10.10.x.0/24), NAT through wlan0 — devices connect to fleet directly',
+        'WireGuard mesh for encrypted node-to-node communication. Tailscale overlay (9 peers) for remote management from anywhere',
+        'Pi-hole DNS for local resolution + custom zones (.cece, .blackroad) — edge services discoverable by name, not IP',
       ]},
-      { title: 'Edge AI', bullets: [
-        'On-device LLM inference with thermal management',
-        'Streaming SSE proxy for real-time model responses',
-        '4 custom fine-tuned CECE models',
+      { title: 'The Challenge: Keeping Edge Alive', bullets: [
+        'Edge hardware fails differently than cloud — SD cards degrade, power supplies sag, thermal throttling kills inference mid-response',
+        'Self-healing autonomy on every node. Power monitoring every 5 minutes. Automatic service restarts. Temperature alerts before shutdown',
       ]},
     ],
     skills: ['Raspberry Pi', 'Hailo-8', 'Ollama', 'WireGuard', 'WiFi mesh', 'Pi-hole', 'Docker', 'Linux'],
     kpis: ['fleet_total', 'fleet_online', 'ollama_models', 'avg_temp_c', 'tailscale_peers', 'fleet_disk_total_gb'],
   },
   { slug: 'automation', num: '11', title: 'Automation Engineer', accent: '#4488FF',
-    summary: 'Automation engineer: 212 CLI tools, 52 automated tasks, 9 KPI data collectors, self-healing fleet, and automated resume generation from live metrics.',
+    summary: 'A solo operator can\'t manually manage 256 services, 1,603 repos, and 7 nodes. Built 212 CLI tools and 52 scheduled automations that turn a one-person operation into a self-sustaining system.',
     sections: [
+<<<<<<< Updated upstream
       { title: 'CLI Tools & Scripts', bullets: [
         '223 CLI tools (121 MB) in ~/bin for every operational task',
         '91 shell scripts for fleet management and deployment',
         'Custom brand compliance auditing and mass update tools',
         'Automated GitHub-to-Gitea relay syncing every 30 minutes',
+=======
+      { title: 'The Philosophy: If You Did It Twice, Automate It', bullets: [
+        '212 CLI tools (121 MB) in ~/bin — every deployment, probe, audit, sync, and report is a single command',
+        '91 shell scripts for fleet management. Custom brand compliance auditing. Mass update tooling across all 99 sites',
+        'GitHub-to-Gitea relay syncs 207 repos every 30 minutes — cross-platform Git without manual intervention',
+>>>>>>> Stashed changes
       ]},
-      { title: 'Scheduled Automation', bullets: [
-        '17 Mac cron jobs + 35 fleet timers = 52 automated tasks',
-        'Daily KPI collection at 6 AM across 9 data sources',
-        'Self-healing autonomy scripts (heartbeat 1m, heal 5m)',
-        'Power monitoring every 5 minutes on all nodes',
+      { title: 'The Schedule: 52 Tasks Running Without You', bullets: [
+        '17 Mac cron jobs + 35 fleet systemd timers = 52 automated tasks running daily, hourly, and every 5 minutes',
+        'Daily KPI collection at 6 AM: 10 collectors pull from GitHub API, fleet SSH, Cloudflare CLI, local Mac — aggregated into daily report',
+        'Self-healing autonomy: heartbeat every 60s, heal every 5m, power monitor every 5m — fleet maintains itself overnight',
       ]},
-      { title: 'Data Collection', bullets: [
-        '9 collectors: GitHub, GitHub-deep, all-orgs, Gitea, fleet, services, autonomy, LOC, local, Cloudflare',
-        '60+ KPIs tracked daily with day-over-day deltas',
-        'Automated resume update pipeline from verified metrics',
+      { title: 'The Pipeline: Data That Updates Itself', bullets: [
+        '10 collectors generate snapshots \u2192 aggregated into daily JSON \u2192 pushed to Cloudflare KV \u2192 live resume dashboards update automatically',
+        'Every number on this page came from an automated collector, not a human typing it. Updated daily. Verified by source',
       ]},
     ],
     skills: ['Bash', 'Python', 'cron', 'systemd timers', 'GitHub Actions', 'SSH automation', 'jq', 'curl'],
     kpis: ['bin_tools', 'home_scripts', 'mac_cron_jobs', 'systemd_timers', 'fleet_cron_jobs', 'repos_total'],
   },
   { slug: 'database', num: '12', title: 'Database Engineer', accent: '#00D4FF',
-    summary: 'Database engineer managing 283 databases across 5 engines: PostgreSQL, SQLite, Cloudflare D1, KV stores, and Qdrant vector DB. FTS5 search across 156K entries.',
+    summary: 'Different data needs different storage. Designed and operate 283 databases across 5 engines — PostgreSQL for transactions, SQLite for embedded state, D1 for serverless, KV for edge config, Qdrant for vectors. Each one chosen for a reason.',
     sections: [
+<<<<<<< Updated upstream
       { title: 'Database Fleet (283 total)', bullets: [
         '11 PostgreSQL databases for relational application data',
         '230 SQLite databases (1.4 GB) for agent memory and metrics',
         '22 Cloudflare D1 serverless databases',
         '47 KV namespaces for edge configuration',
         'Qdrant vector database for semantic search',
+=======
+      { title: 'The Decision: Why 5 Engines, Not 1', bullets: [
+        'PostgreSQL (11 DBs) for relational data that needs ACID guarantees — user state, application data, fleet metadata',
+        'SQLite (230 DBs, 1.4 GB) for embedded, zero-config storage — agent memory, metrics history, local state. No server process, instant access',
+        'Cloudflare D1 (23 DBs) for serverless apps at the edge — data lives next to the Workers that query it. Millisecond reads globally',
+        'KV (47 namespaces) for configuration and caching — edge-distributed, eventually consistent, perfect for feature flags and session data',
+>>>>>>> Stashed changes
       ]},
-      { title: 'Search & Indexing', bullets: [
-        'FTS5 full-text search across 156,675 memory entries',
-        'Code search engine indexing 354 repos',
-        '111 registered systems in systems database',
+      { title: 'The Search: Finding Anything Instantly', bullets: [
+        'FTS5 full-text search across 156,675 memory entries — the entire knowledge base searchable in under a millisecond',
+        'Code search engine indexing 354 repos — find any function, any file, any pattern across the whole codebase',
+        '111 registered systems tracked in a systems database — every device, service, and endpoint has a record',
       ]},
     ],
     skills: ['PostgreSQL', 'SQLite/FTS5', 'Cloudflare D1', 'KV stores', 'Qdrant', 'SQL', 'Python', 'database design'],
-    kpis: ['postgres_dbs', 'sqlite_dbs', 'cf_d1_databases', 'cf_kv_namespaces', 'fts5_entries', 'systems_registered'],
+    kpis: ['postgres_dbs', 'sqlite_dbs', 'total_db_rows', 'cf_d1_databases', 'cf_kv_namespaces', 'fts5_entries'],
   },
   { slug: 'network', num: '13', title: 'Network Engineer', accent: '#FF6B2B',
-    summary: 'Network engineer: WireGuard mesh VPN, Tailscale overlay, RoadNet WiFi mesh (5 APs), 4 Cloudflare tunnels, 48 Nginx sites, Pi-hole DNS.',
+    summary: 'Connecting 7 nodes across 3 physical locations with zero open ports. Built a multi-layer network: WireGuard mesh for encryption, Cloudflare tunnels for zero-trust access, RoadNet WiFi mesh for local coverage, and Pi-hole DNS for control.',
     sections: [
-      { title: 'VPN & Mesh', bullets: [
-        'WireGuard mesh VPN connecting all nodes (10.8.0.x)',
-        'Tailscale overlay network with 9 peers',
-        'RoadNet WiFi mesh: 5 APs, channels 1/6/11, auto-failover',
-        '4 Cloudflare tunnels routing 48+ domains',
+      { title: 'The Layers: Defense in Depth', bullets: [
+        'Layer 1 — WireGuard mesh VPN (10.8.0.x): encrypted tunnels between all nodes. Every packet between nodes is encrypted, period',
+        'Layer 2 — Cloudflare tunnels (4 active): 48+ domains routed to fleet with zero open ports. External traffic never touches a public IP',
+        'Layer 3 — Tailscale overlay (9 peers): management access from anywhere. MagicDNS for node resolution. Exit nodes for remote debugging',
+        'Layer 4 — RoadNet WiFi mesh: 5 APs on non-overlapping channels, 5 subnets, NAT, auto-failover — local devices talk to fleet directly',
       ]},
-      { title: 'DNS & Routing', bullets: [
-        'Pi-hole DNS for ad blocking and local resolution',
-        'PowerDNS Docker for custom zones',
-        'Custom DNS zones: .cece, .blackroad, .entity, .soul, .dream',
-        '48 Nginx reverse proxy sites with health checking',
-      ]},
-      { title: 'Security', bullets: [
-        'Zero-trust architecture via Cloudflare tunnels',
-        'UFW firewall policies on edge nodes',
-        'Credential management via secured env files',
+      { title: 'The DNS: Names, Not Numbers', bullets: [
+        'Pi-hole for ad blocking and local DNS resolution. PowerDNS Docker for custom authoritative zones',
+        'Custom DNS zones: .cece, .blackroad, .entity, .soul, .dream — edge services discoverable by domain name within the network',
+        '48 Nginx reverse proxy sites with health checking — each domain routes to the right backend on the right node',
       ]},
     ],
     skills: ['WireGuard', 'Tailscale', 'Nginx', 'Cloudflare Tunnels', 'Pi-hole', 'PowerDNS', 'UFW', 'iptables'],
     kpis: ['nginx_sites', 'tailscale_peers', 'fleet_total', 'cf_pages', 'fleet_connections', 'systemd_services'],
   },
   { slug: 'security', num: '14', title: 'Security Engineer', accent: '#FF2255',
-    summary: 'Security engineer: malware discovery and removal, zero-trust architecture, credential rotation, fleet hardening, and incident response across distributed infrastructure.',
+    summary: 'Found a crypto miner, a cron dropper, and a leaked PAT in my own infrastructure. Cleaned all of it, rotated credentials fleet-wide, and rebuilt security from zero-trust architecture up — because the hardest incidents are the ones inside your own network.',
     sections: [
-      { title: 'Incident Response', bullets: [
-        'Discovered and removed obfuscated cron dropper on Cecilia',
-        'Identified leaked GitHub PAT in service files — rotated credentials',
-        'Found xmrig (crypto miner) reference on Lucidia — removed',
-        'Migrated plaintext credentials to secured env files (chmod 600)',
+      { title: 'The Incidents: What I Found and How I Fixed It', bullets: [
+        'Obfuscated cron dropper on Cecilia — exec\'ing from /tmp/op.py every 5 minutes. Traced it, removed the cron entry, cleaned /tmp, audited all nodes',
+        'xmrig crypto miner service configured on Lucidia — unit file referencing mining pool. Service removed, system audited for persistence mechanisms',
+        'Leaked GitHub PAT (gho_Gfu...) embedded in a systemd service file on Lucidia — removed from config, token revoked on GitHub, all secrets migrated to chmod 600 env files',
+        '50+ SSH authorized keys on some nodes — audited every key, identified which ones are active, locked down access paths',
       ]},
-      { title: 'Zero-Trust Architecture', bullets: [
-        'Cloudflare tunnels for all external access (no open ports)',
-        'WireGuard encryption for inter-node communication',
-        'SSH key management across 50+ authorized keys per node',
-        'NOPASSWD sudo audit across all fleet nodes',
+      { title: 'The Architecture: Trust Nothing by Default', bullets: [
+        'Zero open ports — all external access through Cloudflare tunnels. No port forwarding, no exposed SSH, no public APIs',
+        'WireGuard encryption for all inter-node traffic. UFW with INPUT DROP policy on edge nodes. Credential rotation enforced fleet-wide',
+        'GitHub security scanning workflows check for AWS keys, tokens, passwords on every push — catches secrets before they ship',
       ]},
-      { title: 'Hardening', bullets: [
-        'UFW firewall with INPUT DROP policy',
-        'Disabled unnecessary services (cups, rpcbind, nfs, lightdm)',
-        'GitHub security scanning workflows for credential detection',
-        'Fleet-wide security audit tooling',
+      { title: 'The Lesson', bullets: [
+        'Security isn\'t a feature you add — it\'s what you find when you actually look. Every fleet needs an adversarial audit, not just a firewall',
       ]},
     ],
     skills: ['incident response', 'malware analysis', 'credential rotation', 'WireGuard', 'Cloudflare tunnels', 'UFW', 'SSH', 'Linux hardening'],
     kpis: ['failed_units', 'fleet_total', 'systemd_services', 'tailscale_peers', 'nginx_sites', 'fleet_online'],
   },
   { slug: 'data', num: '15', title: 'Data Engineer', accent: '#CC00AA',
-    summary: 'Data engineer: 9 automated collectors, 60+ KPIs tracked daily, 283 databases, distributed data pipelines across edge and cloud infrastructure.',
+    summary: 'Needed to prove every metric on every resume. Built a 10-collector pipeline that pulls from GitHub API, SSH fleet probes, Cloudflare CLI, and local system — 80+ KPIs aggregated daily, pushed to KV, served live on 20 dashboards.',
     sections: [
-      { title: 'Data Collection Pipeline', bullets: [
-        '9 collectors: GitHub, GitHub-deep, all-orgs, Gitea, fleet, services, autonomy, LOC, local, Cloudflare',
-        '60+ KPIs tracked daily with JSON snapshots and aggregation',
-        'Day-over-day delta tracking and trend analysis',
-        'Automated daily reports with terminal dashboard and Slack notifications',
+      { title: 'The Problem: Unverifiable Claims Don\'t Get Hired', bullets: [
+        'Resumes say "managed 200+ services" but nobody can verify it. Needed machine-verified metrics with traceable sources',
+        'Built 10 automated collectors: GitHub, GitHub-deep, all-orgs, Gitea, fleet, services, autonomy, LOC, local, Cloudflare',
+        'Each collector runs independently, outputs JSON snapshots. Daily aggregation merges into a single file with 80+ keys. Every number has a source',
       ]},
-      { title: 'Data Infrastructure', bullets: [
-        '283 databases across PostgreSQL, SQLite, D1, KV, Qdrant',
-        'FTS5 full-text search across 156K entries',
-        'Distributed data collection via SSH probes to fleet nodes',
-        'Automated metric-to-resume pipeline (verified data flow)',
+      { title: 'The Pipeline: Collect \u2192 Aggregate \u2192 Serve', bullets: [
+        'Fleet probes: Python scripts piped over SSH stdin to remote nodes — avoids shell quoting issues, runs on any node without installing anything',
+        'Cloudflare inventory: wrangler CLI queries Pages, D1, KV, R2 counts. GitHub API: paginated queries across 17 organizations, deduped',
+        'Daily JSON pushed to Cloudflare KV \u2192 Worker serves 20 live resume dashboards. Every number on this page updated automatically at 6 AM',
+      ]},
+      { title: 'The Scale: 283 Databases, One Pipeline', bullets: [
+        '283 databases across PostgreSQL, SQLite, D1, KV, Qdrant — each one discovered, counted, and tracked by the collectors',
+        'FTS5 full-text search across 156K entries. 111 registered systems. Day-over-day deltas show trends, not just snapshots',
       ]},
     ],
     skills: ['Python', 'PostgreSQL', 'SQLite/FTS5', 'Cloudflare D1', 'data pipelines', 'SSH probes', 'JSON', 'Bash'],
-    kpis: ['total_loc', 'repos_total', 'postgres_dbs', 'sqlite_dbs', 'cf_d1_databases', 'systems_registered'],
+    kpis: ['total_loc', 'repos_total', 'postgres_dbs', 'sqlite_dbs', 'total_db_rows', 'cf_d1_databases'],
   },
   { slug: 'architect', num: '16', title: 'Solutions Architect', accent: '#8844FF',
+<<<<<<< Updated upstream
     summary: 'Solutions architect: designed full hybrid edge-cloud architecture spanning 7 nodes, 184 Cloudflare resources, 48+ domains, and distributed AI inference.',
+=======
+    summary: 'Designed a hybrid architecture that combines $700 in edge hardware with Cloudflare\'s global network — 178 cloud resources, 48+ domains, 7 nodes, 52 TOPS AI compute, all working as one system. The proof is that it\'s running right now.',
+>>>>>>> Stashed changes
     sections: [
-      { title: 'Architecture Design', bullets: [
-        'Hybrid edge-cloud: 5 Pi nodes + 2 cloud VMs + Cloudflare serverless',
-        'WireGuard mesh + Cloudflare tunnels + Tailscale for multi-layer networking',
-        'AI inference distributed across 3 nodes with 52 TOPS acceleration',
-        '283 databases across 5 engines for different workload patterns',
+      { title: 'The Design Decision: Why Hybrid', bullets: [
+        'Pure cloud: fast to start, expensive to scale, no data sovereignty. Pure edge: cheap to run, limited reach, hard to expose',
+        'Combined both: Cloudflare for global CDN, edge compute, and serverless databases. Pi fleet for persistent workloads, AI inference, and data ownership',
+        'WireGuard mesh connects everything. Cloudflare tunnels expose services. Tailscale provides management plane. Three networking layers, one unified system',
       ]},
+<<<<<<< Updated upstream
       { title: 'Cloudflare Stack', bullets: [
         '101 Pages + 25 D1 + 47 KV + 11 R2 = 178 resources',
         '4 tunnels routing 48+ domains to fleet services',
         'Workers for edge compute and API routing',
+=======
+      { title: 'The Stack: 178 Cloudflare Resources + 7 Fleet Nodes', bullets: [
+        '99 Pages (global CDN) + 23 D1 (serverless SQL) + 47 KV (edge config) + 11 R2 (object storage) = 178 managed resources',
+        '5 Pi nodes for persistent compute: Docker, Ollama, PostgreSQL, Nginx. 2 cloud VMs for VPN hub and public services',
+        'AI inference distributed across 3 nodes with 52 TOPS — requests route to the node with the right model loaded',
+      ]},
+      { title: 'The Validation', bullets: [
+        'This architecture runs 48+ production domains, serves real traffic, and costs under $50/month in cloud spend. The rest is hardware you own',
+        '283 databases across 5 engines — each one placed where the latency and consistency requirements demand it',
+>>>>>>> Stashed changes
       ]},
     ],
     skills: ['system design', 'Cloudflare', 'WireGuard', 'distributed systems', 'edge computing', 'AI infrastructure'],
     kpis: ['cf_pages', 'cf_d1_databases', 'cf_kv_namespaces', 'cf_r2_buckets', 'fleet_total', 'repos_total'],
   },
   { slug: 'lead', num: '17', title: 'Technical Lead', accent: '#4488FF',
+<<<<<<< Updated upstream
     summary: 'Technical lead: 51,211 commits in 2026 (3,582 in a single day peak), 4,019 PRs merged, 1,810 repos across 17 organizations, 20 languages, 7.2M+ lines of code.',
     sections: [
       { title: 'Code Velocity', bullets: [
@@ -375,49 +436,77 @@ const ROLES = [
         '7.2M+ lines of code with daily LOC tracking',
         '223 CLI tools built for operational efficiency',
         'Custom programming language (RoadC) with interpreter',
+=======
+    summary: '326 commits/day. 4,019 PRs merged. 1,603 repos across 17 organizations. 20 languages. 7.2M lines of code. This is what sustained technical velocity looks like when you architect for speed and automate everything that slows you down.',
+    sections: [
+      { title: 'The Velocity: Why These Numbers Are Real', bullets: [
+        '326 commits/day isn\'t sprinting — it\'s the natural output of 212 CLI tools, automated pipelines, and infrastructure that doesn\'t fight you',
+        '4,019 PRs merged across all repos. Every change goes through a PR, even solo. The discipline of code review applies to yourself',
+        '1,603 GitHub repos across 17 organizations — each org has a purpose (AI, Cloud, Hardware, Education, etc.). 207 more on self-hosted Gitea',
+      ]},
+      { title: 'The Breadth: 20 Languages, One Person', bullets: [
+        'Python (470 repos), JavaScript (114), HTML (314), Shell (160), TypeScript (85), Go, C, MDX, Dockerfile, CSS — the right language for the right job',
+        '7.2M lines of code tracked daily by automated LOC collector — not vanity, verification. Every line is accounted for',
+        'Custom programming language (RoadC) with full interpreter: lexer, parser, tree-walking evaluator — because sometimes the right tool doesn\'t exist yet',
+      ]},
+      { title: 'The Principle', bullets: [
+        'Technical leadership isn\'t about managing people. It\'s about building systems so well that one person can operate what usually takes a team',
+>>>>>>> Stashed changes
       ]},
     ],
     skills: ['Python', 'JavaScript', 'TypeScript', 'Bash', 'Go', 'C', 'React', 'FastAPI', 'system design', 'mentorship'],
     kpis: ['commits_ytd', 'commits_today', 'prs_merged_total', 'repos_total', 'total_loc', 'github_language_count', 'bin_tools'],
   },
   { slug: 'python', num: '18', title: 'Python Developer', accent: '#00D4FF',
-    summary: 'Python developer: 470 Python repos, FastAPI APIs, AI model integration, data pipelines, SSH automation, and KPI collection systems.',
+    summary: '470 Python repos. FastAPI services handling AI inference, fleet probes, and data pipelines. Python isn\'t just a language in this stack — it\'s the glue that holds 7 nodes, 27 models, and 283 databases together.',
     sections: [
-      { title: 'Python Applications', bullets: [
-        '470 Python repositories across all organizations',
-        'FastAPI services: CECE API, TTS API, Lucidia API, fleet probes',
-        'AI integration: Ollama client, image generation agents, model management',
-        'KPI data collection and aggregation pipelines',
+      { title: 'The Services: Python in Production', bullets: [
+        'CECE API (FastAPI) — custom LLM personality engine with text-to-speech. Runs on Pi 5, serves inference over HTTP',
+        'Lucidia API (FastAPI) — application platform backend. CarPool (Next.js + Clerk) frontend, Python API layer',
+        'Fleet probes — Python scripts piped over SSH stdin to remote nodes. No installation needed. Collects CPU, RAM, disk, Docker, Ollama, systemd stats',
+        'KPI aggregation pipeline — 10 collectors output JSON, Python merges into daily summary with 80+ keys, pushes to KV',
       ]},
-      { title: 'Python Infrastructure', bullets: [
-        'SSH-based fleet probes piped as Python scripts to remote nodes',
-        'FTS5 search engine with 156K indexed entries',
-        'Custom RoadC language interpreter (lexer + parser + tree-walker)',
-        'Automated reporting: terminal dashboards, Slack, markdown, resume generation',
+      { title: 'The Tools: Python Solving Real Problems', bullets: [
+        'FTS5 search engine — Python + SQLite full-text search across 156K memory entries. Sub-millisecond lookups',
+        'RoadC interpreter — custom language with Python-style indentation. Lexer, parser, and tree-walking evaluator, all in Python',
+        'AI image generation hub — Python orchestrating 4 backend agents (DALL-E, Flux, SDXL, FAL), automatic model selection',
+        'Automated reporting — terminal dashboards, Slack notifications, markdown reports, resume generation. All Python',
       ]},
     ],
     skills: ['Python', 'FastAPI', 'SQLite', 'PostgreSQL', 'Ollama', 'asyncio', 'subprocess', 'json', 'data pipelines'],
     kpis: ['total_loc', 'repos_total', 'postgres_dbs', 'sqlite_dbs', 'ollama_models', 'systems_registered'],
   },
   { slug: 'product', num: '19', title: 'Product Engineer', accent: '#FF6B2B',
-    summary: 'Product engineer: 99 live sites, 75 design templates, brand-locked design system, AI image generation, and full SaaS surface coverage.',
+    summary: '99 live sites, but no design team. Built a brand-locked design system with 75 templates, 15 page types, and automated compliance auditing — every site ships on-brand because the system won\'t let you ship off-brand.',
     sections: [
+<<<<<<< Updated upstream
       { title: 'Product Development', bullets: [
         '101 Cloudflare Pages projects deployed across 48+ domains',
         '75 design templates with brand-locked system (gradients, typography, spacing)',
         '15 page types: landing, pricing, blog, docs, dashboard, auth, portfolio, status',
         'AI image generation hub with 4 backend agents',
+=======
+      { title: 'The System: Brand as Code', bullets: [
+        'Gradient spectrum locked: #FF6B2B \u2192 #FF2255 \u2192 #CC00AA \u2192 #8844FF \u2192 #4488FF \u2192 #00D4FF. No other colors in containers with text',
+        'Typography locked: Space Grotesk for display, JetBrains Mono for code, Inter for body. Golden ratio spacing (\u03C6 = 1.618)',
+        'Automated brand compliance auditing — tooling scans all 99 sites for violations. Mass update tooling applies fixes fleet-wide',
+>>>>>>> Stashed changes
       ]},
-      { title: 'Brand System', bullets: [
-        'Brand-lock enforced: gradient spectrum, Space Grotesk + JetBrains Mono, golden ratio spacing',
-        'Automated brand compliance auditing tools',
-        'Mass brand update tooling across all 99 sites',
+      { title: 'The Coverage: 15 Page Types, Every SaaS Surface', bullets: [
+        'Landing (hero, light alt), pricing, blog (listing + article), docs, dashboard, auth, portfolio, contact, error-404, status, settings, team, changelog',
+        '75 design templates (HTML/JSX) — each one brand-locked, responsive, and production-ready. Plug in content and deploy',
+        '99 Cloudflare Pages projects across 48+ custom domains — every site is live, every domain has SSL, every page loads in under 2 seconds',
+      ]},
+      { title: 'The Product: AI Image Generation', bullets: [
+        'images.blackroad.io — AI image generation hub with 4 backend agents, R2 storage, D1 metadata, single API endpoint',
+        'Users request images by prompt. System routes to best model (DALL-E for quality, Flux for speed). Results stored and served from R2',
       ]},
     ],
     skills: ['React', 'Next.js', 'HTML/CSS', 'Cloudflare Pages', 'design systems', 'brand management', 'Figma'],
     kpis: ['cf_pages', 'templates', 'repos_total', 'total_loc', 'nginx_sites', 'bin_tools'],
   },
   { slug: 'cto', num: '20', title: 'Startup CTO', accent: '#CC00AA',
+<<<<<<< Updated upstream
     summary: 'Technical founder who orchestrated AI agents to build BlackRoad OS from zero: 7.2M LOC, 1,810 repos, 7-node fleet, 96 Workers, 27 AI models, 283 databases, and 54 live domains. One person directing agents.',
     sections: [
       { title: 'Orchestrated From Zero', bullets: [
@@ -425,22 +514,34 @@ const ROLES = [
         '20 programming languages, 51,000+ commits YTD — sustained 700/day velocity via agent orchestration',
         '223 CLI tools — defined patterns once, agents replicated consistently across all tools',
         '4,019 PRs merged — agent-generated code reviewed and merged through disciplined workflow',
+=======
+    summary: 'Built BlackRoad OS from nothing — no team, no funding, no existing code. One person, 7.2M lines of code, 1,810 repos, 7-node fleet, 27 AI models, 283 databases, 48+ live domains. The entire company\'s technical stack, soup to nuts, solo.',
+    sections: [
+      { title: 'From Zero to Production — Alone', bullets: [
+        'Started with an idea and a credit card. Now: 7.2M lines of code, 1,603 GitHub repos across 17 orgs, 207 Gitea repos across 7 more',
+        '326 commits/day sustained velocity. 4,019 PRs merged. 20 programming languages. 212 CLI tools built for every operational workflow',
+        'No investors, no employees, no outsourcing — every line of code, every server config, every DNS record is my work',
+>>>>>>> Stashed changes
       ]},
-      { title: 'Infrastructure', bullets: [
-        '5 Pi edge nodes + 2 cloud VMs + Cloudflare serverless',
-        'WireGuard mesh VPN + 4 tunnels + Tailscale (9 peers)',
-        '256 systemd services, 14 Docker containers, 48 Nginx sites',
-        '707 GB storage, 20 GB RAM, 52 TOPS AI compute',
+      { title: 'The Infrastructure Decision: Own Everything', bullets: [
+        '5 Raspberry Pi edge nodes + 2 cloud VMs + Cloudflare serverless — total hardware cost under $700, cloud spend under $50/month',
+        '256 systemd services, 14 Docker containers, 48 Nginx sites, 27 Ollama models (48.1 GB), 52 TOPS AI compute (2x Hailo-8)',
+        'WireGuard mesh + 4 Cloudflare tunnels + Tailscale overlay — three networking layers ensuring everything talks to everything, encrypted',
       ]},
-      { title: 'AI/ML', bullets: [
-        '27 Ollama models (48.1 GB) across 3 inference nodes',
-        '4 custom fine-tuned models, 2x Hailo-8 NPU',
-        'AI image generation with 4 backend agents',
+      { title: 'The Cloud Platform: 178 Managed Resources', bullets: [
+        '99 Pages, 23 D1, 47 KV, 11 R2 — Cloudflare is the global layer. Fleet is the sovereign layer. Both managed through CLI automation',
+        '283 databases across 5 engines. 48+ custom domains. 52 automated tasks. 60+ KPIs tracked daily across 10 collectors',
       ]},
+<<<<<<< Updated upstream
       { title: 'Cloud & Data', bullets: [
         '101 Pages, 25 D1, 47 KV, 11 R2, 48+ domains',
         '283 databases across 5 engines',
         '52 automated tasks, 60+ KPIs tracked daily',
+=======
+      { title: 'Why It Matters', bullets: [
+        'This isn\'t a portfolio project — it\'s a production system serving real traffic. Every metric on this page is collected from live infrastructure, right now',
+        'A CTO who built the whole stack understands every layer. I don\'t delegate debugging because I wrote the code that\'s breaking',
+>>>>>>> Stashed changes
       ]},
     ],
     skills: ['everything'],
@@ -635,6 +736,7 @@ const KPI_LABELS = {
   fleet_cron_jobs: 'Fleet Crons',
   fts5_entries: 'FTS5 Entries',
   systems_registered: 'Systems Registered',
+  total_db_rows: 'Total DB Rows',
 };
 
 const KPI_SOURCES = {
@@ -678,6 +780,7 @@ const KPI_SOURCES = {
   fleet_cron_jobs: 'autonomy.sh — crontab -l via SSH',
   fts5_entries: 'local.sh — sqlite3 FTS5 count',
   systems_registered: 'local.sh — sqlite3 systems count',
+  total_db_rows: 'local.sh — sqlite3 row count across 230 DBs',
 };
 
 const KPI_ACHIEVEMENTS = {
@@ -743,7 +846,7 @@ const KPI_ACHIEVEMENTS = {
 
 function fmt(key, val) {
   if (val === undefined || val === null) return '—';
-  if (key === 'total_loc' || key === 'prs_merged_total' || key === 'fts5_entries') {
+  if (key === 'total_loc' || key === 'prs_merged_total' || key === 'fts5_entries' || key === 'total_db_rows') {
     return typeof val === 'number' ? val.toLocaleString() : val;
   }
   if (key === 'avg_temp_c') return typeof val === 'number' ? val.toFixed(1) + '\u00b0C' : val;
@@ -837,6 +940,33 @@ footer{border-top:1px solid var(--border);padding:48px;text-align:center}
   .metrics-table td:nth-child(3){display:none}
   .metrics-table td:last-child{display:none}
   footer{padding:32px 20px}
+}
+@media print{
+  *{color:#000!important;background:#fff!important;box-shadow:none!important;border-color:#ddd!important}
+  .grad-bar,.hero-orb,.live-dot,.live-clock,.nav-right a,.footer-roles,.btn-solid,.btn-outline{display:none!important}
+  nav{position:static;border-bottom:2px solid #000;padding:12px 0}
+  .nav-logo{color:#000!important}
+  .nav-mark{background:#000!important}
+  .hero{padding:40px 0 20px}
+  .hero h1{font-size:28px}
+  .hero-role{-webkit-text-fill-color:#000!important;color:#000!important}
+  .hero-badge{border-color:#ddd}
+  .hero p{opacity:1;font-size:14px}
+  .kpi-strip{padding:20px 0;gap:32px;border-color:#ddd}
+  .kpi-val{font-size:24px}
+  .kpi-label{opacity:1}
+  .section{padding:24px 0}
+  .section-title{opacity:1}
+  .exp-block{page-break-inside:avoid;border-color:#ddd}
+  .exp-block::before{background:#000!important;opacity:1!important}
+  .exp-block li{opacity:1}
+  .exp-block li::before{background:#000!important}
+  .skill-tag{border-color:#ddd;opacity:1}
+  .metrics-table td{opacity:1}
+  .collected-at{opacity:1}
+  footer{border-color:#ddd}
+  .footer-copy{opacity:1}
+  a{text-decoration:none}
 }`;
 }
 
@@ -848,6 +978,13 @@ function indexPage(kpis) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Alexa Amundson — Resume Portfolio</title>
+<meta name="description" content="20 role-specific resumes with live machine-verified metrics from BlackRoad OS infrastructure. Every number sourced from automated KPI collection.">
+<meta property="og:title" content="Alexa Amundson — 20 Live Resume Dashboards">
+<meta property="og:description" content="Every metric machine-verified from live infrastructure. 7.2M LOC, 1,603 repos, 7-node fleet, 27 AI models. Updated daily.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://resume.blackroad.io">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alexa Amundson — Resume Portfolio">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>${css()}
@@ -1013,6 +1150,12 @@ function resumePage(role, kpis) {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Alexa Amundson — ${role.title}</title>
 <meta name="description" content="${role.summary}">
+<meta property="og:title" content="Alexa Amundson — ${role.title}">
+<meta property="og:description" content="${role.summary.substring(0, 200)}">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://resume.blackroad.io/${role.slug}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alexa Amundson — ${role.title}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>${css()}</style>

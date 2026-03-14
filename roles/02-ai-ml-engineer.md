@@ -8,64 +8,44 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-AI/ML engineer operating 27 deployed language models (48.1 GB) across a distributed edge fleet with 52 TOPS of dedicated AI acceleration. Builds custom model pipelines, inference APIs, and AI-powered automation across a 7-node infrastructure serving 48+ domains.
+Cloud AI APIs are expensive and you don't own the data. Deployed 27 language models on-premise across edge hardware with 52 TOPS of dedicated acceleration — full inference sovereignty at a fraction of the cost.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & AI Lead | 2025–Present
+### BlackRoad OS | Founder & AI/ML Engineer | 2025–Present
 
-**Model Deployment & Operations**
-- Deploy and manage 27 Ollama models (48.1 GB) across 3 edge nodes
-- Fine-tuned 4 custom CECE personality models for domain-specific generation
-- Operate 2× Hailo-8 NPUs (26 TOPS each = 52 TOPS total) for accelerated inference
-- Built Ollama Bridge SSE proxy for streaming model responses to web clients
+**The Problem: AI Without Vendor Lock-In**
+- Needed persistent, private AI inference without per-token API costs or data leaving the network
+- Deployed 27 Ollama models (48.1 GB) across 3 Pi 5 nodes — installed 2x Hailo-8 NPUs (52 TOPS total) for hardware acceleration
+- Fine-tuned 4 custom CECE personality models for domain-specific generation — models that don't exist anywhere else
 
-**AI Infrastructure**
-- Designed multi-node inference routing across Pi 5 fleet (20 GB RAM total)
-- Built AI image generation hub (images.blackroad.io) with 4 backend agents (DALL-E, Flux, SDXL)
-- Manage model lifecycle: deployment, monitoring, memory optimization, thermal throttle prevention
-- Reduced inference node temperature from 73.8°C to 57.9°C by isolating runaway generation loops
+**The Challenge: Thermals Kill Edge AI**
+- Inference on $80 hardware generates heat. A runaway generation loop pushed one node to 73.8°C — approaching thermal shutdown
+- Built power monitoring (cron every 5 min), CPU governor tuning, and voltage optimization — stabilized fleet at 42°C average
+- Reduced GPU memory allocation from 256MB to 16MB on headless nodes, capped frequencies, applied conservative governors — no inference quality loss
 
-**APIs & Integration**
-- Built CECE API (FastAPI) for custom model interaction and TTS generation
-- Created code search engine indexing 354 repos with FTS5 full-text search
-- Operate 11 PostgreSQL databases for AI application state
-- Deploy AI services via Cloudflare Workers (99 Pages, 22 D1 databases)
-
-**Data & Knowledge Systems**
-- Manage 230 SQLite databases (1.4 GB) for agent memory, metrics, and state
-- Built FTS5 knowledge index across 156,675 memory entries
-- 111 registered systems tracked in systems database
-- Custom RoadC programming language with tree-walking interpreter
-
-**Automation & Monitoring**
-- Daily automated KPI collection tracking 60+ AI and infrastructure metrics
-- Power optimization across all AI nodes (CPU governors, voltage tuning)
-- Self-healing autonomy scripts ensuring model availability
+**The Stack: From Model to API to User**
+- Built Ollama Bridge SSE proxy for streaming model responses to web clients in real-time
+- AI image generation hub with 4 backend agents (DALL-E, Flux, SDXL, FAL) — single API, best-model routing
+- FTS5 knowledge index across 156,675 memory entries — models can search their own history across 230 SQLite databases
 
 ---
 
 ## Technical Skills
 
-**AI/ML:** Ollama, Hailo-8 NPU, DALL-E, Flux, SDXL, custom fine-tuning, LLM orchestration
-**Languages:** Python (470 repos), JavaScript (114 repos), TypeScript (85 repos), Bash, Go, C
-**Frameworks:** FastAPI, Next.js, React, Node.js
-**Infrastructure:** Raspberry Pi 5 fleet, Docker Swarm, WireGuard, Cloudflare
-**Databases:** PostgreSQL, SQLite/FTS5, Cloudflare D1, KV stores, Qdrant (vector)
-**Tools:** Ollama, Docker, GitHub Actions, Gitea, Wrangler
+Ollama, Hailo-8 NPU, DALL-E, Flux, SDXL, FastAPI, Python, FTS5, Docker
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Models deployed | 27 (48.1 GB) |
-| AI acceleration | 52 TOPS |
-| Custom models | 4 fine-tuned |
-| Image gen agents | 4 |
-| Databases | 241 (11 PG + 230 SQLite) |
-| Lines of code | 7,212,320 |
-| Repos | 1,810 |
+| Metric | Value | Source |
+|--------|-------|--------|
+| AI Models | *live* | services.sh — ollama list via SSH |
+| Model Size (GB) | *live* | services.sh — ollama list via SSH |
+| Lines of Code | *live* | loc.sh — cloc + fleet SSH |
+| Total Repos | *live* | github-all-orgs.sh — gh api repos (17 owners) |
+| SQLite DBs | *live* | local.sh — find ~/.blackroad -name *.db |
+| Docker Containers | *live* | services.sh — docker ps via SSH |

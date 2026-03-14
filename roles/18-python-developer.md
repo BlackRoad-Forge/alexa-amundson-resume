@@ -8,65 +8,41 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Python developer with 470 Python repositories building FastAPI services, CLI tools, data pipelines, AI model interfaces, and automation scripts. Operates 11 PostgreSQL databases, 230 SQLite databases, and production APIs serving 27 AI models across a distributed fleet.
+470 Python repos. FastAPI services handling AI inference, fleet probes, and data pipelines. Python isn't just a language in this stack — it's the glue that holds 7 nodes, 27 models, and 283 databases together.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & Python Lead | 2025–Present
+### BlackRoad OS | Founder & Python Developer | 2025–Present
 
-**API Development (FastAPI)**
-- CECE API: AI model interaction service with streaming responses
-- TTS API: Text-to-speech generation backend
-- Lucidia API: Full application backend with auth integration
-- KPI collection service: 9 data collectors with JSON aggregation
+**The Services: Python in Production**
+- CECE API (FastAPI) — custom LLM personality engine with text-to-speech. Runs on Pi 5, serves inference over HTTP
+- Lucidia API (FastAPI) — application platform backend. CarPool (Next.js + Clerk) frontend, Python API layer
+- Fleet probes — Python scripts piped over SSH stdin to remote nodes. No installation needed. Collects CPU, RAM, disk, Docker, Ollama, systemd stats
+- KPI aggregation pipeline — 10 collectors output JSON, Python merges into daily summary with 80+ keys, pushes to KV
 
-**Data & Automation**
-- 230 SQLite databases (1.4 GB) managed via Python sqlite3
-- FTS5 full-text search across 354 repos and 156,675 memory entries
-- Daily KPI pipeline: GitHub/Gitea API collection, SSH fleet probing, metric aggregation
-- Fleet probe scripts: Python-based remote execution piped over SSH
-
-**AI/ML Integration**
-- Ollama API integration for 27 model endpoints
-- Custom fine-tuning pipeline for 4 CECE personality models
-- Image generation orchestration across 4 backends (DALL-E, Flux, SDXL, Together)
-- SSE/WebSocket streaming for real-time model responses
-
-**CLI & Scripting**
-- RoadC interpreter: lexer, parser, tree-walking evaluator in Python
-- `roadid`: fleet identity management CLI
-- `carpool`: agent routing and load balancing tool
-- Fleet power optimization scripts with --apply mode
-- Observability system with distributed tracing
-
-**Infrastructure**
-- 35 pip packages installed for production use
-- Docker containerization of Python services
-- GitHub Actions CI/CD for Python projects
-- PostgreSQL (psycopg2) and SQLite database management
+**The Tools: Python Solving Real Problems**
+- FTS5 search engine — Python + SQLite full-text search across 156K memory entries. Sub-millisecond lookups
+- RoadC interpreter — custom language with Python-style indentation. Lexer, parser, and tree-walking evaluator, all in Python
+- AI image generation hub — Python orchestrating 4 backend agents (DALL-E, Flux, SDXL, FAL), automatic model selection
+- Automated reporting — terminal dashboards, Slack notifications, markdown reports, resume generation. All Python
 
 ---
 
 ## Technical Skills
 
-**Python:** FastAPI, sqlite3, json, urllib, subprocess, asyncio
-**Databases:** PostgreSQL (psycopg2), SQLite/FTS5, Cloudflare D1
-**AI/ML:** Ollama, model fine-tuning, inference APIs
-**APIs:** REST, WebSocket, SSE, GitHub API, Cloudflare API
-**Tools:** Docker, GitHub Actions, pip, venv
+Python, FastAPI, SQLite, PostgreSQL, Ollama, asyncio, subprocess, json, data pipelines
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Python repos | 470 |
-| APIs built | 4+ |
-| SQLite DBs | 230 |
-| PostgreSQL DBs | 11 |
-| pip packages | 35 |
-| Models integrated | 27 |
-| Lines of code | 7,212,320 |
+| Metric | Value | Source |
+|--------|-------|--------|
+| Lines of Code | *live* | loc.sh — cloc + fleet SSH |
+| Total Repos | *live* | github-all-orgs.sh — gh api repos (17 owners) |
+| PostgreSQL DBs | *live* | services.sh — psql -l via SSH |
+| SQLite DBs | *live* | local.sh — find ~/.blackroad -name *.db |
+| AI Models | *live* | services.sh — ollama list via SSH |
+| Systems Registered | *live* | local.sh — sqlite3 systems count |

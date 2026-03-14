@@ -8,62 +8,45 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-DevOps engineer operating a 7-node distributed infrastructure spanning edge devices and cloud, with 52 automated tasks, 256 managed systemd services, and 99 Cloudflare deployments. Builds self-healing systems with automated monitoring, fleet-wide power optimization, and daily KPI collection across 9 data sources.
+Needed production infrastructure without a team or budget. Built a self-healing 7-node fleet from Raspberry Pis, automated 52 operational tasks, and deployed 99 cloud services — solo, from scratch.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & Infrastructure Lead | 2025–Present
+### BlackRoad OS | Founder & Senior DevOps Engineer | 2025–Present
 
-**Infrastructure Operations**
-- Operate 5 Raspberry Pi nodes + 2 DigitalOcean droplets with WireGuard mesh VPN connecting all endpoints
-- Manage 256 systemd services and 35 timers across fleet with self-healing autonomy scripts
-- Deploy and maintain 14 Docker containers via Docker Swarm orchestration
-- Route 48+ custom domains through 4 Cloudflare tunnels to backend services
+**The Problem: Zero Infrastructure, Zero Team**
+- No existing infrastructure, no ops team, no vendor contracts — needed production-grade systems running 48+ domains on day one
+- Solved by designing a hybrid fleet: 5 Pi nodes + 2 cloud VMs + Cloudflare edge, all connected via WireGuard mesh VPN — total cost under $700 hardware
+- Result: 256 systemd services running across fleet, 48 Nginx reverse proxy sites, 14 Docker containers — all managed by one person
 
-**CI/CD & Automation**
-- Built 212 CLI tools (121 MB) for infrastructure management and deployment
-- Maintain 17 Mac cron jobs + 35 fleet timers for continuous automation
-- Operate GitHub Actions CI/CD pipelines and self-hosted Gitea (207 repos)
-- Automated GitHub-to-Gitea relay syncing every 30 minutes
+**The Bet: Self-Healing Over Manual Ops**
+- Fleet nodes crash, services fail, temperatures spike — manual monitoring doesn't scale for a solo operator running 256 services
+- Built autonomy scripts: heartbeat every 60 seconds, heal cycle every 5 minutes, automatic service restarts on failure
+- Detected a node cooking at 73.8°C from a runaway Ollama loop — auto-isolated the process, dropped temp to 57.9°C without downtime
 
-**Cloud Infrastructure (Cloudflare)**
-- Deployed 99 Pages projects, 22 D1 databases, 46 KV namespaces, 11 R2 buckets
-- Manage Cloudflare Workers for edge compute and API routing
-
-**Monitoring & Observability**
-- Built daily KPI collection system tracking 60+ metrics across 9 collectors
-- Implemented fleet power optimization with CPU governor tuning, voltage monitoring (avg 44.8°C)
-- Created distributed observability with traces database and per-node SSH health probes
-- Manage 48 Nginx reverse proxy sites with health checking
-
-**Reliability**
-- Implemented self-healing cron-based autonomy on all nodes (heartbeat 1m, heal 5m)
-- Reduced node temperature from 73.8°C to 57.9°C by identifying and disabling runaway services
-- Resolved undervoltage throttling via config.txt optimization (+95mV on one node)
+**The Multiplier: 212 CLI Tools**
+- Every repeated task became a tool. 212 CLI tools (121 MB) in ~/bin — deploy, probe, audit, sync, report
+- GitHub-to-Gitea relay syncs 207 repos every 30 minutes. Daily KPI collection tracks 60+ metrics across 10 data sources
+- 99 Cloudflare Pages, 23 D1 databases, 47 KV namespaces, 11 R2 buckets — all deployed and maintained through CLI automation
 
 ---
 
 ## Technical Skills
 
-**Infrastructure:** Linux (Debian/Raspberry Pi OS), Docker, Docker Swarm, systemd, Nginx, WireGuard
-**Cloud:** Cloudflare (Pages, Workers, D1, KV, R2, Tunnels), DigitalOcean, Tailscale
-**CI/CD:** GitHub Actions, Gitea, shell scripting, cron automation
-**Languages:** Bash (91 scripts, 212 CLI tools), Python, JavaScript/TypeScript
-**Monitoring:** Custom KPI system, power monitoring, thermal management, distributed tracing
-**Databases:** PostgreSQL (11 DBs), SQLite (230 DBs), D1, KV stores
+Linux/Debian, Docker Swarm, systemd, Nginx, WireGuard, Cloudflare, GitHub Actions, Bash, Python
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Nodes managed | 7 |
-| Systemd services | 256 |
-| Automated tasks | 52 |
-| Docker containers | 14 |
-| Cloudflare deployments | 99 |
-| CLI tools built | 212 |
-| Repos managed | 1,603 GitHub + 207 Gitea |
+| Metric | Value | Source |
+|--------|-------|--------|
+| Systemd Services | *live* | services.sh — systemctl list-units via SSH |
+| Docker Containers | *live* | services.sh — docker ps via SSH |
+| Fleet Nodes | *live* | fleet.sh — SSH probe to all nodes |
+| CF Pages | *live* | cloudflare.sh — wrangler pages list |
+| CLI Tools | *live* | local.sh — ls ~/bin | wc -l |
+| Total Repos | *live* | github-all-orgs.sh — gh api repos (17 owners) |
+| Nginx Sites | *live* | services.sh — /etc/nginx/sites-enabled via SSH |

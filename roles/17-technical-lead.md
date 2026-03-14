@@ -8,7 +8,7 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Technical lead building BlackRoad OS from zero to 7.2M LOC, 1,810 repos, and a 7-node production fleet. Drives technical direction across AI/ML, infrastructure, cloud, and developer tooling. 326 commits/day velocity with 4,019 PRs merged and 60+ KPIs tracked daily.
+326 commits/day. 4,019 PRs merged. 1,603 repos across 17 organizations. 20 languages. 7.2M lines of code. This is what sustained technical velocity looks like when you architect for speed and automate everything that slows you down.
 
 ---
 
@@ -16,56 +16,34 @@ Technical lead building BlackRoad OS from zero to 7.2M LOC, 1,810 repos, and a 7
 
 ### BlackRoad OS | Founder & Technical Lead | 2025–Present
 
-**Technical Vision & Execution**
-- Architected full-stack platform: edge compute (5 Pis) + cloud (Cloudflare + DO) + AI (27 models)
-- Grew codebase to 7,212,320 LOC across 1,603 GitHub repos in 20 languages
-- Maintained 326 commits/day development velocity
-- Merged 4,019 pull requests across all repositories
+**The Velocity: Why These Numbers Are Real**
+- 326 commits/day isn't sprinting — it's the natural output of 212 CLI tools, automated pipelines, and infrastructure that doesn't fight you
+- 4,019 PRs merged across all repos. Every change goes through a PR, even solo. The discipline of code review applies to yourself
+- 1,603 GitHub repos across 17 organizations — each org has a purpose (AI, Cloud, Hardware, Education, etc.). 207 more on self-hosted Gitea
 
-**Infrastructure Leadership**
-- Designed hybrid edge-cloud architecture with 7 compute nodes
-- 99 Cloudflare Pages, 22 D1 databases, 46 KV, 11 R2 buckets
-- WireGuard mesh VPN + Cloudflare tunnels for secure distributed operations
-- 256 systemd services, 14 Docker containers, 48 Nginx sites
+**The Breadth: 20 Languages, One Person**
+- Python (470 repos), JavaScript (114), HTML (314), Shell (160), TypeScript (85), Go, C, MDX, Dockerfile, CSS — the right language for the right job
+- 7.2M lines of code tracked daily by automated LOC collector — not vanity, verification. Every line is accounted for
+- Custom programming language (RoadC) with full interpreter: lexer, parser, tree-walking evaluator — because sometimes the right tool doesn't exist yet
 
-**AI/ML Direction**
-- Deployed 27 Ollama models (48.1 GB) with 52 TOPS hardware acceleration
-- Fine-tuned 4 custom models for domain-specific applications
-- Built AI image generation pipeline with 4 backend agents
-- SSE streaming proxy for real-time model interaction
-
-**Developer Experience**
-- Built 212 CLI tools (121 MB) for team productivity
-- Self-hosted Gitea with 207 repos across 7 organizations
-- Code search engine indexing 354 repos with FTS5
-- Automated deployment pipelines via GitHub Actions and Cloudflare
-
-**Operational Excellence**
-- Built KPI system tracking 60+ metrics across 9 data sources
-- Self-healing automation on all fleet nodes
-- Security hardening: malware removal, credential rotation, zero-trust networking
-- Power and thermal optimization across edge fleet
+**The Principle**
+- Technical leadership isn't about managing people. It's about building systems so well that one person can operate what usually takes a team
 
 ---
 
 ## Technical Skills
 
-**Leadership:** Architecture design, technical roadmap, operational excellence
-**Stack:** Python, JavaScript/TypeScript, Bash, Go | FastAPI, Next.js, React
-**Infrastructure:** Linux, Docker, Cloudflare, WireGuard, Raspberry Pi, Hailo-8
-**Data:** PostgreSQL, SQLite, D1, KV, R2, FTS5, Qdrant
-**AI:** Ollama, custom fine-tuning, NPU inference, multi-model orchestration
+Python, JavaScript, TypeScript, Bash, Go, C, React, FastAPI, system design, mentorship
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Lines of code | 7,212,320 |
-| Commits/day | 326 |
-| PRs merged | 4,019 |
-| Repos | 1,810 |
-| AI models | 27 |
-| Fleet nodes | 7 |
-| KPIs tracked | 60+ |
+| Metric | Value | Source |
+|--------|-------|--------|
+| Commits Today | *live* | github.sh — gh api events |
+| PRs Merged | *live* | github.sh — gh api search/issues |
+| Total Repos | *live* | github-all-orgs.sh — gh api repos (17 owners) |
+| Lines of Code | *live* | loc.sh — cloc + fleet SSH |
+| Languages | *live* | github-all-orgs.sh — repo language field |
+| CLI Tools | *live* | local.sh — ls ~/bin | wc -l |

@@ -8,64 +8,43 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Solutions architect who designed and built a complete hybrid edge-cloud platform: 7 compute nodes, 99 Cloudflare deployments, 1,810 repositories, 283 databases, 27 AI models, and 48+ production domains. Architects systems spanning infrastructure, application, data, and AI layers.
+Designed a hybrid architecture that combines $700 in edge hardware with Cloudflare's global network — 178 cloud resources, 48+ domains, 7 nodes, 52 TOPS AI compute, all working as one system. The proof is that it's running right now.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & Architect | 2025–Present
+### BlackRoad OS | Founder & Solutions Architect | 2025–Present
 
-**Architecture Design**
-- Hybrid edge-cloud: 5 Pi edge nodes + 2 cloud VMs + Cloudflare serverless
-- Zero-trust networking: Cloudflare tunnels for external access, WireGuard for internal mesh
-- Multi-database strategy: PostgreSQL (relational), SQLite (embedded), D1 (serverless), KV (cache), Qdrant (vector)
-- AI inference tier: 27 models distributed across 3 nodes with NPU acceleration (52 TOPS)
+**The Design Decision: Why Hybrid**
+- Pure cloud: fast to start, expensive to scale, no data sovereignty. Pure edge: cheap to run, limited reach, hard to expose
+- Combined both: Cloudflare for global CDN, edge compute, and serverless databases. Pi fleet for persistent workloads, AI inference, and data ownership
+- WireGuard mesh connects everything. Cloudflare tunnels expose services. Tailscale provides management plane. Three networking layers, one unified system
 
-**Platform Scale**
-- 7,212,320 lines of code across 1,603 GitHub repos (20 languages)
-- 207 Gitea repos across 7 organizations (self-hosted)
-- 99 Cloudflare Pages, 22 D1, 46 KV, 11 R2 for serverless layer
-- 256 systemd services, 14 Docker containers, 48 Nginx sites
+**The Stack: 178 Cloudflare Resources + 7 Fleet Nodes**
+- 99 Pages (global CDN) + 23 D1 (serverless SQL) + 47 KV (edge config) + 11 R2 (object storage) = 178 managed resources
+- 5 Pi nodes for persistent compute: Docker, Ollama, PostgreSQL, Nginx. 2 cloud VMs for VPN hub and public services
+- AI inference distributed across 3 nodes with 52 TOPS — requests route to the node with the right model loaded
 
-**Integration Design**
-- GitHub ↔ Gitea sync relay (30-minute automated mirror)
-- Cloudflare tunnel routing: 4 tunnels mapping 48+ domains to fleet services
-- AI pipeline: model deployment → inference API → SSE streaming → web client
-- KPI pipeline: 9 collectors → aggregation → Slack + markdown + terminal reports
-
-**Brand & Product**
-- 75 design templates with brand-locked design system (gradient, fonts, rules)
-- 15 page template types covering full SaaS application surface
-- Code search engine: 354 repos indexed with FTS5
-- AI image generation hub with 4 backend agents
-
-**Operational Architecture**
-- Self-healing: heartbeat/heal cycles on all nodes
-- Observability: 60+ KPIs, distributed tracing, power monitoring
-- Security: credential rotation, firewall policies, zero-trust access
-- Capacity: 707 GB storage, 20 GB RAM, 52 TOPS AI, auto-scaling via Cloudflare
+**The Validation**
+- This architecture runs 48+ production domains, serves real traffic, and costs under $50/month in cloud spend. The rest is hardware you own
+- 283 databases across 5 engines — each one placed where the latency and consistency requirements demand it
 
 ---
 
 ## Technical Skills
 
-**Architecture:** Hybrid edge-cloud, microservices, event-driven, zero-trust
-**Cloud:** Cloudflare (full stack), DigitalOcean, Tailscale
-**Compute:** Raspberry Pi fleet, Docker Swarm, systemd, Hailo-8 NPU
-**Data:** PostgreSQL, SQLite, D1, KV, R2, Qdrant, FTS5
-**Languages:** Python, JavaScript, TypeScript, Bash, Go, C
+system design, Cloudflare, WireGuard, distributed systems, edge computing, AI infrastructure
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Total LOC | 7,212,320 |
-| Repos | 309 (102 GH + 207 Gitea) |
-| Databases | 283 |
-| CF resources | 178 (99 Pages + 22 D1 + 46 KV + 11 R2) |
-| AI models | 27 (48.1 GB) |
-| Domains | 48+ |
-| Services | 256 |
+| Metric | Value | Source |
+|--------|-------|--------|
+| CF Pages | *live* | cloudflare.sh — wrangler pages list |
+| D1 Databases | *live* | cloudflare.sh — wrangler d1 list --json |
+| KV Namespaces | *live* | cloudflare.sh — wrangler kv list |
+| R2 Buckets | *live* | cloudflare.sh — wrangler r2 bucket list |
+| Fleet Nodes | *live* | fleet.sh — SSH probe to all nodes |
+| Total Repos | *live* | github-all-orgs.sh — gh api repos (17 owners) |

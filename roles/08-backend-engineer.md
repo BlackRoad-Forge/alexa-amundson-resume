@@ -8,62 +8,40 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Backend engineer with 7.2M lines of code across 1,603 repos, operating 11 PostgreSQL databases, 230 SQLite databases, 14 Docker services, and multiple API backends (FastAPI, Node.js) serving 48+ domains through Nginx reverse proxy.
+Every feature needs an API. Built 6+ production services, unified 283 databases across 5 engines, and designed data architectures that run on $80 hardware — because the backend doesn't care how much you spent on it.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & Backend Lead | 2025–Present
+### BlackRoad OS | Founder & Backend Engineer | 2025–Present
 
-**API Development**
-- CECE API (FastAPI): Custom AI model interaction with streaming responses
-- TTS API: Text-to-speech generation service
-- Lucidia API (FastAPI): Application backend with Clerk auth integration
-- Image generation API: 4 backend agents (DALL-E, Flux, SDXL, Together)
-- Code search API: FTS5-powered search across 354 repos
-- KPI collection API: 9 collectors aggregating 60+ daily metrics
+**The APIs: Each One Solving a Real Problem**
+- CECE API (FastAPI) — needed custom LLM interaction with personality. Built TTS generation endpoint. Runs on Pi 5 at the edge
+- AI image generation API — 4 backend agents (DALL-E, Flux, SDXL, FAL) behind a single endpoint. Automatic model routing based on prompt type
+- Code search engine — needed to find anything across 354 repos instantly. Built FTS5 index, sub-millisecond lookups across entire codebase
+- Fleet health APIs — SSH-based probes collect metrics from every node. Powers the KPI dashboard and automated alerting
 
-**Database Engineering**
-- 11 PostgreSQL databases across 3 fleet nodes
-- 230 SQLite databases (1.4 GB) for state management and agent memory
-- 22 Cloudflare D1 databases for serverless backends
-- 46 KV namespaces for edge caching
-- FTS5 full-text search index across code and knowledge bases
-
-**Service Architecture**
-- 14 Docker containers on Docker Swarm with service discovery
-- 48 Nginx reverse proxy sites with upstream health checking
-- WebSocket real-time streaming for AI model responses
-- SSE (Server-Sent Events) proxy for Ollama model streaming
-- GitHub-to-Gitea relay for cross-platform repository sync
-
-**Data Processing**
-- Daily KPI aggregation across GitHub, Gitea, fleet SSH, Cloudflare APIs
-- Power monitoring data collection (5-minute intervals across fleet)
-- Distributed tracing with nanosecond-precision span tracking
-- Cron-based batch processing (52 automated tasks)
+**The Data: Right Database for the Right Job**
+- 11 PostgreSQL for transactional data. 230 SQLite (1.4 GB) for agent memory and local state — embedded, zero-config, fast
+- 23 Cloudflare D1 for serverless applications. 47 KV namespaces for edge configuration and caching. Qdrant for vector search
+- FTS5 full-text search across 156K entries — the entire knowledge base is searchable in under a millisecond
 
 ---
 
 ## Technical Skills
 
-**Languages:** Python (470 repos), JavaScript (114 repos), TypeScript (85 repos), Bash, Go, C
-**Frameworks:** FastAPI, Node.js/Express, Next.js API routes
-**Databases:** PostgreSQL, SQLite/FTS5, Cloudflare D1/KV, Qdrant (vector)
-**Infrastructure:** Docker, Nginx, systemd, Linux
-**APIs:** REST, WebSocket, SSE, Cloudflare Workers
+Python/FastAPI, Node.js, PostgreSQL, SQLite/FTS5, D1, KV, Docker, Nginx, Redis
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Lines of code | 7,212,320 |
-| PostgreSQL DBs | 11 |
-| SQLite DBs | 230 |
-| D1 databases | 22 |
-| API services | 6+ |
-| Docker containers | 14 |
-| Repos | 1,810 |
+| Metric | Value | Source |
+|--------|-------|--------|
+| PostgreSQL DBs | *live* | services.sh — psql -l via SSH |
+| SQLite DBs | *live* | local.sh — find ~/.blackroad -name *.db |
+| D1 Databases | *live* | cloudflare.sh — wrangler d1 list --json |
+| KV Namespaces | *live* | cloudflare.sh — wrangler kv list |
+| Docker Containers | *live* | services.sh — docker ps via SSH |
+| Lines of Code | *live* | loc.sh — cloc + fleet SSH |

@@ -8,65 +8,43 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Automation engineer who built 212 CLI tools, 52 scheduled tasks, and self-healing fleet automation across a 7-node infrastructure. Automates KPI collection (60+ metrics daily), deployment pipelines, fleet monitoring, power optimization, and cross-platform repository sync.
+A solo operator can't manually manage 256 services, 1,603 repos, and 7 nodes. Built 212 CLI tools and 52 scheduled automations that turn a one-person operation into a self-sustaining system.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & Automation Lead | 2025–Present
+### BlackRoad OS | Founder & Automation Engineer | 2025–Present
 
-**CLI Tooling**
-- Built 212 CLI tools (121 MB) in ~/bin covering deployment, monitoring, stats, and fleet management
-- 91 shell scripts for infrastructure automation
-- Custom RoadC programming language with lexer, parser, and tree-walking interpreter
-- `br-stats`, `br-upload`, `br-generate`, `roadid`, `carpool` — production CLI tools
+**The Philosophy: If You Did It Twice, Automate It**
+- 212 CLI tools (121 MB) in ~/bin — every deployment, probe, audit, sync, and report is a single command
+- 91 shell scripts for fleet management. Custom brand compliance auditing. Mass update tooling across all 99 sites
+- GitHub-to-Gitea relay syncs 207 repos every 30 minutes — cross-platform Git without manual intervention
 
-**Scheduled Automation**
-- 17 Mac cron jobs: health monitoring (5m), sync (15m), website automation (30m), backups (daily/6h/12h)
-- 35 systemd timers across fleet for service monitoring and data collection
-- Self-healing autonomy: heartbeat (1m) + heal (5m) cycles on all Pi nodes
-- GitHub-to-Gitea relay: 30-minute sync across 207 repos
+**The Schedule: 52 Tasks Running Without You**
+- 17 Mac cron jobs + 35 fleet systemd timers = 52 automated tasks running daily, hourly, and every 5 minutes
+- Daily KPI collection at 6 AM: 10 collectors pull from GitHub API, fleet SSH, Cloudflare CLI, local Mac — aggregated into daily report
+- Self-healing autonomy: heartbeat every 60s, heal every 5m, power monitor every 5m — fleet maintains itself overnight
 
-**KPI Automation**
-- 9-collector daily KPI system: GitHub, Gitea, fleet, services, autonomy, LOC, local, Cloudflare, deep GitHub
-- Automated fleet probing via SSH with Python-based remote execution
-- Daily Slack reporting (block kit formatting)
-- Markdown report generation for GitHub README auto-update
-- Day-over-day delta tracking with visual progress bars
-
-**Deployment Automation**
-- 99 Cloudflare Pages with git-push deployment
-- GitHub Actions CI/CD pipelines
-- Docker Swarm service orchestration
-- Fleet-wide power optimization with --apply mode
-
-**Fleet Automation**
-- Power monitoring deployed to all nodes (5-minute intervals)
-- CPU governor persistence via tmpfiles.d
-- Automated service discovery and restart
-- Credential rotation from plaintext to secured env files
+**The Pipeline: Data That Updates Itself**
+- 10 collectors generate snapshots → aggregated into daily JSON → pushed to Cloudflare KV → live resume dashboards update automatically
+- Every number on this page came from an automated collector, not a human typing it. Updated daily. Verified by source
 
 ---
 
 ## Technical Skills
 
-**Scripting:** Bash (212 tools), Python, JavaScript
-**Automation:** cron, systemd timers, GitHub Actions, Docker Swarm
-**Tools:** Wrangler, gh CLI, SSH, rsync, rclone
-**Monitoring:** Custom KPI system, Slack webhooks, distributed tracing
-**Infrastructure:** Linux, Docker, Cloudflare, WireGuard
+Bash, Python, cron, systemd timers, GitHub Actions, SSH automation, jq, curl
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| CLI tools | 212 |
-| Automated tasks | 52 |
-| KPI metrics | 60+ |
-| Data collectors | 9 |
-| Shell scripts | 91 |
-| Cron jobs (Mac) | 17 |
-| Fleet timers | 35 |
+| Metric | Value | Source |
+|--------|-------|--------|
+| CLI Tools | *live* | local.sh — ls ~/bin | wc -l |
+| Shell Scripts | *live* | local.sh — find ~/ -name *.sh |
+| Mac Crons | *live* | local.sh — crontab -l | wc -l |
+| Systemd Timers | *live* | services.sh — systemctl list-timers via SSH |
+| Fleet Crons | *live* | autonomy.sh — crontab -l via SSH |
+| Total Repos | *live* | github-all-orgs.sh — gh api repos (17 owners) |

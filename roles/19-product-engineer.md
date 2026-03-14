@@ -8,7 +8,7 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Product engineer who built BlackRoad OS from concept to production: 99 deployed web properties, 48+ custom domains, 75 design templates, a daily KPI dashboard, and AI-powered tools. Ships across the full stack — frontend templates, backend APIs, infrastructure, and monitoring.
+99 live sites, but no design team. Built a brand-locked design system with 75 templates, 15 page types, and automated compliance auditing — every site ships on-brand because the system won't let you ship off-brand.
 
 ---
 
@@ -16,56 +16,35 @@ Product engineer who built BlackRoad OS from concept to production: 99 deployed 
 
 ### BlackRoad OS | Founder & Product Engineer | 2025–Present
 
-**Product Development**
-- Built and deployed 99 Cloudflare Pages projects across 48+ custom domains
-- Created 75 design templates (15 page types) with brand-locked design system
-- AI image generation hub (images.blackroad.io) with 4 backend agents
-- Code search engine (index.blackroad.io) indexing 354 repos
-- Daily KPI dashboard tracking 60+ metrics with Slack integration
+**The System: Brand as Code**
+- Gradient spectrum locked: #FF6B2B → #FF2255 → #CC00AA → #8844FF → #4488FF → #00D4FF. No other colors in containers with text
+- Typography locked: Space Grotesk for display, JetBrains Mono for code, Inter for body. Golden ratio spacing (φ = 1.618)
+- Automated brand compliance auditing — tooling scans all 99 sites for violations. Mass update tooling applies fixes fleet-wide
 
-**Frontend**
-- 75 HTML/JSX templates: landing, dashboard, auth, settings, blog, portfolio, status, docs, pricing
-- Brand system: 6-color gradient, 3 font families (Space Grotesk, JetBrains Mono, Inter)
-- React/Next.js applications with real-time streaming
+**The Coverage: 15 Page Types, Every SaaS Surface**
+- Landing (hero, light alt), pricing, blog (listing + article), docs, dashboard, auth, portfolio, contact, error-404, status, settings, team, changelog
+- 75 design templates (HTML/JSX) — each one brand-locked, responsive, and production-ready. Plug in content and deploy
+- 99 Cloudflare Pages projects across 48+ custom domains — every site is live, every domain has SSL, every page loads in under 2 seconds
 
-**Backend & APIs**
-- FastAPI services: CECE (AI), TTS (speech), Lucidia (application)
-- 14 Docker containers serving production workloads
-- 11 PostgreSQL + 230 SQLite databases for application state
-- WebSocket/SSE streaming for AI model interaction
-
-**Infrastructure**
-- 7-node hybrid edge-cloud fleet
-- 27 AI models (48.1 GB) for product features
-- 256 systemd services, 52 automated tasks
-- Self-healing autonomy on all production nodes
-
-**Metrics & Growth**
-- 7,212,320 lines of code across 1,603 repos
-- 326 commits/day development velocity
-- 4,019 PRs merged
-- 60+ KPIs tracked daily across 9 collectors
+**The Product: AI Image Generation**
+- images.blackroad.io — AI image generation hub with 4 backend agents, R2 storage, D1 metadata, single API endpoint
+- Users request images by prompt. System routes to best model (DALL-E for quality, Flux for speed). Results stored and served from R2
 
 ---
 
 ## Technical Skills
 
-**Frontend:** React, Next.js, HTML/CSS, JSX, Cloudflare Pages
-**Backend:** Python/FastAPI, Node.js, Docker
-**Design:** Brand systems, template architecture, responsive design
-**Data:** PostgreSQL, SQLite, D1, KV, FTS5
-**Infrastructure:** Cloudflare, Docker Swarm, Linux, WireGuard
+React, Next.js, HTML/CSS, Cloudflare Pages, design systems, brand management, Figma
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Deployed sites | 99 |
-| Design templates | 75 |
-| Domains | 48+ |
-| AI models | 27 |
-| Lines of code | 7,212,320 |
-| Commits/day | 326 |
-| KPIs tracked | 60+ |
+| Metric | Value | Source |
+|--------|-------|--------|
+| CF Pages | *live* | cloudflare.sh — wrangler pages list |
+| Templates | *live* | local.sh — ls ~/Desktop/templates |
+| Total Repos | *live* | github-all-orgs.sh — gh api repos (17 owners) |
+| Lines of Code | *live* | loc.sh — cloc + fleet SSH |
+| Nginx Sites | *live* | services.sh — /etc/nginx/sites-enabled via SSH |
+| CLI Tools | *live* | local.sh — ls ~/bin | wc -l |

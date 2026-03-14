@@ -8,67 +8,43 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Cloud engineer managing a hybrid edge-cloud infrastructure: 99 Cloudflare Pages, 22 D1 databases, 46 KV namespaces, 11 R2 buckets, 2 DigitalOcean droplets, and 5 edge nodes connected via WireGuard mesh VPN. Serves 48+ domains through 4 Cloudflare tunnels.
+Needed global reach without global infrastructure costs. Architected a hybrid edge-cloud stack: Cloudflare serverless for global distribution, Pi fleet for sovereignty, WireGuard mesh for secure connectivity — 178 cloud resources managed solo.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & Cloud Architect | 2025–Present
+### BlackRoad OS | Founder & Cloud Engineer | 2025–Present
 
-**Cloudflare Platform**
-- Deploy and manage 99 Pages projects with git-based CI/CD
-- Operate 22 D1 serverless databases (40 MB total) for application state
-- Manage 46 KV namespaces for edge configuration and caching
-- Maintain 11 R2 object storage buckets for assets, models, and artifacts
-- Route 48+ custom domains through 4 Cloudflare tunnels to fleet services
+**The Strategy: Edge + Cloud, Not Either/Or**
+- Pure cloud is expensive and you don't own the compute. Pure edge is limited and hard to reach. Combined both
+- 99 Pages for global CDN, 23 D1 for serverless databases, 47 KV for edge config, 11 R2 for object storage — all on Cloudflare
+- 5 Pi edge nodes for persistent compute, AI inference, and data sovereignty. WireGuard mesh connects everything. 4 tunnels route 48+ domains
 
-**Hybrid Cloud Architecture**
-- 5 Raspberry Pi edge nodes (4× Pi 5, 1× Pi 400) with 20 GB RAM, 707 GB storage
-- 2 DigitalOcean droplets (NYC regions) for WireGuard hub and public services
-- WireGuard mesh VPN connecting all nodes (10.8.0.x subnet)
-- Tailscale overlay network with 9 peers for management access
-- RoadNet WiFi mesh (5 APs) for local device connectivity
+**The Architecture: Zero Open Ports**
+- No port forwarding, no exposed services. All external traffic flows through Cloudflare tunnels to fleet
+- WireGuard mesh (10.8.0.x) for encrypted inter-node communication. Tailscale overlay (9 peers) for management access
+- RoadNet WiFi mesh (5 APs) provides local device connectivity — devices on the mesh can reach the fleet directly
 
-**Compute & Services**
-- 14 Docker containers via Docker Swarm (leader on Octavia)
-- 256 systemd services managed across fleet
-- 48 Nginx reverse proxy sites
-- 11 PostgreSQL databases, 230 SQLite databases
-
-**Security & Networking**
-- Cloudflare tunnels for zero-trust access to fleet services
-- WireGuard encryption for inter-node communication
-- UFW firewall policies on edge nodes
-- Credential management via secured env files (chmod 600)
-
-**Monitoring**
-- Daily KPI collection across all cloud and edge infrastructure
-- 60+ metrics tracked: deployments, database sizes, fleet health
-- Power and thermal monitoring on all edge nodes
-- Automated alerting for service failures
+**The Numbers**
+- 178 total Cloudflare resources deployed and maintained. 48+ custom domains with automated SSL/TLS
+- Cloudflare Workers for edge compute and API routing — millisecond response times at the edge, heavy processing on fleet
 
 ---
 
 ## Technical Skills
 
-**Cloud:** Cloudflare (Pages, Workers, D1, KV, R2, Tunnels, DNS), DigitalOcean
-**Networking:** WireGuard, Tailscale, Nginx, DNS (Pi-hole, PowerDNS), Cloudflare DNS
-**Containers:** Docker, Docker Swarm, container orchestration
-**Infrastructure:** Linux, systemd, Raspberry Pi, edge computing
-**IaC:** Shell automation (212 CLI tools), cron, GitHub Actions
+Cloudflare Pages/Workers/D1/KV/R2/Tunnels, DigitalOcean, WireGuard, Tailscale, Docker, Nginx
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Cloudflare Pages | 99 |
-| D1 databases | 22 |
-| KV namespaces | 46 |
-| R2 buckets | 11 |
-| Domains managed | 48+ |
-| CF tunnels | 4 |
-| Edge nodes | 5 |
-| Cloud VMs | 2 |
+| Metric | Value | Source |
+|--------|-------|--------|
+| CF Pages | *live* | cloudflare.sh — wrangler pages list |
+| D1 Databases | *live* | cloudflare.sh — wrangler d1 list --json |
+| KV Namespaces | *live* | cloudflare.sh — wrangler kv list |
+| R2 Buckets | *live* | cloudflare.sh — wrangler r2 bucket list |
+| Fleet Nodes | *live* | fleet.sh — SSH probe to all nodes |
+| Nginx Sites | *live* | services.sh — /etc/nginx/sites-enabled via SSH |

@@ -8,65 +8,40 @@ amundsonalexa@gmail.com | [github.com/blackboxprogramming](https://github.com/bl
 
 ## Summary
 
-Network engineer operating a multi-layer network stack: WireGuard mesh VPN, Tailscale overlay (9 peers), RoadNet WiFi mesh (5 APs), 4 Cloudflare tunnels serving 48+ domains, DNS infrastructure (Pi-hole + PowerDNS + dnsmasq), and 48 Nginx reverse proxy sites across a 7-node fleet.
+Connecting 7 nodes across 3 physical locations with zero open ports. Built a multi-layer network: WireGuard mesh for encryption, Cloudflare tunnels for zero-trust access, RoadNet WiFi mesh for local coverage, and Pi-hole DNS for control.
 
 ---
 
 ## Experience
 
-### BlackRoad OS | Founder & Network Lead | 2025–Present
+### BlackRoad OS | Founder & Network Engineer | 2025–Present
 
-**VPN & Mesh Networking**
-- WireGuard mesh VPN (10.8.0.x subnet) with DigitalOcean hub routing to all edge nodes
-- Tailscale overlay network: 9 peers for management access across network boundaries
-- RoadNet WiFi mesh: 5 access points on non-overlapping channels (1, 6, 11)
-- Dedicated subnets: 10.10.{1-5}.0/24 per node with NAT through wlan0
+**The Layers: Defense in Depth**
+- Layer 1 — WireGuard mesh VPN (10.8.0.x): encrypted tunnels between all nodes. Every packet between nodes is encrypted, period
+- Layer 2 — Cloudflare tunnels (4 active): 48+ domains routed to fleet with zero open ports. External traffic never touches a public IP
+- Layer 3 — Tailscale overlay (9 peers): management access from anywhere. MagicDNS for node resolution. Exit nodes for remote debugging
+- Layer 4 — RoadNet WiFi mesh: 5 APs on non-overlapping channels, 5 subnets, NAT, auto-failover — local devices talk to fleet directly
 
-**DNS Infrastructure**
-- Pi-hole on Alice: fleet-wide ad blocking and DNS resolution
-- PowerDNS on Lucidia (Docker): authoritative DNS for custom zones
-- dnsmasq on Cecilia: custom DNS zones (.cece, .blackroad, .entity, .soul, .dream)
-- Cloudflare DNS for 48+ public domains
-
-**Reverse Proxy & Load Balancing**
-- 48 Nginx sites routing traffic to fleet services
-- 4 Cloudflare tunnels for zero-trust external access
-- Per-service routing: API, web, git, AI inference endpoints
-- SSL/TLS termination via Cloudflare
-
-**Monitoring & Diagnostics**
-- 106 active network connections monitored across fleet
-- 867 processes tracked for network resource usage
-- SSH-based fleet probing with health checks
-- Daily KPI collection including connection counts and peer status
-
-**Security**
-- Zero-trust architecture via Cloudflare tunnels (no exposed ports)
-- WireGuard encryption for all inter-node traffic
-- UFW firewall on edge nodes (INPUT DROP policy)
-- SSH key management across 50+ authorized keys
+**The DNS: Names, Not Numbers**
+- Pi-hole for ad blocking and local DNS resolution. PowerDNS Docker for custom authoritative zones
+- Custom DNS zones: .cece, .blackroad, .entity, .soul, .dream — edge services discoverable by domain name within the network
+- 48 Nginx reverse proxy sites with health checking — each domain routes to the right backend on the right node
 
 ---
 
 ## Technical Skills
 
-**VPN:** WireGuard, Tailscale
-**DNS:** Pi-hole, PowerDNS, dnsmasq, Cloudflare DNS
-**Proxy:** Nginx, Cloudflare Tunnels
-**WiFi:** hostapd, RoadNet mesh configuration
-**Security:** UFW, nftables, SSH hardening, TLS
-**Monitoring:** Custom probes, ss, connection tracking
+WireGuard, Tailscale, Nginx, Cloudflare Tunnels, Pi-hole, PowerDNS, UFW, iptables
 
 ---
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| VPN nodes | 7 (WireGuard) |
-| Tailscale peers | 9 |
-| WiFi APs | 5 |
-| Domains | 48+ |
-| Nginx sites | 48 |
-| CF tunnels | 4 |
-| Connections | 106 |
+| Metric | Value | Source |
+|--------|-------|--------|
+| Nginx Sites | *live* | services.sh — /etc/nginx/sites-enabled via SSH |
+| Tailscale Peers | *live* | services.sh — tailscale status via SSH |
+| Fleet Nodes | *live* | fleet.sh — SSH probe to all nodes |
+| CF Pages | *live* | cloudflare.sh — wrangler pages list |
+| Net Connections | *live* | services.sh — ss -tun via SSH |
+| Systemd Services | *live* | services.sh — systemctl list-units via SSH |
